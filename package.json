@@ -1,0 +1,11 @@
+{
+  "name": "front-end",
+  "version": "1.0.0",
+  "description": "<h3>Depois do <strike>policial mau</strike> back end ter feito sua parte, chegou a hora do <strike>policial bom</strike> front-end entrar em cena! Leia as instruções abaixo antes de começar a codar.</h3>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
