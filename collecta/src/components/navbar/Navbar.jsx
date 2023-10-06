@@ -1,7 +1,13 @@
-import React from "react";
+// import React from "react";
+import Logo from "../../assets/logo/logo-collecta.svg";
+import Pacoca from "../../assets/logo/pacoca.jpg"
+
 function Navbar() {
   return (
     <>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+      
       <header>
           <div className="header-bg">
             <div className="container">
@@ -21,7 +27,7 @@ function Navbar() {
                     <input type="text" className="barra-busca-projetos" placeholder="Busque projetos..."/>
                   </section>
                   <button className="botao-pesquisar">
-                  <span class="material-symbols-outlined color-white">search</span>
+                  <span className="material-symbols-outlined color-white">search</span>
                   </button>
                 </section>
                 <section>
