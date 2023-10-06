@@ -7,7 +7,20 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none; 
-    font-family: 'Manrope', sans-serif; 
+    font-family: 'Inter', sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 900,
+  'GRAD' 0,
+  'opsz' 24
+}
+
+.container{
+    width: 80%;
+    margin: 0 auto;
 }
   
 body {
@@ -34,9 +47,24 @@ body {
     --blueberry: #0047C5;
     --chambray: #355D8C;
 
-    /* Fontes  */
     
 }
+
+/* Cor de fonte  */
+
+.color-white {
+    color: var(--white);
+}
+
+.color-haiti {
+    color: var(--haiti);
+}
+
+.color-outline {
+    color: var(--outline);
+}
+
+/* Fontes  */
 
 .title-large  {
     font-weight: 800;
@@ -93,6 +121,11 @@ body {
     font-size: 16px;
 }
 
+.body-medium-bold {
+    font-weight: 700;
+    font-size: 16px;
+}
+
 .body-small {
     font-weight: 500;
     font-size: 14px;
@@ -106,4 +139,80 @@ body {
 .body-tiny {
     font-weight: 500;
     font-size: 10px;
+}
+
+/* Flex  */
+
+.d-flex {
+    display: flex;
+}
+
+.jc-center {
+    justify-content: center;
+}
+
+.jc-between {
+    justify-content: space-between;
+}
+
+.jc-evenly {
+    justify-content: space-evenly;
+}
+
+.jc-around {
+    justify-content: space-around;
+}
+
+.ac-center {
+    align-content: center;
+}
+
+.ac-around {
+    align-content: space-around;
+}
+
+.ac-between {
+    align-content: space-between;
+}
+
+.ac-evenly {
+    align-content: space-evenly;
+}
+
+.ai-center {
+    align-items: center;
+}
+
+/* Tamanho  */
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+/* Margin */
+
+.m-0auto {
+    margin: 0 auto;
+}
+
+.m-auto0 {
+    margin: auto 0;
+}
+
+.m-8 {
+    margin: 8px;
+}
+
+/* Elementos padrões  */
+
+::placeholder {
+    color: var(--outline);
+    font-family: in;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
 }

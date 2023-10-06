@@ -1,0 +1,36 @@
+.header-bg {
+    background-color: var(--chambray);
+    padding: 24px 0 24px 0;
+}
+
+.header-container {
+    align-items: center;
+}
+
+.barra-busca-projetos {
+    padding: 19px 0 19px 16px;
+    width: 368px;
+    border-radius: 10px 0 0 10px;
+    border: 1px solid var(--ice);
+}
+
+.botao-pesquisar {
+    outline: 1px solid var(--haiti);
+    border: none;
+    padding: 0 16px 0 16px;
+    background-color: var(--haiti);
+    border-radius: 0 10px 10px 0;
+}
+
+.icone-perfil {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-perfil {
+    object-fit: cover;
+    width: 56px;
+    height: 56px;
+}
