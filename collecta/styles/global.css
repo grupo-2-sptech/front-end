@@ -64,6 +64,27 @@ body {
     color: var(--outline);
 }
 
+/* Background  */
+
+.bg-ice {
+    background-color: var(--ice);
+}
+
+.bg-haiti {
+    background-color: var(--haiti);
+}
+
+.bg-tufts {
+    background-color: var(--tufts);
+}
+
+.bg-chambray {
+    background-color: var(--chambray);
+}
+
+.bg-clear-gray {
+    background-color: var(--clear-gray);
+}
 /* Fontes  */
 
 .title-large  {
@@ -183,6 +204,10 @@ body {
     align-items: center;
 }
 
+.fd-column {
+    flex-direction: column;
+}
+
 /* Tamanho  */
 
 .w-100 {
@@ -205,6 +230,49 @@ body {
 
 .m-8 {
     margin: 8px;
+}
+
+.mb-22 {
+    margin-bottom: 22px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+.p-16-lateral {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.p-8-vertical {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.p-16 {
+    padding: 16px;
+}
+
+/* Border  */
+.border-ice {
+    border: 1px solid var(--ice);
+}
+
+.border-outline {
+    border: 1px solid var(--outline);
 }
 
 /* Elementos padrões  */
