@@ -5,11 +5,22 @@
     overflow: hidden;
 }
 
+.card-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 190px;
+}
+
 .card-thumbnail {
     width: 100%;
     overflow: hidden;
     height: 184px;
     position: relative;
+}
+
+.card-desc {
+    height: 68px;
 }
 
 .card-thumb-img {
@@ -52,4 +63,25 @@ progress[value]::-webkit-progress-value {
 progress[value]::-moz-progress-bar {
     border-radius: 10px;
     background: var(--color);
+}
+
+/*Responsividade*/
+
+/* 812 */
+@media only screen and (max-width: 812px) {
+    .card {
+        min-width: 80%;
+    }
+
+    .card-box {
+        justify-content: center;
+    }
+
+}
+
+/* 1162 */
+@media only screen and (max-width: 1162px) {
+    .card {
+        margin-bottom: 30px;
+    }
 }

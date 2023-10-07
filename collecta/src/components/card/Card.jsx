@@ -19,7 +19,7 @@ function Card(props) {
           <span className="card-responsavel body-small mb-22">
             por {props.responsavel}
           </span>
-          <span className="body-small mb-32">
+          <span className="body-small mb-32 card-desc">
             {props.texto}
           </span>
         </section>
