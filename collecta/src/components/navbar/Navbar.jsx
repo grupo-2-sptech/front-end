@@ -15,11 +15,12 @@ function Navbar() {
                 <img
                   src={Logo}
                   alt="Logo da Collecta, a letra C e O com tons de azul"
+                  className="header-logo-icon"
                 />
-                <section className="header-item body-medium-bold d-flex ai-center">
+                <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Criar campanha</span>
                 </section>
-                <section className="header-item body-medium-bold d-flex ai-center">
+                <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
                 </section>
                 <section className="conjunto-barra-busca-projeto d-flex">
