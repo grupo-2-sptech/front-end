@@ -1,6 +1,6 @@
 .header-bg {
-    background-color: var(--chambray);
-    padding: 1vh 0 1vh 0;
+  background-color: var(--chambray);
+  padding: 1vh 0 1vh 0;
 }
 
 .header-container {
@@ -27,7 +27,6 @@
     padding: 1.4vh 0 1.4vh 16px;
     width: 368px;
     border-radius: 10px 0 0 10px;
-    border: 1px solid var(--ice);
 }
 
 .barra-busca-projetos:focus {
@@ -39,7 +38,6 @@
     outline: 1px solid var(--haiti);
     border: none;
     padding: 0 16px 0 16px;
-    background-color: var(--haiti);
     border-radius: 0 10px 10px 0;
 }
 .botao-pesquisar:hover {
