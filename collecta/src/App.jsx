@@ -8,6 +8,7 @@ import marmitada from "./assets/img/marmitada.png";
 
 import Navbar from "./components/navbar/Navbar";
 import Card from "./components/card/Card";
+import CardPontual from "./components/card-pontual/CardPontual";
 
 import "./App.css";
 import "./components/card/card.css"
@@ -18,7 +19,7 @@ function App() {
       <Navbar />
       <div className="container">
           <div className="card-box jc-between">
-            <Card
+            {/* <Card
               titulo="Projeto AUjuda"
               responsavel="AUmigos Leais"
               texto="Alimentando animais na rua de São Paulo com iniciativa da ETEC de Guaianases. Nossos animais de rua merecem tanto amor quanto qualquer outro animal."
@@ -49,7 +50,19 @@ function App() {
               local="Santa Cruz da Baixa Verde - PE"
               tag="Socioambiental"
               img={atlantica}
-            />
+            /> */}
+
+            {/* <CardPontual
+              titulo="Adote uma muda"
+              responsavel="Instituto Mata Atlântica"
+              texto="Vamos juntos promover a recuperação e a preservação de matas nativas e suas nascentes!"
+              porcentagem="82"
+              valor="5.312"
+              dias="18"
+              local="Santa Cruz da Baixa Verde - PE"
+              tag="Socioambiental"
+              img={atlantica}
+            /> */}
           </div>
 
           {/* <div className="card-box jc-between">

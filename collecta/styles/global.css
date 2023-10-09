@@ -162,6 +162,10 @@ body {
     font-size: 10px;
 }
 
+.text-align-right {
+    text-align: right;
+}
+
 /* Flex  */
 
 .d-flex {
