@@ -26,7 +26,7 @@ function Card(props) {
         <progress
           className="mb-32 card-progress-bar"
           id="file"
-          value="89"
+          value={props.porcentagem}
           max="100"
         >
         </progress>
