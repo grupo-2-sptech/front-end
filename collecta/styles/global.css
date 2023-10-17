@@ -50,6 +50,18 @@ body {
     
 }
 
+.sticky {
+    -webkit-transition: 0.3s;
+    transition: 1s;
+    z-index: 2; 
+    width: 100%;
+    position: fixed;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur( 8px );
+    background-color: rgba(0, 0, 0, 0.346);
+    -webkit-backdrop-filter: blur( 8px );
+}
+
 /* Cor de fonte  */
 
 .color-white {
@@ -62,6 +74,14 @@ body {
 
 .color-outline {
     color: var(--outline);
+}
+
+.color-tufts {
+    color: var(--tufts);
+}
+
+.color-chambray {
+    color: var(--chambray);
 }
 
 /* Background  */
@@ -166,6 +186,10 @@ body {
     text-align: right;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
 /* Flex  */
 
 .d-flex {
@@ -244,6 +268,22 @@ body {
     margin-bottom: 32px;
 }
 
+.mb-128 {
+    margin-bottom: 128px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-128 {
+    margin-top: 128px;
+}
+
 .mb-16 {
     margin-bottom: 16px;
 }
@@ -254,6 +294,22 @@ body {
 
 .ml-8 {
     margin-left: 8px;
+}
+
+.mt-190 {
+    margin-top: 190px;
+}
+
+.p-8-16 {
+    padding: 8px 16px;
+}
+
+.border-none {
+    border: none;
+}
+
+.br-5 {
+    border-radius: 5px;
 }
 
 .p-16-lateral {

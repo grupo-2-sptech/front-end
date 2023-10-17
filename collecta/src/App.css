@@ -1,0 +1,26 @@
+.background {
+    padding-top: 280px;
+    padding-bottom: 280px;
+    background-image: url(../src/assets/background/blurred-blobs.png);
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    
+}
+
+.btn-criar-campanha {
+    padding: 12px 24px;
+}
+
+.texto-icone {
+    width: 200px;
+    display: block;
+}
+
+.sect-icone-sobre {
+    width: fit-content;
+}
+
+.footer {
+    height: 230px;
+}
