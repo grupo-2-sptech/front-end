@@ -84,6 +84,9 @@ body {
     color: var(--chambray);
 }
 
+.color-ice {
+    color: var(--ice);
+}
 /* Background  */
 
 .bg-ice {
@@ -188,6 +191,14 @@ body {
 
 .text-align-center {
     text-align: center;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.pos-relative {
+    position: relative;
 }
 
 /* Flex  */
@@ -333,6 +344,10 @@ body {
 
 .border-outline {
     border: 1px solid var(--outline);
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Elementos padrões  */
