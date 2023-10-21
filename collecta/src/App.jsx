@@ -1,5 +1,7 @@
 import "../styles/global.css";
+
 import imagens from "./assets/img/ImagensExternas";
+
 
 import Navbar from "./components/navbar/Navbar";
 import Card from "./components/card/Card";
