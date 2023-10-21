@@ -1,0 +1,56 @@
+.background {
+    padding-top: 579px;
+    padding-bottom: 579px;
+    background-image: url(../src/assets/background/blurred-blobs.png);
+    background-size: cover;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    
+}
+
+.btn-criar-campanha {
+    padding: 12px 24px;
+}
+
+.texto-icone {
+    width: 200px;
+    display: block;
+}
+
+.sect-icone-sobre {
+    width: fit-content;
+}
+
+.footer {
+    height: 230px;
+}
+
+.hero-container {
+    height: 50vh;
+    background-color: aqua;
+    object-fit: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.tet {
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    /* left: 50%; position the left edge of the element at the middle of the parent */
+
+    transform: translateY(-50%); /* This is a shorthand of
+                                         translateX(-50%) and translateY(-50%) */
+}
+
+.hero-background {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.texto-hero {
+    display: block;
+}
+
+.texto1-hero {
+    width: 427px;
+    display: inline-block;
+}

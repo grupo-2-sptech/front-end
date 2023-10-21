@@ -6,10 +6,10 @@
 }
 
 .card-box {
+    padding-top: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-bottom: 190px;
 }
 
 .card-thumbnail {
