@@ -16,6 +16,10 @@ import iMaos from "./assets/icon/i-maos.svg";
 import iOlho from "./assets/icon/i-olho.svg";
 import logoNome from "./assets/logo/logo-nome.svg";
 import maos from "./assets/img/maos.png";
+import Rotas from "./Rotas"
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 function App() {
   const p = 54;
@@ -24,12 +28,14 @@ function App() {
   const p3 = 129;
   return (
     <>
-    <script>
+    <Rotas/>
+    {/* <script>
       {window.addEventListener("scroll", function() {
     var header = document.querySelector("header");
     header.classList.toggle("sticky", window.scrollY > 0);
 })}
     </script>
+    <Router>
       <Navbar />
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
@@ -215,6 +221,7 @@ function App() {
       <footer className="footer bg-chambray mt-128 d-flex jc-center ai-center">
         <img src={logoNome} />
       </footer>
+      </Router> */}
     </>
   );
 }
