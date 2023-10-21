@@ -26,7 +26,7 @@ function CardPontual(props) {
           <progress
             className="mb-32 card-progress-bar"
             id="file"
-            value="89"
+            value={props.porcentagem}
             max="100"
           ></progress>
           <section className="card-numeros mb-22 d-flex jc-between ai-center">

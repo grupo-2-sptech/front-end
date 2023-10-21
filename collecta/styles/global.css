@@ -64,6 +64,17 @@ body {
     color: var(--outline);
 }
 
+.color-tufts {
+    color: var(--tufts);
+}
+
+.color-chambray {
+    color: var(--chambray);
+}
+
+.color-ice {
+    color: var(--ice);
+}
 /* Background  */
 
 .bg-ice {
@@ -166,6 +177,18 @@ body {
     text-align: right;
 }
 
+.text-align-center {
+    text-align: center;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.pos-relative {
+    position: relative;
+}
+
 /* Flex  */
 
 .d-flex {
@@ -244,6 +267,22 @@ body {
     margin-bottom: 32px;
 }
 
+.mb-128 {
+    margin-bottom: 128px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-128 {
+    margin-top: 128px;
+}
+
 .mb-16 {
     margin-bottom: 16px;
 }
@@ -254,6 +293,22 @@ body {
 
 .ml-8 {
     margin-left: 8px;
+}
+
+.mt-190 {
+    margin-top: 190px;
+}
+
+.p-8-16 {
+    padding: 8px 16px;
+}
+
+.border-none {
+    border: none;
+}
+
+.br-5 {
+    border-radius: 5px;
 }
 
 .p-16-lateral {
@@ -277,6 +332,10 @@ body {
 
 .border-outline {
     border: 1px solid var(--outline);
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Elementos padrões  */
