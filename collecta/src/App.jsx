@@ -22,24 +22,32 @@ function App() {
   const p3 = 129;
   return (
     <>
+    <script>
+      {window.addEventListener("scroll", function() {
+    var header = document.querySelector("header");
+    header.classList.toggle("sticky", window.scrollY > 0);
+})}
+    </script>
       <Navbar />
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
         <div className="container">
           <div className="pos-absolute tet">
-        <span className="color-ice texto-hero head-large">
-          <span className="texto1-hero">
-          Promover o <span className="color-white">bem</span> e
-          <span className="color-white"> Conectar</span> pessoas
-          </span>
-          <br />
-          <span className="color-ice">
-            FAZEMOS ISSO <span className="color-white">JUNTOS</span>
-          </span>
-          <br />
-          <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">SAIBA MAIS</button>
-        </span>
-        </div>
+            <span className="color-ice texto-hero head-large">
+              <span className="texto1-hero">
+                Promover o <span className="color-white">bem</span> e
+                <span className="color-white"> Conectar</span> pessoas
+              </span>
+              <br />
+              <span className="color-ice">
+                FAZEMOS ISSO <span className="color-white">JUNTOS</span>
+              </span>
+              <br />
+              <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
+                SAIBA MAIS
+              </button>
+            </span>
+          </div>
         </div>
       </div>
       <div className="container">
@@ -136,6 +144,7 @@ function App() {
           />
         </div>
       </div>
+
       <div className="background">
         <div className="container">
           <span className="head-large d-flex fd-column text-align-center">

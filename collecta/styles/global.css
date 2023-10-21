@@ -50,18 +50,6 @@ body {
     
 }
 
-.sticky {
-    -webkit-transition: 0.3s;
-    transition: 1s;
-    z-index: 2; 
-    width: 100%;
-    position: fixed;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    backdrop-filter: blur( 8px );
-    background-color: rgba(0, 0, 0, 0.346);
-    -webkit-backdrop-filter: blur( 8px );
-}
-
 /* Cor de fonte  */
 
 .color-white {
