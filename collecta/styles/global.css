@@ -68,6 +68,38 @@ body {
     color: var(--outline);
 }
 
+.color-tufts {
+    color: var(--tufts);
+}
+
+.color-chambray {
+    color: var(--chambray);
+}
+
+.color-ice {
+    color: var(--ice);
+}
+/* Background  */
+
+.bg-ice {
+    background-color: var(--ice);
+}
+
+.bg-haiti {
+    background-color: var(--haiti);
+}
+
+.bg-tufts {
+    background-color: var(--tufts);
+}
+
+.bg-chambray {
+    background-color: var(--chambray);
+}
+
+.bg-clear-gray {
+    background-color: var(--clear-gray);
+}
 /* Fontes  */
 
 .title-large  {
@@ -145,6 +177,22 @@ body {
     font-size: 10px;
 }
 
+.text-align-right {
+    text-align: right;
+}
+
+.text-align-center {
+    text-align: center;
+}
+
+.pos-absolute {
+    position: absolute;
+}
+
+.pos-relative {
+    position: relative;
+}
+
 /* Flex  */
 
 .d-flex {
@@ -187,6 +235,10 @@ body {
     align-items: center;
 }
 
+.fd-column {
+    flex-direction: column;
+}
+
 /* Tamanho  */
 
 .w-100 {
@@ -209,6 +261,85 @@ body {
 
 .m-8 {
     margin: 8px;
+}
+
+.mb-22 {
+    margin-bottom: 22px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.mb-128 {
+    margin-bottom: 128px;
+}
+
+.mb-100 {
+    margin-bottom: 100px;
+}
+
+.mt-100 {
+    margin-top: 100px;
+}
+
+.mt-128 {
+    margin-top: 128px;
+}
+
+.mb-16 {
+    margin-bottom: 16px;
+}
+
+.mb-8 {
+    margin-bottom: 8px;
+}
+
+.ml-8 {
+    margin-left: 8px;
+}
+
+.mt-190 {
+    margin-top: 190px;
+}
+
+.p-8-16 {
+    padding: 8px 16px;
+}
+
+.border-none {
+    border: none;
+}
+
+.br-5 {
+    border-radius: 5px;
+}
+
+.p-16-lateral {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.p-8-vertical {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.p-16 {
+    padding: 16px;
+}
+
+/* Border  */
+.border-ice {
+    border: 1px solid var(--ice);
+}
+
+.border-outline {
+    border: 1px solid var(--outline);
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
 
 /* Elementos padrões  */
