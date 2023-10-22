@@ -1,0 +1,19 @@
+.input{
+    outline: none;
+    width: 70%;
+    padding-left: 3%;
+    height: 10%;
+    font-size: 18px;
+    margin-top: 4%;
+    border-radius: 10px;
+    border: 1px solid var(--outline);
+}
+#inputCep{
+    display: none;
+}
+#inputSenha{
+    display: none;
+}
+#inputConfirmarSenha{
+    display: none;
+}
