@@ -4,6 +4,7 @@ import LinhaTracejada from "../../assets/cadastro/linha-tracejada.svg"
 import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../input-cadastro/InputCadastro"
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
+import Navbar from "../navbar/Navbar"
 
 
 
@@ -59,6 +60,7 @@ function FormCadastro(){
 
     return(
         <>
+        <Navbar />
         <section className="formularioCadastro">
         <img src={Cadeado} className="imgCadeado" alt="Imagem de um cadeado conectado com icones de documento, configuração e compartilhamento" />
                  
