@@ -2,7 +2,7 @@ import "../../../styles/global.css";
 
 import imagens from "../../assets/img/ImagensExternas";
 
-import Navbar from "../../components/navbar/Navbar";
+import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
@@ -13,7 +13,7 @@ import iGrafico from "../../assets/icon/i-grafico.svg";
 import iAjuda from "../../assets/icon/i-ajuda.svg";
 import iMaos from "../../assets/icon/i-maos.svg";
 import iOlho from "../../assets/icon/i-olho.svg";
-import logoNome from "../../assets/logo/logo-nome.svg";
+import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
 
 function Index() {
@@ -30,7 +30,7 @@ function Index() {
 })}
     </script>
     
-      <Navbar />
+      <NavbarLogout />
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
         <div className="container">
@@ -72,7 +72,7 @@ function Index() {
             valor="7.253"
             local="São Paulo, SP"
             tag="Animais"
-            img={imagens[0]}
+            img={imagens[4]}
           />
 
           <Card
@@ -83,7 +83,7 @@ function Index() {
             valor="46.168"
             local="Maceió, Alagoas"
             tag="Alimentação"
-            img={imagens[0]}
+            img={imagens[2]}
           />
 
           <Card
@@ -94,7 +94,7 @@ function Index() {
             valor="5.312"
             local="Santa Cruz da Baixa Verde - PE"
             tag="Socioambiental"
-            img={imagens[0]}
+            img={imagens[5]}
           />
         </div>
 
@@ -109,40 +109,41 @@ function Index() {
       </div>
       <div className="container">
         <div className="card-box jc-between">
-          <CardPontual
-            titulo="Adote uma muda"
-            responsavel="Instituto Mata Atlântica"
-            texto="Vamos juntos promover a recuperação e a preservação de matas nativas e suas nascentes!"
-            porcentagem={p3}
-            valor="5.312"
-            dias="18"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Socioambiental"
-            img={imagens[0]}
-          />
-
-          <CardPontual
+        <CardPontual
             titulo="Adapta"
             responsavel="Instituto Camaleão"
             texto="Reabilitação e inclusão para pessoas com câncer de cabeça e pescoço"
             porcentagem={p}
             valor="15.123"
             local="Santa Cruz da Baixa Verde - PE"
-            tag="Socioambiental"
+            tag="Saúde"
             dias="18"
+            img={imagens[3]}
+          />
+          <CardPontual
+            titulo="Ação de rua - SP"
+            responsavel="Ação de rua - SP"
+            texto="Ação de combate à fome nas ruas de São Paulo"
+            porcentagem={p3}
+            valor="120.239"
+            dias="90"
+            local="Santa Cruz da Baixa Verde - PE"
+            tag="Rua"
             img={imagens[0]}
           />
 
+          
+
           <CardPontual
-            titulo="Oie"
-            responsavel="Vish"
-            texto="Tudo"
+            titulo="Banho de dignidade"
+            responsavel="Amigos da Rua e Seus Pets"
+            texto="Comprar um ônibus e adequá-lo para que moradores de rua tomem banho, cortem cabelo, façam barba, etc"
             porcentagem={p2}
-            valor="38.365"
+            valor="13.623"
             local="Santa Cruz da Baixa Verde - PE"
-            tag="Socioambiental"
-            dias="18"
-            img={imagens[0]}
+            tag="Rua"
+            dias="55"
+            img={imagens[1]}
           />
         </div>
       </div>
@@ -213,7 +214,7 @@ function Index() {
         </section>
       </div>
       <footer className="footer bg-chambray mt-128 d-flex jc-center ai-center">
-        <img src={logoNome} />
+        <img src={logoNome} className="logo-nome-collectiva" />
       </footer>
         </>
     )
