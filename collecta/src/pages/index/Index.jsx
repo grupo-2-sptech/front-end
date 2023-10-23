@@ -23,13 +23,13 @@ function Index() {
     const p3 = 129;
     return (
         <>
-        <link rel="shortcut icon" href="../" type="image/x-icon" />
             <script>
       {window.addEventListener("scroll", function() {
-    var header = document.querySelector("header");
-    header.classList.toggle("sticky", window.scrollY > 0);
-})}
+        var header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      })}
     </script>
+      
     
       <NavbarLogout />
       <div className="body-index">
