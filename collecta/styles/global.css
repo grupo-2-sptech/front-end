@@ -10,6 +10,11 @@
     font-family: 'Inter', sans-serif;
 }
 
+a {
+    color: inherit;
+    text-decoration: inherit; /* no underline */
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -99,6 +104,10 @@ body {
 
 .bg-clear-gray {
     background-color: var(--clear-gray);
+}
+
+.bg-white {
+    background-color: var(--white);
 }
 /* Fontes  */
 

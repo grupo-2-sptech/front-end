@@ -23,6 +23,7 @@ function Index() {
     const p3 = 129;
     return (
         <>
+        <link rel="shortcut icon" href="../" type="image/x-icon" />
             <script>
       {window.addEventListener("scroll", function() {
     var header = document.querySelector("header");
@@ -31,6 +32,7 @@ function Index() {
     </script>
     
       <NavbarLogout />
+      <div className="body-index">
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
         <div className="container">
@@ -216,6 +218,7 @@ function Index() {
       <footer className="footer bg-chambray mt-128 d-flex jc-center ai-center">
         <img src={logoNome} className="logo-nome-collectiva" />
       </footer>
+      </div>
         </>
     )
 }

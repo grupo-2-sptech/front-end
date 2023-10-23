@@ -23,11 +23,6 @@ function NavbarLogout() {
                   className="header-logo-icon"
                 />
               </Link>
-              <Link to={"/segundaPagina"}>
-                <section className="header-item body-small d-flex ai-center">
-                  <span className="color-white">Criar campanha</span>
-                </section>
-              </Link>
               
                 <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
