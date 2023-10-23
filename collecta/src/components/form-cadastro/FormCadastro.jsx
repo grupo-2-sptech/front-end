@@ -4,11 +4,12 @@ import LinhaTracejada from "../../assets/cadastro/linha-tracejada.svg"
 import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../input-cadastro/InputCadastro"
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
-import Navbar from "../navbar/Navbar"
+import NavbarLogout from "../navbar/NavbarLogout"
 
-
+import { Link } from "react-router-dom";
 
 import "./FormCadastro.css"
+import "../../../styles/global.css"
 
 function FormCadastro(){
 
@@ -60,7 +61,7 @@ function FormCadastro(){
 
     return(
         <>
-        <Navbar />
+        <NavbarLogout />
         <section className="formularioCadastro">
         <img src={Cadeado} className="imgCadeado" alt="Imagem de um cadeado conectado com icones de documento, configuração e compartilhamento" />
                  
@@ -84,7 +85,9 @@ function FormCadastro(){
                     PRÓXIMO
                 </button>
                 <button className="btnAnterior" id="botaoAnterior" onClick={voltarAcao}>ANTERIOR</button>
-                <button className="btnCadastrar" id="botaoCadastrar">CADASTRAR</button>
+                
+                <button className="btnCadastrar color-white" id="botaoCadastrar"><Link to={"/segundaPagina"}>CADASTRAR</Link></button>
+                
                 </div>
                 <span className="txtContaExiste">Já tem uma conta? Faça login</span>
                 <div className="separador">

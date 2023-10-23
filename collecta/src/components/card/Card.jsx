@@ -5,7 +5,7 @@ import "../../components/card/Card.css";
 
 function Card(props) {
   return (
-    <div className="card border-ice">
+    <div className="card border-ice bg-white">
       <section className="card-thumbnail mb-16">
         <img src={props.img} className="card-thumb-img" />
 
