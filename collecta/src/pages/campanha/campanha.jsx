@@ -13,7 +13,7 @@ function Campanha() {
     <>
         <Navbar />
         <div className="container-pai">
-          <div className="container">
+          <div className="container-campanha">
             <div className="titulo">
               <span className="span-titulo">Crie sua divulgação</span>
             </div>

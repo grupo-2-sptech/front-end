@@ -307,6 +307,14 @@ body {
     padding: 8px 16px;
 }
 
+.p-16-32 {
+    padding: 16px 32px;
+}
+
+.p-8-32 {
+    padding: 8px 32px;
+}
+
 .border-none {
     border: none;
 }
