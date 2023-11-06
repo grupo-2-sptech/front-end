@@ -54,9 +54,7 @@ body {
     --chambray: #355D8C;
     --science: #0075D8;
 
-    --middle-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
-
-    
+    --middle-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);    
 }
 
 /* Cor de fonte  */
@@ -108,6 +106,10 @@ body {
 
 .bg-white {
     background-color: var(--white);
+}
+
+.bg-seashell {
+    background-color: var(--seashell);
 }
 /* Fontes  */
 
@@ -258,6 +260,10 @@ body {
     height: 100%;
 }
 
+.w-fit {
+    width: fit-content;
+}
+
 /* Margin */
 
 .m-0auto {
@@ -332,6 +338,10 @@ body {
     border-radius: 5px;
 }
 
+.br-10 {
+    border-radius: 10px;
+}
+
 .p-16-lateral {
     padding-left: 8px;
     padding-right: 8px;
@@ -367,4 +377,8 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 16px;
+}
+
+.middle-shadow {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
 }
