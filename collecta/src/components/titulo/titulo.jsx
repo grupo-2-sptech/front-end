@@ -1,6 +1,6 @@
 // import React from "react";
-import Logo from "../../assets/logo/logo-collecta.svg";
-import Pacoca from "../../assets/logo/pacoca.jpg";
+// import Logo from "../../assets/logo/logo-collecta.svg";
+// import Pacoca from "../../assets/logo/pacoca.jpg";
 import "../../components/navbar/navbar.css";
 
 function titulo() {
