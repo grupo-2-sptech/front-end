@@ -15,7 +15,7 @@ import iMaos from "../../assets/icon/i-maos.svg";
 import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
-import { Link } from "react-router-dom";
+
 
 function Index() {
     const p = 54;
@@ -48,11 +48,10 @@ function Index() {
                 FAZEMOS ISSO <span className="color-white">JUNTOS</span>
               </span>
               <br />
-              <Link to={"/voluntariado"}>
               <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
                 SAIBA MAIS
               </button>
-              </Link>
+            
             </span>
           </div>
         </div>
