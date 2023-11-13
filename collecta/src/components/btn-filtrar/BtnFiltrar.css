@@ -1,0 +1,13 @@
+.btnFiltrar{
+    padding: 0 50px;
+    background-color: var(--white);
+    outline: none;
+    border: 1px solid var(--outline);
+    border-radius: 5px;
+    background-image: url("../../assets/icon/i-filtro.svg");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
