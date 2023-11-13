@@ -16,6 +16,7 @@ import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
 
+
 function Index() {
     const p = 54;
     const p1 = 24;
@@ -50,6 +51,7 @@ function Index() {
               <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
                 SAIBA MAIS
               </button>
+            
             </span>
           </div>
         </div>
