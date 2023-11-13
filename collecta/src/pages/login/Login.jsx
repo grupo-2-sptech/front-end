@@ -2,14 +2,16 @@ import NavbarLogout from "../../components/navbar/NavbarLogout";
 import "./login.css";
 import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
-import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
+import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
+// import backgroundIllustration from "../../assets/background/background-illustration-login.svg"
 
 function Login() {
   return (
     <>
       <NavbarLogout />
-
+      
       <div className="body-login d-flex jc-center ai-center">
+
         <div className="box-login bg-seashell border-outline br-10 middle-shadow">
           <span className="text-align-center d-flex jc-center head-xsmall">
             Entrar na Collecta
@@ -34,6 +36,7 @@ function Login() {
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
                 </button>
         </div>
+        
       </div>
     </>
   );
