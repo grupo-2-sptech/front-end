@@ -1,0 +1,47 @@
+body {
+    overflow: hidden;
+}
+.box-login {
+    padding: 32px 64px;
+    width: 500px;
+}
+
+.body-login {
+    height: 70vh;
+    background-image: url("../../assets/background/background-illustration-login.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 100px;
+    background-position: center;
+}
+
+.hr-ou {
+    height: 1px;
+    width: 100%;
+}
+
+.btnGoogle{
+    width: 100%;
+    padding: 16px 0 16px 0;
+    background-color: var(--white);
+    border-radius: 5px;
+    border: 1px solid var(--outline);
+    outline: none;
+    font-size: 20px;
+    color: var(--black);
+    font-weight: 500;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.img-background-login {
+    position: absolute;
+    width: 100%;
+}
+
+.background-container {
+    position: relative;
+    overflow: hidden;
+}
