@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow-y: auto;
 }
 .box-login {
     padding: 32px 64px;
