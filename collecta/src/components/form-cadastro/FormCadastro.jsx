@@ -7,10 +7,43 @@ import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
 import NavbarLogout from "../navbar/NavbarLogout"
 import "./FormCadastro.css"
 import "../../../styles/global.css"
+import api from "../../api/api.js"
 
 function FormCadastro(){
 
 
+    
+    function cadastrar(){
+        // e.preventDefault();
+
+        // var novoUsuario = {
+        //     nome : "Cristhian",
+        //     sobrenome : "Mendes",
+        //     email : "cristhian.silva@gmail.com",
+        //     telefone : "949605010",
+        //     senha : "123456",
+        //     dataNascimento : null,
+        //     cpf : "51372945435"
+         
+        // }
+        // api.post("/doadores", novoUsuario).then((res) =>{
+        //     alert("usuario cadastrado com sucesso");
+        //     console.log(res)
+        //     // navigateToPage("/segundaPagina");
+        // }).catch((erro) => {
+        //     alert("erro ao cadastrar")
+        //     console.log(erro)
+        // });
+        
+        // console.log(novoUsuario)
+
+        api.get("/doadores").then((res) => {
+            console.log(res);
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+    
     function avancarCadastro(){   
         var nome = document.getElementById("inputNome");
         var email = document.getElementById("inputEmail");
@@ -86,7 +119,7 @@ function FormCadastro(){
                 </button>
                 <button className="btnAnterior" id="botaoAnterior" onClick={voltarAcao}>ANTERIOR</button>
                 
-                <button className="btnCadastrar color-white" id="botaoCadastrar">
+                <button className="btnCadastrar color-white" id="botaoCadastrar" onClick={cadastrar}>
                         CADASTRAR
                 </button>
                 
