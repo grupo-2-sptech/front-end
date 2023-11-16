@@ -1,6 +1,4 @@
 import "./CardPontual.css";
-
-import iRecorrente from "../../assets/icon/i-recorrente.svg";
 import iLocal from "../../assets/icon/i-local.svg";
 import iTag from "../../assets/icon/i-tag.svg";
 import "../../components/card/Card.css";

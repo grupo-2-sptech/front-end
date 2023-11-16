@@ -7,44 +7,10 @@ import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
 import NavbarLogout from "../navbar/NavbarLogout"
 import "./FormCadastro.css"
 import "../../../styles/global.css"
-import api from "../../api/api.js"
+
 
 function FormCadastro(){
-
-
-    
-    function cadastrar(){
-        // e.preventDefault();
-
-        // var novoUsuario = {
-        //     nome : "Cristhian",
-        //     sobrenome : "Mendes",
-        //     email : "cristhian.silva@gmail.com",
-        //     telefone : "949605010",
-        //     senha : "123456",
-        //     dataNascimento : null,
-        //     cpf : "51372945435"
-         
-        // }
-        // api.post("/doadores", novoUsuario).then((res) =>{
-        //     alert("usuario cadastrado com sucesso");
-        //     console.log(res)
-        //     // navigateToPage("/segundaPagina");
-        // }).catch((erro) => {
-        //     alert("erro ao cadastrar")
-        //     console.log(erro)
-        // });
-        
-        // console.log(novoUsuario)
-
-        api.get("/doadores").then((res) => {
-            console.log(res);
-        }).catch((erro) => {
-            console.log(erro)
-        })
-    }
-    
-    function avancarCadastro(){   
+        function avancarCadastro(){   
         var nome = document.getElementById("inputNome");
         var email = document.getElementById("inputEmail");
         var cpfCnpj = document.getElementById("inputCpfCnpj");
@@ -100,15 +66,16 @@ function FormCadastro(){
                  
         <img src={Personagem} className="imgPersonagem" alt="Imagem de uma garota branca utilizando um smartphone" />
         <img src={LinhaTracejada} className="imgLinhaTracejada" alt="Imagem de linha tracejada que percorre o fundo da tela"/>
-            <div className="boxFormulario">
+            <form className="boxFormulario">
+                
                 <span className="txtEtapaCadastro">ETAPA <span id="etapa">1</span>/2</span>
                 <h2 className="txtTituloFormulario">Cadastrar-se</h2>
                 <InputCadastro name="nome" id="inputNome" placeholder="Nome"/>
-                <InputCadastro id="inputEmail" placeholder="Email"/>
-                <InputCadastro id="inputCpfCnpj" placeholder="CPF ou CNPJ"/>
-                <InputCadastro id="inputCep" placeholder="Cep"/>
-                <InputCadastro id="inputSenha" placeholder="Senha"/>
-                <InputCadastro id="inputConfirmarSenha" placeholder="Confirme a senha"/>
+                <InputCadastro name="email" id="inputEmail" placeholder="Email"/>
+                <InputCadastro name="cpf" id="inputCpfCnpj" placeholder="CPF ou CNPJ"/>
+                <InputCadastro name="telefone" id="inputCep" placeholder="Telefone"/>
+                <InputCadastro name="senha" id="inputSenha" placeholder="Senha"/>
+                <InputCadastro name="confirmarSenha" id="inputConfirmarSenha" placeholder="Confirme a senha"/>
                 <div className="campoInfo">
                     <img src={IconInfo} alt="Imagem de um circulo com a letra 'i' ao centro representando a palavra 'informação'" />
                     <span className="txtInfo">Sou ONG ou pessoa fisíca?</span>
@@ -119,7 +86,7 @@ function FormCadastro(){
                 </button>
                 <button className="btnAnterior" id="botaoAnterior" onClick={voltarAcao}>ANTERIOR</button>
                 
-                <button className="btnCadastrar color-white" id="botaoCadastrar" onClick={cadastrar}>
+                <button className="btnCadastrar color-white" id="botaoCadastrar" type="submit" >
                         CADASTRAR
                 </button>
                 
@@ -133,7 +100,8 @@ function FormCadastro(){
                 <button className="btnGoogle">
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
                 </button>
-            </div>
+            
+            </form>
         </section>
         </>
 
