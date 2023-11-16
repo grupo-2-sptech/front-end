@@ -1,16 +1,4 @@
-.spaceBtns{
-    margin-top: 3vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    height: 5vh;
-}
-.spaceBtns .container{
-    width: 80%;
-    height: 100%;
-    display: flex;
-    justify-content: space-between;
-}
+
 .main{
     width: 100%;
     height: 80vh;
