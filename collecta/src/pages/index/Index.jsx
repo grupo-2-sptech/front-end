@@ -42,7 +42,7 @@ function Index() {
               <span className="texto1-hero">
                 Promover o <span className="color-white">bem</span> e
                 <span className="color-white"> Conectar</span> pessoas
-              </span>
+              </span>https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops
               <br />
               <span className="color-ice">
                 FAZEMOS ISSO <span className="color-white">JUNTOS</span>
