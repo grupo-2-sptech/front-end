@@ -1,0 +1,196 @@
+.spaceBtns {
+    margin-top: 3vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+}
+
+.spaceBtns .container {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.buttons-box {
+    display: flex;
+    width: 25vw;
+    gap: 20px;
+}
+
+.qr-code-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.credit-card-container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.donation-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 25px;
+    gap: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: gray 0 0 10px 0;
+    text-align: center;
+}
+
+.donation-primary-value-box {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 50px;
+    gap: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: gray 0 0 8px 4px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+    height: 180px;
+}
+
+.donation-primary-value-box:hover {
+    display: flex;
+    flex-direction: column;
+    background-color: #f1efef;
+    padding: 50px;
+    gap: 30px;
+    border-radius: 10px;
+    border: 1px solid black;
+    box-shadow: gray 0 0 8px 4px;
+    text-align: center;
+    width: 250px;
+    cursor: pointer;
+}
+
+.donation-components-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.field-credit-card {
+    border-radius: 6px;
+    height: 35px;
+    outline: none;
+    border: 1px solid gray;
+    width: 299px;
+    padding-left: 10px;
+}
+
+.field-credit-card-plus {
+    width: 100% !important;
+}
+
+.expiration-date-fields {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.field-credit-date-expiration {
+    border-radius: 6px;
+    height: 35px;
+    outline: none;
+    border: 1px solid gray;
+    width: 144px;
+}
+
+.field-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.field-label label {
+    font-weight: 600;
+}
+
+.field-label-lateral {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 40vw;
+}
+
+.fields-credit-card {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: space-between;
+    width: 40vw;
+}
+
+.credit-card-form {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+    width: 60vw;
+    align-items: center;
+}
+
+.donation-primary-values {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.donations-values {
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.donation-custom-value {
+    margin-top: 20px;
+    display: flex;
+    border-bottom: 4px solid black;
+    gap: 5px;
+}
+
+.donation-custom {
+    margin-top: 20px;
+}
+
+.donation-custom-value-money {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    width: 100%;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.button-payment-confirm {
+    padding: 15px;
+    height: 50px;
+    width: auto !important;
+}
+
+
+.cursor-button {
+    cursor: pointer;
+}
