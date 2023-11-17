@@ -55,9 +55,7 @@ body {
     --chambray: #355D8C;
     --science: #0075D8;
 
-    --middle-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
-
-    
+    --middle-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);    
 }
 
 /* Cor de fonte  */
@@ -68,6 +66,9 @@ body {
 
 .color-yonder {
     color: var(--yonder);
+}
+.color-science {
+    color: var(--science);
 }
 
 .color-haiti {
@@ -121,6 +122,9 @@ body {
 
 .bg-blueberry {
     background-color: var(--blueberry);
+}
+.bg-seashell {
+    background-color: var(--seashell);
 }
 /* Fontes  */
 
@@ -271,6 +275,10 @@ body {
     height: 100%;
 }
 
+.w-fit {
+    width: fit-content;
+}
+
 /* Margin */
 
 .m-0auto {
@@ -279,6 +287,10 @@ body {
 
 .m-auto0 {
     margin: auto 0;
+}
+
+.m-0-8 {
+    margin: 0 8px;
 }
 
 .m-8 {
@@ -386,6 +398,10 @@ body {
     border-radius: 5px;
 }
 
+.br-10 {
+    border-radius: 10px;
+}
+
 .p-16-lateral {
     padding-left: 8px;
     padding-right: 8px;
@@ -394,6 +410,11 @@ body {
 .p-8-vertical {
     padding-top: 8px;
     padding-bottom: 8px;
+}
+
+.p-16-vertical {
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
 .p-16 {
@@ -421,4 +442,16 @@ body {
     font-family: 'Inter', sans-serif;
     font-weight: 500;
     font-size: 16px;
+}
+
+.middle-shadow {
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
+}
+
+.link-underline {
+    text-decoration: underline;
+}
+
+.weight-bold {
+    font-weight: 700;
 }

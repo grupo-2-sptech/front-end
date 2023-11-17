@@ -1,0 +1,11 @@
+.comentario{
+    background-color: #fafafa;
+    border: 1px solid var(--outline);
+    padding: 1.5%;
+    margin-top: 3%;
+    border-radius: 5px;
+}
+.txtComentario{
+    margin-top: 1%;
+    line-height: 1.5em;
+}

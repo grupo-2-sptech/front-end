@@ -16,11 +16,12 @@ import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
 
+
 function Index() {
     const p = 54;
     const p1 = 24;
     const p2 = 19;
-    const p3 = 129;
+    const p3 = 129; 
     return (
         <>
             <script>
@@ -41,7 +42,7 @@ function Index() {
               <span className="texto1-hero">
                 Promover o <span className="color-white">bem</span> e
                 <span className="color-white"> Conectar</span> pessoas
-              </span>
+              </span>https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops
               <br />
               <span className="color-ice">
                 FAZEMOS ISSO <span className="color-white">JUNTOS</span>
@@ -50,6 +51,7 @@ function Index() {
               <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
                 SAIBA MAIS
               </button>
+            
             </span>
           </div>
         </div>
