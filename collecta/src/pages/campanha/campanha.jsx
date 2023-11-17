@@ -1,12 +1,9 @@
 import upload from "../../assets/icon/i-upload.svg";
 
 import Navbar from "../../components/navbar/Navbar";
-import Card from "../../components/card/Card";
-import CardPontual from "../../components/card-pontual/CardPontual";
 
 import "./Campanha.css";
 import "../../components/card/card.css";
-import { Router } from "react-router-dom";
 
 function Campanha() {
   return (

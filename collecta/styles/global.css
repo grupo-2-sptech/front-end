@@ -398,6 +398,7 @@ body {
 
 .link-underline {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .weight-bold {
