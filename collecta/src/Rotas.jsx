@@ -1,5 +1,5 @@
 
-import Index from "./pages/index/index";
+import Index from "./pages/index/Index";
 import Campanha from "./pages/campanha/Campanha";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import InfoCampanha from "./pages/info-campanha/info-campanha";
@@ -15,12 +15,12 @@ function Rotas() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/segundaPagina" element={<Campanha />} />
-          <Route path="/terceiraPagina" element={<Cadastro />} />
+          <Route path="/criarCampanha" element={<Campanha />} />
+          <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/infoCampanha" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />
           <Route path="/voluntariado" element={<Voluntariado />} />
-          <Route path="/feed-ong" element={<FeedOng />} />
+          <Route path="/feedOng" element={<FeedOng />} />
           <Route path="/pagamento" element={<Pagamento />} />
         </Routes>
       </BrowserRouter>
