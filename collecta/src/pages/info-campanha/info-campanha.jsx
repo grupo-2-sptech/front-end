@@ -55,33 +55,33 @@ function InfoCampanha() {
             </div>
 
             <div className="d-flex jc-between fd-column">
-              <div className="cards-campanha bg-white p-16 color-haiti mb-8 br-5 border-outline">
+              <div className="cards-campanha bg-white p-16 color-haiti mmb-8 br-5 border-outline">
                 <div className="head-medium">
                   <span>R$ </span>
                   <span id="valorArrecadado">9.999</span>
                   <span className="body-large"> por mês</span>
                 </div>
-                <div className="body-large mb-22">
+                <div className="body-large mmb-22">
                   <span>Ajudado por </span>
                   <span id="qtdePessoas">99</span>
                   <span> pessoas</span>
                 </div>
                 <div>
                   <progress
-                    className="mb-32 card-progress-bar"
+                    className="mmb-32 card-progress-bar"
                     id="file"
                     value="30"
                     max="100"
                   ></progress>
                 </div>
-                <div className="body-large mb-22">
+                <div className="body-large mmb-22">
                   <span id="porcentagemAtual">44</span>
                   <span>%</span>
                   <span> de R$ </span>
                   <span>R$ </span>
                   <span id="valorMeta">99.000</span>
                 </div>
-                <div className="mb-22 d-flex ai-center">
+                <div className="mmb-22 d-flex ai-center">
                   <span>
                     <img src={iRecorrente} />
                   </span>
@@ -114,7 +114,7 @@ function InfoCampanha() {
                 </span>
               </div>
               <div>
-                <div className="mt-32 mb-32">
+                <div className="mt-32 mmb-32">
                   <span id="descricaoCampanha" className="body-xlarge">
                     Ação de combate à fome nas ruas de São Paulo
                   </span>
@@ -133,7 +133,7 @@ function InfoCampanha() {
               </div>
               <div>
                 <div>
-                  <div className="mb-22">
+                  <div className="mmb-22">
                     <div>
                       <span className="body-small">Ação de rua</span>
                     </div>
@@ -166,7 +166,7 @@ function InfoCampanha() {
       </div>
       <div>
 
-<ul class="nav nav-tabs mb-3" id="ex-with-icons" role="tablist">
+<ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
   <li class="nav-item" role="presentation">
     <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#ex-with-icons-tabs-1" role="tab"
       aria-controls="ex-with-icons-tabs-1" aria-selected="true"><i class="fas fa-chart-pie fa-fw me-2"></i>Sales</a>

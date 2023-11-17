@@ -33,7 +33,7 @@ function Index() {
     
       <NavbarLogout />
       <div className="body-index">
-      <div className="hero-container w-100 mb-100">
+      <div className="hero-container w-100 mmb-100">
         <img src={maos} className="hero-background" />
         <div className="meu-container">
           <div className="pos-absolute tet">
@@ -55,7 +55,7 @@ function Index() {
         </div>
       </div>
       <div className="meu-container">
-        <div className="card-heading d-flex jc-between ai-center mb-32">
+        <div className="card-heading d-flex jc-between ai-center mmb-32">
           <span className="head-medium color-haiti">Campanhas assinatura</span>
           <div>
             <button className="body-xsmall p-8-16 bg-chambray border-none br-5 color-white">
@@ -100,7 +100,7 @@ function Index() {
           />
         </div>
 
-        <div className="card-heading d-flex jc-between ai-center mb-32 mt-190">
+        <div className="card-heading d-flex jc-between ai-center mmb-32 mt-190">
           <span className="head-medium color-haiti">Campanhas pontuais</span>
           <div>
             <button className="body-xsmall p-8-16 bg-chambray border-none br-5 color-white">
@@ -153,12 +153,12 @@ function Index() {
       <div className="background">
         <div className="meu-container">
           <span className="head-large d-flex fd-column text-align-center">
-            <span className="mb-16">
+            <span className="mmb-16">
               A <span className="color-tufts">união coletiva</span> é a essência
               da
               <span className="color-tufts"> nossa força</span>
             </span>
-            <span className="head-small mb-32">
+            <span className="head-small mmb-32">
               Venha fazer parte dessa história!
             </span>
             <div>
@@ -169,7 +169,7 @@ function Index() {
           </span>
         </div>
       </div>
-      <img src={costura01} className="w-100 mb-128" />
+      <img src={costura01} className="w-100 mmb-128" />
       <div className="meu-container">
         <section className="text-align-center">
           <span className="color-haiti head-large">
@@ -178,7 +178,7 @@ function Index() {
           <div className="container-icones-sobre d-flex jc-between mt-100">
             <section className="sect-icone-sobre">
               <section className="">
-                <img src={iMaos} className="mb-16" />
+                <img src={iMaos} className="mmb-16" />
                 <span className="body-xlarge texto-icone">
                   Vivenciamos de perto a mudança ativa na sociedade, fauna e
                   flora
@@ -187,7 +187,7 @@ function Index() {
             </section>
             <section className="sect-icone-sobre d-flex">
               <section className="">
-                <img src={iAjuda} className="mb-16" />
+                <img src={iAjuda} className="mmb-16" />
                 <span className="body-xlarge texto-icone">
                   Vivenciamos de perto a mudança ativa na sociedade, fauna e
                   flora
@@ -196,7 +196,7 @@ function Index() {
             </section>
             <section className="sect-icone-sobre d-flex">
               <section className="">
-                <img src={iOlho} className="mb-16" />
+                <img src={iOlho} className="mmb-16" />
                 <span className="body-xlarge texto-icone">
                   Vivenciamos de perto a mudança ativa na sociedade, fauna e
                   flora
@@ -205,7 +205,7 @@ function Index() {
             </section>
             <section className="sect-icone-sobre d-flex">
               <section className="">
-                <img src={iGrafico} className="mb-16" />
+                <img src={iGrafico} className="mmb-16" />
                 <span className="body-xlarge texto-icone">
                   Vivenciamos de perto a mudança ativa na sociedade, fauna e
                   flora

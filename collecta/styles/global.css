@@ -8,6 +8,7 @@
     box-sizing: border-box;
     text-decoration: none; 
     font-family: 'Inter', sans-serif;
+    color: var(--haiti);
 }
 
 a {
@@ -284,19 +285,19 @@ body {
     margin: 8px;
 }
 
-.mb-22 {
+.mmb-22 {
     margin-bottom: 22px;
 }
 
-.mb-32 {
+.mmb-32 {
     margin-bottom: 32px;
 }
 
-.mb-128 {
+.mmb-128 {
     margin-bottom: 128px;
 }
 
-.mb-100 {
+.mmb-100 {
     margin-bottom: 100px;
 }
 
@@ -316,15 +317,15 @@ body {
     margin-top: 16px;
 }
 
-.mb-16 {
+.mmb-16 {
     margin-bottom: 16px;
 }
 
-.mb-8 {
+.mmb-8 {
     margin-bottom: 8px;
 }
 
-.mb-60 {
+.mmb-60 {
     margin-bottom: 60px;
 }
 
