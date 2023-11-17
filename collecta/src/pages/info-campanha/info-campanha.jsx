@@ -15,7 +15,7 @@ function InfoCampanha() {
   return (
     <>
       <Navbar />
-      <div className="hero-campanha">
+      <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
             <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
@@ -164,35 +164,75 @@ function InfoCampanha() {
           </div>
         </div>
       </div>
-      <div>
+      <div className="meu-container">
+        <ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link active"
+              id="ex-with-icons-tab-1"
+              data-mdb-toggle="tab"
+              href="#ex-with-icons-tabs-1"
+              role="tab"
+              aria-controls="ex-with-icons-tabs-1"
+              aria-selected="true"
+            >
+              <i class="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex-with-icons-tab-2"
+              data-mdb-toggle="tab"
+              href="#ex-with-icons-tabs-2"
+              role="tab"
+              aria-controls="ex-with-icons-tabs-2"
+              aria-selected="false"
+            >
+              <i class="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
+            </a>
+          </li>
+          <li class="nav-item" role="presentation">
+            <a
+              class="nav-link"
+              id="ex-with-icons-tab-3"
+              data-mdb-toggle="tab"
+              href="#ex-with-icons-tabs-3"
+              role="tab"
+              aria-controls="ex-with-icons-tabs-3"
+              aria-selected="false"
+            >
+              <i class="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
+            </a>
+          </li>
+        </ul>
 
-<ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
-  <li class="nav-item" role="presentation">
-    <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#ex-with-icons-tabs-1" role="tab"
-      aria-controls="ex-with-icons-tabs-1" aria-selected="true"><i class="fas fa-chart-pie fa-fw me-2"></i>Sales</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="ex-with-icons-tab-2" data-mdb-toggle="tab" href="#ex-with-icons-tabs-2" role="tab"
-      aria-controls="ex-with-icons-tabs-2" aria-selected="false"><i class="fas fa-chart-line fa-fw me-2"></i>Subscriptions</a>
-  </li>
-  <li class="nav-item" role="presentation">
-    <a class="nav-link" id="ex-with-icons-tab-3" data-mdb-toggle="tab" href="#ex-with-icons-tabs-3" role="tab"
-      aria-controls="ex-with-icons-tabs-3" aria-selected="false"><i class="fas fa-cogs fa-fw me-2"></i>Settings</a>
-  </li>
-</ul>
-
-<div class="tab-content" id="ex-with-icons-content">
-  <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
-    Tab 1 content
-  </div>
-  <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
-    Tab 2 content
-  </div>
-  <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
-    Tab 3 content
-  </div>
-</div>
-
+        <div class="tab-content" id="ex-with-icons-content">
+          <div
+            class="tab-pane fade show active"
+            id="ex-with-icons-tabs-1"
+            role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-1"
+          >
+            Tab 1 content
+          </div>
+          <div
+            class="tab-pane fade"
+            id="ex-with-icons-tabs-2"
+            role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-2"
+          >
+            Tab 2 content
+          </div>
+          <div
+            class="tab-pane fade"
+            id="ex-with-icons-tabs-3"
+            role="tabpanel"
+            aria-labelledby="ex-with-icons-tab-3"
+          >
+            Tab 3 content
+          </div>
+        </div>
       </div>
     </>
   );
