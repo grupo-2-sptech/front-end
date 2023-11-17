@@ -39,10 +39,10 @@ function Index() {
         <div className="meu-container">
           <div className="pos-absolute tet">
             <span className="color-ice texto-hero head-large">
-              <span className="texto1-hero">
+              <span className="texto1-hero color-ice">
                 Promover o <span className="color-white">bem</span> e
                 <span className="color-white"> Conectar</span> pessoas
-              </span>https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops
+              </span>
               <br />
               <span className="color-ice">
                 FAZEMOS ISSO <span className="color-white">JUNTOS</span>
