@@ -1,0 +1,45 @@
+.titulo-info-campanha {
+    height: 60px;
+}
+
+.btn-campanha-adm {
+    height: 57px;
+    width: 356px;
+}
+
+.thumb-campanha {
+    height: 100%;
+}
+
+.thumb-campanha-container {
+    overflow: hidden;
+    width: 600px;
+    height: 400px;
+    background-color: rebeccapurple;
+}
+
+.container-imagem {
+    width: 600px;
+}
+
+.btn-copiar {
+    padding: 7px 10px 7px 10px;
+    border-radius: 2px;
+    margin-left: 24px;
+}
+
+.cards-campanha {
+    width: 470px;
+}
+
+.btn-campanha {
+    width: 225px;
+}
+
+.w-470 {
+    width: 470px;
+}
+
+.w-388 {
+    width: 388px;
+}

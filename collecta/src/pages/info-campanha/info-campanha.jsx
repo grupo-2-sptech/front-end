@@ -1,0 +1,171 @@
+import Navbar from "../../components/navbar/NavbarLogout";
+import "./info-campanha.css";
+import "../../../styles/global.css";
+import iMissao from "../../assets/icon/i-missao.svg";
+import thumb from "../../assets/img/acao.png";
+import iDashboard from "../../assets/icon/i-dashboard.svg";
+import iLocalizacao from "../../assets/icon/i-localizacao.svg";
+import iCategoria from "../../assets/icon/i-categoria.svg";
+import iRecorrente from "../../assets/icon/i-recorrente.svg";
+import iFace from "../../assets/icon/i-face.svg";
+import iTwitter from "../../assets/icon/i-twitter.svg";
+import iInstagram from "../../assets/icon/i-instagram.svg";
+
+function InfoCampanha() {
+  return (
+    <>
+      <Navbar />
+      <div className="hero-campanha">
+        <div className="container">
+          <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
+            <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
+              <span>
+                <img src={iMissao} />
+              </span>
+              <span className="body-medium ml-16">Gerenciar missões</span>
+            </button>
+            <div className="titulo-info-campanha d-flex fd-column ai-center jc-center w-100">
+              <div
+                id="tituloCampanha"
+                className="w-100 text-align-center head-medium"
+              >
+                Ação de Rua - SP
+              </div>
+              <div
+                id="responsavelCampanha"
+                className="w-100 text-align-center body-xlarge"
+              >
+                por Ação de Rua
+              </div>
+            </div>
+            <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
+              <img src={iDashboard} />
+              <span className="body-medium ml-16">Dashboard</span>
+            </button>
+          </div>
+        </div>
+        <div className="container mt-56">
+          <div className="d-flex jc-between">
+            <div className="info-campanha">
+              <div className="container container-imagem">
+                <div className="thumb-campanha-container d-flex jc-center">
+                  <img src={thumb} className="thumb-campanha" />
+                </div>
+              </div>
+            </div>
+
+            <div className="d-flex jc-between fd-column">
+              <div className="cards-campanha bg-white p-16 color-haiti mb-8 br-5 border-outline">
+                <div className="head-medium">
+                  <span>R$ </span>
+                  <span id="valorArrecadado">9.999</span>
+                  <span className="body-large"> por mês</span>
+                </div>
+                <div className="body-large mb-22">
+                  <span>Ajudado por </span>
+                  <span id="qtdePessoas">99</span>
+                  <span> pessoas</span>
+                </div>
+                <div>
+                  <progress
+                    className="mb-32 card-progress-bar"
+                    id="file"
+                    value="30"
+                    max="100"
+                  ></progress>
+                </div>
+                <div className="body-large mb-22">
+                  <span id="porcentagemAtual">44</span>
+                  <span>%</span>
+                  <span> de R$ </span>
+                  <span>R$ </span>
+                  <span id="valorMeta">99.000</span>
+                </div>
+                <div className="mb-22 d-flex ai-center">
+                  <span>
+                    <img src={iRecorrente} />
+                  </span>
+                  <span className="body-large ml-16">Assinatura</span>
+                </div>
+                <div className="color-yonder body-small">
+                  Apoie esta campanha recorrentemente a cada mês
+                </div>
+              </div>
+              <div className="container-btn-campanha d-flex jc-between">
+                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
+                  Doar
+                </button>
+                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
+                  Voluntariar-se
+                </button>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex jc-between">
+            <div>
+              <div className="mt-16 d-flex">
+                <span className="d-flex ai-center">
+                  <img src={iLocalizacao} />
+                  <span className="ml-8 body-xsmall">São Paulo - SP</span>
+                </span>
+                <span className="ml-32 d-flex ai-center">
+                  <img src={iCategoria} />
+                  <span className="ml-8 body-xsmall">Urbano</span>
+                </span>
+              </div>
+              <div>
+                <div className="mt-32 mb-32">
+                  <span id="descricaoCampanha" className="body-xlarge">
+                    Ação de combate à fome nas ruas de São Paulo
+                  </span>
+                </div>
+                <div>
+                  <span className="body-medium">Compartilhar</span>
+                  <button className="btn-copiar body-tiny bg-seashell">
+                    COPIAR LINK
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="w-470 d-flex jc-between mt-60">
+              <div className="icone-perfil">
+                <img src={thumb} className="img-perfil" />
+              </div>
+              <div>
+                <div>
+                  <div className="mb-22">
+                    <div>
+                      <span className="body-small">Ação de rua</span>
+                    </div>
+                    <div>
+                      <span className="body-tiny">19 projetos</span>
+                    </div>
+                  </div>
+                  <div className="d-flex jc-between w-388 ai-center">
+                    <span>
+                      <img src={iFace} />
+                    </span>
+                    <span>
+                      <img src={iTwitter} />
+                    </span>
+                    <span>
+                      <img src={iInstagram} />
+                    </span>
+                    <button className="btn-copiar body-tiny bg-seashell">
+                      SEGUIR
+                    </button>
+                    <button className="btn-copiar body-tiny bg-seashell">
+                      CONTATO
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default InfoCampanha;
