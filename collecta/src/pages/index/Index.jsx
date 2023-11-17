@@ -35,7 +35,7 @@ function Index() {
       <div className="body-index">
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
-        <div className="container">
+        <div className="meu-container">
           <div className="pos-absolute tet">
             <span className="color-ice texto-hero head-large">
               <span className="texto1-hero">
@@ -54,7 +54,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="meu-container">
         <div className="card-heading d-flex jc-between ai-center mb-32">
           <span className="head-medium color-haiti">Campanhas assinatura</span>
           <div>
@@ -64,7 +64,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="meu-container">
         <div className="card-box jc-between">
           <Card
             titulo="Projeto AUjuda"
@@ -109,7 +109,7 @@ function Index() {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="meu-container">
         <div className="card-box jc-between">
         <CardPontual
             titulo="Adapta"
@@ -151,7 +151,7 @@ function Index() {
       </div>
 
       <div className="background">
-        <div className="container">
+        <div className="meu-container">
           <span className="head-large d-flex fd-column text-align-center">
             <span className="mb-16">
               A <span className="color-tufts">união coletiva</span> é a essência
@@ -170,7 +170,7 @@ function Index() {
         </div>
       </div>
       <img src={costura01} className="w-100 mb-128" />
-      <div className="container">
+      <div className="meu-container">
         <section className="text-align-center">
           <span className="color-haiti head-large">
             Sobre a <span className="color-chambray">Collectiva</span>

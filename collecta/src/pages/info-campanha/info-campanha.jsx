@@ -16,7 +16,7 @@ function InfoCampanha() {
     <>
       <Navbar />
       <div className="hero-campanha">
-        <div className="container">
+        <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
             <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
               <span>
@@ -27,13 +27,13 @@ function InfoCampanha() {
             <div className="titulo-info-campanha d-flex fd-column ai-center jc-center w-100">
               <div
                 id="tituloCampanha"
-                className="w-100 text-align-center head-medium"
+                className="w-100 text-align-center head-medium color-haiti"
               >
                 Ação de Rua - SP
               </div>
               <div
                 id="responsavelCampanha"
-                className="w-100 text-align-center body-xlarge"
+                className="w-100 text-align-center body-xlarge color-haiti"
               >
                 por Ação de Rua
               </div>
@@ -44,10 +44,10 @@ function InfoCampanha() {
             </button>
           </div>
         </div>
-        <div className="container mt-56">
+        <div className="meu-container mt-56">
           <div className="d-flex jc-between">
             <div className="info-campanha">
-              <div className="container container-imagem">
+              <div className="meu-container container-imagem">
                 <div className="thumb-campanha-container d-flex jc-center">
                   <img src={thumb} className="thumb-campanha" />
                 </div>
@@ -163,6 +163,36 @@ function InfoCampanha() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+
+<ul class="nav nav-tabs mb-3" id="ex-with-icons" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link active" id="ex-with-icons-tab-1" data-mdb-toggle="tab" href="#ex-with-icons-tabs-1" role="tab"
+      aria-controls="ex-with-icons-tabs-1" aria-selected="true"><i class="fas fa-chart-pie fa-fw me-2"></i>Sales</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="ex-with-icons-tab-2" data-mdb-toggle="tab" href="#ex-with-icons-tabs-2" role="tab"
+      aria-controls="ex-with-icons-tabs-2" aria-selected="false"><i class="fas fa-chart-line fa-fw me-2"></i>Subscriptions</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link" id="ex-with-icons-tab-3" data-mdb-toggle="tab" href="#ex-with-icons-tabs-3" role="tab"
+      aria-controls="ex-with-icons-tabs-3" aria-selected="false"><i class="fas fa-cogs fa-fw me-2"></i>Settings</a>
+  </li>
+</ul>
+
+<div class="tab-content" id="ex-with-icons-content">
+  <div class="tab-pane fade show active" id="ex-with-icons-tabs-1" role="tabpanel" aria-labelledby="ex-with-icons-tab-1">
+    Tab 1 content
+  </div>
+  <div class="tab-pane fade" id="ex-with-icons-tabs-2" role="tabpanel" aria-labelledby="ex-with-icons-tab-2">
+    Tab 2 content
+  </div>
+  <div class="tab-pane fade" id="ex-with-icons-tabs-3" role="tabpanel" aria-labelledby="ex-with-icons-tab-3">
+    Tab 3 content
+  </div>
+</div>
+
       </div>
     </>
   );
