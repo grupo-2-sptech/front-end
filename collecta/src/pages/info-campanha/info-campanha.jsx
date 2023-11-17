@@ -218,7 +218,32 @@ function InfoCampanha() {
               <div className="head-xsmall mmb-32">
                 <span>O projeto</span>
               </div>
-              <div className="body-medium">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque maxime quo deleniti nisi aspernatur non eveniet possimus delectus tenetur aliquid pariatur ipsam consequatur, sunt, corporis nobis nulla! Veniam quo in sequi atque minima explicabo nemo harum a officia! Quia voluptate amet, assumenda dolorem earum esse voluptatum laboriosam soluta illum non vitae natus deleniti maxime dolores in unde quidem nam nihil, voluptates iure, animi laborum molestias sed. Magni amet sed cumque facilis perferendis laboriosam, explicabo vel tempore quisquam suscipit culpa distinctio nemo eligendi obcaecati nobis, iste quas quibusdam illo nihil rerum. Est officiis mollitia, deleniti obcaecati nostrum ipsum eveniet corporis, eius iusto at incidunt quo quos voluptates nam commodi dolorum tenetur quis omnis non molestiae similique, dolor modi! Ratione fuga tenetur voluptates facilis. Veniam eveniet sapiente quasi possimus assumenda, ab non perferendis aut repudiandae fuga unde autem saepe doloribus minus officia quae delectus porro! Voluptatum minima totam doloribus? Provident aliquid molestias repellendus, dolorum voluptas, incidunt sint, vitae inventore iusto atque eligendi pariatur porro debitis? Possimus cumque, non excepturi cum, fugit ut soluta tempore animi voluptatem totam nulla officia quas! Ut aut sed facere saepe pariatur maxime quaerat sunt, velit, dolores in explicabo fugit vero officia esse molestiae voluptates! Fugiat, quaerat consequuntur?</div>
+              <div className="body-medium">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
+                maxime quo deleniti nisi aspernatur non eveniet possimus
+                delectus tenetur aliquid pariatur ipsam consequatur, sunt,
+                corporis nobis nulla! Veniam quo in sequi atque minima explicabo
+                nemo harum a officia! Quia voluptate amet, assumenda dolorem
+                earum esse voluptatum laboriosam soluta illum non vitae natus
+                deleniti maxime dolores in unde quidem nam nihil, voluptates
+                iure, animi laborum molestias sed. Magni amet sed cumque facilis
+                perferendis laboriosam, explicabo vel tempore quisquam suscipit
+                culpa distinctio nemo eligendi obcaecati nobis, iste quas
+                quibusdam illo nihil rerum. Est officiis mollitia, deleniti
+                obcaecati nostrum ipsum eveniet corporis, eius iusto at incidunt
+                quo quos voluptates nam commodi dolorum tenetur quis omnis non
+                molestiae similique, dolor modi! Ratione fuga tenetur voluptates
+                facilis. Veniam eveniet sapiente quasi possimus assumenda, ab
+                non perferendis aut repudiandae fuga unde autem saepe doloribus
+                minus officia quae delectus porro! Voluptatum minima totam
+                doloribus? Provident aliquid molestias repellendus, dolorum
+                voluptas, incidunt sint, vitae inventore iusto atque eligendi
+                pariatur porro debitis? Possimus cumque, non excepturi cum,
+                fugit ut soluta tempore animi voluptatem totam nulla officia
+                quas! Ut aut sed facere saepe pariatur maxime quaerat sunt,
+                velit, dolores in explicabo fugit vero officia esse molestiae
+                voluptates! Fugiat, quaerat consequuntur?
+              </div>
             </div>
           </div>
           <div
@@ -235,7 +260,29 @@ function InfoCampanha() {
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-3"
           >
-            Tab 3 content
+            <div>
+              <div className="text-align-center head-xsmall mt-32 mmb-32">
+                <span>Mural de apoiadores do projeto, muito obrigado!</span>
+              </div>
+              <div className="d-flex jc-around">
+                <div className="d-flex ai-center">
+                  <div className="icone-perfil">
+                    <img src={thumb} className="img-perfil" />
+                  </div>
+                  <div className="ml-16">
+                    <span>Nome apoiador</span>
+                  </div>
+                </div>
+                <div className="d-flex ai-center">
+                  <div className="icone-perfil">
+                    <img src={thumb} className="img-perfil" />
+                  </div>
+                  <div className="ml-16">
+                    <span>Nome apoiador</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
