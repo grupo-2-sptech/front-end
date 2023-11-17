@@ -2,6 +2,7 @@
 import Index from "./pages/index/index";
 import Campanha from "./pages/campanha/Campanha";
 import Cadastro from "./components/form-cadastro/FormCadastro";
+import InfoCampanha from "./pages/info-campanha/info-campanha";
 import Login from "./pages/login/login";
 import Voluntariado from "./pages/voluntariado/Voluntariado";
 import FeedOng from "./pages/feed/FeedOng";
@@ -16,11 +17,11 @@ function Rotas() {
           <Route path="/" element={<Index />} />
           <Route path="/segundaPagina" element={<Campanha />} />
           <Route path="/terceiraPagina" element={<Cadastro />} />
+          <Route path="/infoCampanha" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />
           <Route path="/voluntariado" element={<Voluntariado />} />
           <Route path="/feed-ong" element={<FeedOng />} />
           <Route path="/pagamento" element={<Pagamento />} />
-
         </Routes>
       </BrowserRouter>
     </>
