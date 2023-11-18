@@ -94,6 +94,7 @@ function FormCadastro(){
         
         console.log(novoUsuario)
 
+
         api.get("/doadores").then((res) => {
             console.log(res);
         }).catch((erro) => {
