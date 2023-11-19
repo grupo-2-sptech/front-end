@@ -1,6 +1,6 @@
 
 import Index from "./pages/index/Index";
-import Campanha from "./pages/campanha/Campanha";
+import CriarCampanhaPontual from "./pages/campanha/Campanha";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import InfoCampanha from "./pages/info-campanha/info-campanha";
 import Login from "./pages/login/login";
@@ -15,7 +15,7 @@ function Rotas() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/criarCampanha" element={<Campanha />} />
+          <Route path="/criarCampanhaPontual" element={<CriarCampanhaPontual />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/infoCampanha" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />

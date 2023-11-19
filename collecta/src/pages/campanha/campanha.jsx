@@ -15,13 +15,20 @@ function Campanha() {
       <div className="meu-container mmb-60">
         <div className="container-pai">
           <div className="container-campanha">
-            <div className="titulo text-align-center ">
-              <span className="head-medium">Crie sua campanha</span>
-            </div>
             <div className="w-770 d-flex fd-column">
+              <div className="titulo text-align-center d-flex fd-column">
+                <span className="head-medium">Crie sua campanha pontual</span>
+                <span>
+                  Campanha pontual é uma campanha que possui uma data de início
+                  e fim, onde será encerrada independente se bateu a meta ou não
+                </span>
+              </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Nome do projeto</div>
-                <input type="text" className="w-100 br-10 h-65 border-outline p-16" />
+                <input
+                  type="text"
+                  className="w-100 br-10 h-65 border-outline p-16"
+                />
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Categoria</div>
@@ -38,14 +45,27 @@ function Campanha() {
                   id=""
                   cols="30"
                   rows="10"
-                  className="w-100 br-10 border-outline"
+                  className="w-100 br-10 border-outline p-8"
                 ></textarea>
+              </div>
+              <div className="mmb-32 d-flex jc-between">
+                <div>
+                  <div className="head-xsmall mmb-8">Data início <span className="body-medium">(dia/mes/ano)</span></div>
+                  <input type="date" className="input-data-campanha" />
+                </div>
+                <div>
+                  <div className="head-xsmall mmb-8">Data fim <span className="body-medium">(dia/mes/ano)</span></div>
+                  <input type="date" className="input-data-campanha" />
+                </div>
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Meta de arrecadação</div>
-                <input type="text" className="w-100 br-10 h-65 border-outline p-16" />
+                <input
+                  type="text"
+                  className="w-100 br-10 h-65 border-outline p-16"
+                />
               </div>
-              <div className="mmb-32">
+              {/* <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
                   Meta de arrecadação avulsa ou mensal?
                 </div>
@@ -53,7 +73,7 @@ function Campanha() {
                   <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Avulsa</button>
                   <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Mensal</button>
                 </div>
-              </div>
+              </div> */}
               <div className="head-xsmall mmb-8">Foto do projeto</div>
               <div className="text-box-3 body-medium mmb-8">
                 A imagem será utilizada como card do projeto
@@ -64,7 +84,9 @@ function Campanha() {
               </div>
 
               <div className="box-botao-criar">
-                <button className="btn-criar bg-tufts color-white w-100 head-xsmall border-none br-10 mt-32 p-16">Criar projeto</button>
+                <button className="btn-criar bg-tufts color-white w-100 head-xsmall border-none br-10 mt-32 p-16">
+                  Criar projeto
+                </button>
               </div>
             </div>
           </div>
