@@ -3,7 +3,7 @@ import Chart from 'chart.js/auto';
 import NavBar from "../../components/navbar/Navbar";
 import "./Dashboard.css";
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
-import searchIcon from "../../assets/icon/i-search.png"; // Add the path to your search icon image
+import searchIcon from "../../assets/icon/i-search.png";
 import {useNavigate} from "react-router-dom";
 
 function Dashboard() {
@@ -11,7 +11,7 @@ function Dashboard() {
     const chartContainer = useRef(null);
     const chartInstance = useRef(null);
     const [searchTerm, setSearchTerm] = useState('');
-    const [showSearch, setShowSearch] = useState(false); // Estado para mostrar/ocultar o campo de pesquisa
+    const [showSearch, setShowSearch] = useState(false);
 
     const contributors = [
         {name: 'Nathalia Ezime Obi', imageUrl: 'src/assets/icon/user-icon.png'},
