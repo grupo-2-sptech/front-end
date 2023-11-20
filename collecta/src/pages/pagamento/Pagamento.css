@@ -35,12 +35,17 @@
     margin-bottom: 40px;
 }
 
+.qr-code-container h2 {
+    margin-top: 20px;
+}
+
 .credit-card-container {
     display: flex;
     flex-direction: row;
     gap: 20px;
     width: 100%;
     justify-content: space-between;
+    margin-top: 35px;
 }
 
 .donation-box {
@@ -82,6 +87,10 @@
     text-align: center;
     width: 250px;
     cursor: pointer;
+}
+
+.costumize-donation-value {
+    margin-top: -10px;
 }
 
 .donation-components-box {

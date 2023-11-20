@@ -8,6 +8,7 @@ import Voluntariado from "./pages/voluntariado/Voluntariado";
 import FeedOng from "./pages/feed/FeedOng";
 import Pagamento from "./pages/pagamento/Pagamento.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
 function Rotas() {
   return (
@@ -22,6 +23,7 @@ function Rotas() {
           <Route path="/voluntariado" element={<Voluntariado />} />
           <Route path="/feed-ong" element={<FeedOng />} />
           <Route path="/pagamento" element={<Pagamento />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
