@@ -16,8 +16,29 @@ import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
 
+import api from "../../api/api"
+
 
 function Index() {
+
+  function buscarCampanhas() {
+    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGVtcGxvQGVtYWlsLmNvbSIsImlhdCI6MTcwMDQyMTAzNiwiZXhwIjoxNzA0MDIxMDM2fQ.4ptQP7YFCvmJiZbIT7C0XiplEOwEp0MHhiMIc6oEvcXze8tvHCx7veYSLGHfd2H9asWnz_qpJGnw5W-aVPPVxw';
+  
+    api
+      .get('/campanhas', {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        }
+      })            
+      .then((resposta) => {
+        // Atualize o estado do componente ou faça algo com os dados aqui
+        console.log(resposta.data);
+      })
+      .catch((erro) => {
+        // Trate o erro aqui, por exemplo, exibindo uma mensagem ao usuário
+        console.error('Erro ao buscar campanhas:', erro);
+      });
+  }
     const p = 54;
     const p1 = 24;
     const p2 = 19;
@@ -33,6 +54,7 @@ function Index() {
       
     
       <NavbarLogout />
+      <button onClick={buscarCampanhas}>CLICA AQUI</button>
       <div className="body-index">
       <div className="hero-container w-100 mb-100">
         <img src={maos} className="hero-background" />
@@ -51,7 +73,6 @@ function Index() {
               <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
                 SAIBA MAIS
               </button>
-            
             </span>
           </div>
         </div>
