@@ -7,6 +7,7 @@ import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
 import NavbarLogout from "../navbar/NavbarLogout"
 import "./FormCadastro.css"
 import "../../../styles/global.css"
+import api from "../../api/api"
 
 
 function FormCadastro(){
@@ -56,6 +57,52 @@ function FormCadastro(){
         numeroEtapa.innerHTML = "1";
     }
 
+    
+    function cadastrar(e){
+        e.preventDefault();
+
+        console.log("Essa e a input de nome", e.target.nome.value)
+        console.log("Essa e a input de email", e.target.email.value)
+        console.log("Essa e a input de cpf", e.target.cpf.value)
+        console.log("Essa e a input de telefone", e.target.telefone.value)
+        console.log("Essa e a input de senha", e.target.senha.value)
+
+        var novoUsuario = {
+            nome : "Cristhian",
+            sobrenome : "Mendes",
+            email : "cristhian.silva@gmail.com",
+            telefone : "949605010",
+            senha : "@Titila123",
+            dataNascimento : "2003-01-01",
+            cpf : "51372945435"
+        }
+
+        // api.post("/doadores", novoUsuario).then((res) =>{
+        //     alert("usuario cadastrado com sucesso");
+        //     console.log(res)
+        // }).catch((erro) => {
+        //     alert("erro ao cadastrar")
+        //     console.log(erro)
+        // });
+
+        // api.post("/doadores", novoUsuario).then((resp) => {
+        //     alert("caiu aqui dentro")
+        //     console.log(resp)
+        // }).catch((error) => {
+        //     console.error(error)
+        // })
+        
+        console.log(novoUsuario)
+
+
+        api.get("/doadores").then((res) => {
+            console.log(res);
+        }).catch((erro) => {
+            console.log(erro)
+        })
+
+    }
+    
 
 
     return(
@@ -66,7 +113,7 @@ function FormCadastro(){
                  
         <img src={Personagem} className="imgPersonagem" alt="Imagem de uma garota branca utilizando um smartphone" />
         <img src={LinhaTracejada} className="imgLinhaTracejada" alt="Imagem de linha tracejada que percorre o fundo da tela"/>
-            <form className="boxFormulario">
+            <form onSubmit={cadastrar} className="boxFormulario">
                 
                 <span className="txtEtapaCadastro">ETAPA <span id="etapa">1</span>/2</span>
                 <h2 className="txtTituloFormulario">Cadastrar-se</h2>
