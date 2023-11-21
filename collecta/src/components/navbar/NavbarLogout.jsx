@@ -14,7 +14,7 @@ function NavbarLogout() {
 
       <header>
         <div className="header-bg bg-chambray">
-          <div className="container">
+          <div className="meu-container">
             <div className="header-container d-flex jc-between">
               <Link to="/">
                 <img

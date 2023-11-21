@@ -3,8 +3,10 @@ import NavBar from "../../components/navbar/Navbar";
 import "./Pagamento.css";
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
 import qrCodeImage from "../../assets/img/qr-code.png";
+import {useNavigate} from "react-router-dom";
 
 function Pagamento() {
+    let navigate = useNavigate();
     const [paymentMethod, setPaymentMethod] = useState("creditCard");
     const [cpfCnpj, setCpfCnpj] = useState("");
     const currentYear = new Date().getFullYear();
@@ -40,31 +42,38 @@ function Pagamento() {
         setCustomDonation(formatMoney(e.target.value));
     };
 
+    const handleBack = () => {
+        navigate('/');
+    };
+
     return (
         <>
             <NavBar/>
             <section className="spaceBtns">
                 <div className="container">
-                    <img className="cursor-button" src={BtnVoltar}
-                         alt="Circulo redondo e na cor azul com seta para esquerda ao centro"/>
+                    <img className="cursor-button"
+                         src={BtnVoltar}
+                         alt="Circulo redondo e na cor azul com seta para esquerda ao centro"
+                         onClick={handleBack}
+                    />
                 </div>
             </section>
             <main className="main">
                 <div className="donation-primary-values">
                     <div className="donations-values">
                         <div className="donation-primary-value-box">
-                            <h1 className="donation-custom">R$ 10,00</h1>
+                            <h2 className="donation-custom">R$ 10,00</h2>
                         </div>
                         <div className="donation-primary-value-box">
-                            <h1 className="donation-custom">R$ 50,00</h1>
+                            <h2 className="donation-custom">R$ 50,00</h2>
                         </div>
                         <div className="donation-primary-value-box">
-                            <h1 className="donation-custom">R$ 90,00</h1>
+                            <h2 className="donation-custom">R$ 90,00</h2>
                         </div>
                     </div>
                     <div className="donations-values">
                         <div className="donation-primary-value-box">
-                            <div className="donation-custom-value">
+                            <div className="donation-custom-value costumize-donation-value">
                                 <h1>R$ </h1>
                                 <input
                                     type="text"
@@ -75,10 +84,12 @@ function Pagamento() {
                             </div>
                         </div>
                         <div className="donation-primary-value-box">
-                            <h2><span className="color-science">Contribuir</span> de Outra Forma</h2>
+                            <h2 className="costumize-donation-value"><span
+                                className="color-science">Contribuir</span> de Outra Forma</h2>
                         </div>
                         <div className="donation-primary-value-box">
-                            <h1>Seja um <span className="color-science">voluntário</span></h1>
+                            <h2 className="costumize-donation-value">Seja um <span
+                                className="color-science">voluntário</span></h2>
                         </div>
                     </div>
                 </div>
@@ -120,12 +131,14 @@ function Pagamento() {
                                     <div className="field-label">
                                         <label htmlFor="expirationDate">Data de Expiração</label>
                                         <div className="expiration-date-fields">
-                                            <select className="field-credit-date-expiration" id="expirationMonth" required>
+                                            <select className="field-credit-date-expiration" id="expirationMonth"
+                                                    required>
                                                 {Array.from({length: 12}, (_, index) => (
                                                     <option key={index + 1} value={index + 1}>{index + 1}</option>
                                                 ))}
                                             </select>
-                                            <select className="field-credit-date-expiration" id="expirationYear" required>
+                                            <select className="field-credit-date-expiration" id="expirationYear"
+                                                    required>
                                                 {years.map(year => (
                                                     <option key={year} value={year}>{year}</option>
                                                 ))}
@@ -139,18 +152,18 @@ function Pagamento() {
                                 </div>
                             </div>
                             <div className="donation-box">
-                                <h2>Resumo da Doação</h2>
+                                <h5>Resumo da Doação</h5>
                                 <div>
                                     <div className="donation-components-box">
-                                        <h4>Doação</h4>
-                                        <h4>R$ 90,00</h4>
+                                        <h6>Doação</h6>
+                                        <h6>R$ 90,00</h6>
                                     </div>
                                     <div className="donation-components-box">
-                                        <h4>Taxa</h4>
-                                        <h4>R$ 10,00</h4>
+                                        <h6>Taxa</h6>
+                                        <h6>R$ 10,00</h6>
                                     </div>
                                 </div>
-                                <h2>Total : R$ 100,00</h2>
+                                <h5>Total : R$ 100,00</h5>
                             </div>
                         </div>
                         <button type="submit"
