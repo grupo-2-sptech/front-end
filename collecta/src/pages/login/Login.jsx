@@ -5,9 +5,14 @@ import InputCadastro from "../../components/input-cadastro/InputCadastro";
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
 // import backgroundIllustration from "../../assets/background/background-illustration-login.svg"
 import api from "../../api/api.js"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+
+  const navigate = useNavigate();
+  const navigateToPage = (path) =>{
+      navigate(path)
+  }
 
   function logar(e){
     e.preventDefault();
@@ -17,10 +22,13 @@ function Login() {
       senha: e.target.senha.value 
     }
 
-    api.post("/doadores/login", usuario).then((res) => {
+    api.post("/login", usuario).then((res) => {
       console.log(res)
-      localStorage.setItem('token', res.token);
-      localStorage.setItem('nome', res.nome);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('tipoConta', res.data.tipoConta);
+      localStorage.setItem('id', res.data.id);
+      navigateToPage("/")
+      
     }).catch((erro) => {
       console.log(erro)
     })
