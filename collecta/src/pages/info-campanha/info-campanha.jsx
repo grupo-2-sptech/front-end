@@ -1,4 +1,6 @@
 import Navbar from "../../components/navbar/NavbarLogout";
+import ItemPostOng from "../../components/item-post/ItemPostOng";
+import Textarea from "../../components/textarea-feed/Textarea";
 import "./info-campanha.css";
 import "../../../styles/global.css";
 import iMissao from "../../assets/icon/i-missao.svg";
@@ -10,8 +12,60 @@ import iRecorrente from "../../assets/icon/i-recorrente.svg";
 import iFace from "../../assets/icon/i-face.svg";
 import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
+import api from "../../api/api";
+import Footer from "../../components/footer/Footer";
+import  { useState } from 'react';
+import { useParams } from "react-router";
+
 
 function InfoCampanha() {
+
+
+    const [url, setUrl] = useState(window.location.href);
+  
+    const copiarParaAreaDeTransferencia = async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+        alert('URL copiada para a área de transferência!');
+      } catch (err) {
+        console.error('Erro ao copiar para a área de transferência:', err);
+      }
+    };
+  
+  var token = localStorage.getItem('token');
+  const { id } = useParams();
+
+  console.log({id})
+
+  
+
+  api.get(`/campanhas/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  )
+  .then((respostaObtida) => {
+    console.log(respostaObtida);
+    console.log(respostaObtida);
+    console.log(respostaObtida.data);
+    
+    atualizarInfo(respostaObtida.data);
+  })
+  .catch((erroOcorrido) => { 
+     console.log(erroOcorrido);
+    })
+
+    function atualizarInfo(respostaObtida){
+        var titulo = document.getElementById("tituloCampanha")
+        var categoria = document.getElementById("descricaoCampanha")
+        var descricao = document.getElementById("descricaoProjeto")
+        
+        titulo.innerHTML = respostaObtida.nome;
+        categoria.innerHTML = respostaObtida.categoriaCampanha;
+        descricao.innerHTML = respostaObtida.descricao;
+    }
+    
   return (
     <>
       <Navbar />
@@ -29,7 +83,7 @@ function InfoCampanha() {
                 id="tituloCampanha"
                 className="w-100 text-align-center head-medium color-haiti"
               >
-                Ação de Rua - SP
+                campanha - SP
               </div>
               <div
                 id="responsavelCampanha"
@@ -121,7 +175,7 @@ function InfoCampanha() {
                 </div>
                 <div>
                   <span className="body-medium">Compartilhar</span>
-                  <button className="btn-copiar body-tiny bg-seashell">
+                  <button onClick={copiarParaAreaDeTransferencia} className="btn-copiar body-tiny bg-seashell">
                     COPIAR LINK
                   </button>
                 </div>
@@ -165,10 +219,10 @@ function InfoCampanha() {
         </div>
       </div>
       <div className="meu-container">
-        <ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul className="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="ex-with-icons-tab-1"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-1"
@@ -176,12 +230,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-1"
               aria-selected="true"
             >
-              <i class="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
+              <i className="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-2"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-2"
@@ -189,12 +243,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-2"
               aria-selected="false"
             >
-              <i class="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
+              <i className="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-3"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-3"
@@ -202,14 +256,14 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-3"
               aria-selected="false"
             >
-              <i class="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
+              <i className="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
             </a>
           </li>
         </ul>
 
-        <div class="tab-content" id="ex-with-icons-content">
+        <div className="tab-content" id="ex-with-icons-content">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="ex-with-icons-tabs-1"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-1"
@@ -218,7 +272,7 @@ function InfoCampanha() {
               <div className="head-xsmall mmb-32">
                 <span>O projeto</span>
               </div>
-              <div className="body-medium">
+              <div id="descricaoProjeto" className="body-medium">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
                 maxime quo deleniti nisi aspernatur non eveniet possimus
                 delectus tenetur aliquid pariatur ipsam consequatur, sunt,
@@ -247,15 +301,16 @@ function InfoCampanha() {
             </div>
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex-with-icons-tabs-2"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-2"
           >
-            Tab 2 content
+            <Textarea/>
+            <ItemPostOng/>
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex-with-icons-tabs-3"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-3"
@@ -286,8 +341,9 @@ function InfoCampanha() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
 
-export default InfoCampanha;
+export default InfoCampanha

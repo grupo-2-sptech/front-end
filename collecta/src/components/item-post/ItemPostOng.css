@@ -1,7 +1,6 @@
 .cardPost{
-    width: 40%;
+    width: 50%;
     background-color: #fff;
-    /* height: 65vh; */
     margin-top: 1%;
     box-shadow: var(--middle-shadow);
     border-radius: 5px;

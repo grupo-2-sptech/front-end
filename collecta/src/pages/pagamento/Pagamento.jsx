@@ -85,7 +85,7 @@ function Pagamento() {
                         </div>
                         <div className="donation-primary-value-box">
                             <h2 className="costumize-donation-value"><span
-                                className="color-science">Contribuir</span> de Outra Forma</h2>
+                                className="color-science">Contribuir</span><br />de outra<br />forma</h2>
                         </div>
                         <div className="donation-primary-value-box">
                             <h2 className="costumize-donation-value">Seja um <span

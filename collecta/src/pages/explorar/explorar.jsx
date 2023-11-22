@@ -1,47 +1,52 @@
 import "../../../styles/global.css";
 
 import imagens from "../../assets/img/ImagensExternas";
-
+import "./explorar.css"
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
 import "../index/Index.css";
 import "../../components/card/card.css";
-
-import logoNome from "../../assets/logo/logo-collectiva-branco.png";
-import iSelect from "../../assets/icon/i-select-box.svg";
-// import { useEffect, useState } from "react";
-// import api from "../../api/api.js"
+import { useEffect, useState } from "react";
+import api from "../../api/api.js"
+import { useNavigate } from "react-router";
+import Footer from "../../components/footer/Footer.jsx";
 
 
 function Index() {
+  var token = localStorage.getItem('token');
+ 
+  const [campanhas, setCampanhas] = useState([]);
 
-  // var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcmlzdGhpYW4uc2lsdmFAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDE3NzM4OCwiZXhwIjoxNzAzNzc3Mzg4fQ.FHVM1Hc21LQbIs0GlqLq4ZyEcqd9vESqTKobZUbXPwtPeSFn--89kvykXY-G6f1dAz8TlzUPJF1smC_ShdXcIQ';
+  useEffect(() => {
+    listar();
+    }, []);
 
-  // const [campanhas, setCampanhas] = useState([]);
+    function listar() {
+      api.get("/campanhas", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      )
+      .then((respostaObtida) => {
+        console.log(respostaObtida);
+        console.log(respostaObtida.status);
+        console.log(respostaObtida.data);
+        setCampanhas(respostaObtida.data)
+   
+      })
+      .catch((erroOcorrido) => { 
+       console.log(erroOcorrido);
+      })
+    }
+    console.log(campanhas)
 
-  // useEffect(() => {
-  //   listar();
-  //   }, []);
-
-  //   function listar() {
-  //     api.get("/campanhas", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((respostaObtida) => {
-  //       console.log(respostaObtida);
-  //       console.log(respostaObtida.status);
-  //       console.log(respostaObtida.data);
-  //       setCampanhas(respostaObtida.data)
-  //     })
-  //     .catch((erroOcorrido) => { 
-  //      console.log(erroOcorrido);
-  //     })
-  //   }
-  //   console.log(campanhas)
+    const navigate = useNavigate();
+    const navigateToPage = (path) =>{
+        navigate(path)
+    }
 
 
 
@@ -65,28 +70,29 @@ function Index() {
         <div className="container">
           <div className="box-projetos">
             <span className="box-projetos-text">Quero ver projetos de</span>
-            <span className="box-select-box">
-              <span className="selected">Animais</span>
-              <img className="select-box" src={iSelect}/>
-            </span>
+            <select className="box-select-box">
+              <option value="1">Animais</option>
+              <option value="2">Urbano</option>
+            </select>
           </div>
           <div className="projetos-encontrados">xx projetos encontrados</div>
         </div>
         <div className="container">
           <div className="card-box jc-between">
-          {/* {campanhas?.map((campanha) => (
+          {campanhas?.map((campanha) => (
                             <Card
                               key={campanha.id}
-                              titulo="campanha.nome"
+                              titulo={campanha.nome}
                               responsavel="AUmigos Leais"
-                              texto="camapanha.descricao"
+                              texto={campanha.descricao}
                               porcentagem={p}
                               valor="7.253"
                               local="São Paulo, SP"
-                              tag="{campanha.categoriaCampanha}"
+                              tag={campanha.categoriaCampanha}
                               img={imagens[4]}
+                              onClick={() => navigateToPage(`/info-campanha/${campanha.id}`)}
                             />
-                    ))} */}
+                    ))}
             <Card
               titulo="Projeto AUjuda"
               responsavel="AUmigos Leais"
@@ -163,9 +169,7 @@ function Index() {
           </div>
         </div>
 
-        <footer className="footer bg-chambray mt-128 d-flex jc-center ai-center">
-          <img src={logoNome} className="logo-nome-collectiva" />
-        </footer>
+        <Footer/>
       </div>
     </>
   )
