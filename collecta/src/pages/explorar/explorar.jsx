@@ -6,18 +6,45 @@ import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
-import "./Index.css";
+import "../index/Index.css";
 import "../../components/card/card.css";
-import costura01 from "../../assets/background/costura01.svg";
-import iGrafico from "../../assets/icon/i-grafico.svg";
-import iAjuda from "../../assets/icon/i-ajuda.svg";
-import iMaos from "../../assets/icon/i-maos.svg";
-import iOlho from "../../assets/icon/i-olho.svg";
+
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
-import maos from "../../assets/img/maos.png";
 import iSelect from "../../assets/icon/i-select-box.svg";
+// import { useEffect, useState } from "react";
+// import api from "../../api/api.js"
+
 
 function Index() {
+
+  // var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcmlzdGhpYW4uc2lsdmFAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDE3NzM4OCwiZXhwIjoxNzAzNzc3Mzg4fQ.FHVM1Hc21LQbIs0GlqLq4ZyEcqd9vESqTKobZUbXPwtPeSFn--89kvykXY-G6f1dAz8TlzUPJF1smC_ShdXcIQ';
+
+  // const [campanhas, setCampanhas] = useState([]);
+
+  // useEffect(() => {
+  //   listar();
+  //   }, []);
+
+  //   function listar() {
+  //     api.get("/campanhas", {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+  //     })
+  //     .then((respostaObtida) => {
+  //       console.log(respostaObtida);
+  //       console.log(respostaObtida.status);
+  //       console.log(respostaObtida.data);
+  //       setCampanhas(respostaObtida.data)
+  //     })
+  //     .catch((erroOcorrido) => { 
+  //      console.log(erroOcorrido);
+  //     })
+  //   }
+  //   console.log(campanhas)
+
+
+
   const p = 54;
   const p1 = 24;
   const p2 = 19;
@@ -47,6 +74,19 @@ function Index() {
         </div>
         <div className="container">
           <div className="card-box jc-between">
+          {/* {campanhas?.map((campanha) => (
+                            <Card
+                              key={campanha.id}
+                              titulo="campanha.nome"
+                              responsavel="AUmigos Leais"
+                              texto="camapanha.descricao"
+                              porcentagem={p}
+                              valor="7.253"
+                              local="São Paulo, SP"
+                              tag="{campanha.categoriaCampanha}"
+                              img={imagens[4]}
+                            />
+                    ))} */}
             <Card
               titulo="Projeto AUjuda"
               responsavel="AUmigos Leais"

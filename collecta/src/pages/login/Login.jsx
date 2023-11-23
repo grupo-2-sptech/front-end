@@ -4,29 +4,52 @@ import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
 // import backgroundIllustration from "../../assets/background/background-illustration-login.svg"
+import api from "../../api/api.js"
+import { Link } from "react-router-dom";
 
 function Login() {
+
+  function logar(e){
+    e.preventDefault();
+
+    const usuario ={
+      email: e.target.email.value,
+      senha: e.target.senha.value 
+    }
+
+    api.post("/doadores/login", usuario).then((res) => {
+      console.log(res)
+      localStorage.setItem('token', res.token);
+      localStorage.setItem('nome', res.nome);
+    }).catch((erro) => {
+      console.log(erro)
+    })
+
+    
+  }
+
   return (
     <>
       <NavbarLogout />
       
       <div className="body-login d-flex jc-center ai-center">
 
-        <div className="box-login bg-seashell border-outline br-10 middle-shadow">
+        <form onSubmit={logar} className="box-login bg-seashell border-outline br-10 middle-shadow">
           <span className="text-align-center d-flex jc-center head-xsmall">
             Entrar na Collecta
           </span>
           <div className="mb-32">
-            <InputCadastro placeholder="E-mail" />
+            <InputCadastro name="email" placeholder="E-mail" />
             <div className="mb-32" />
-            <InputCadastro placeholder="Senha" />
+            <InputCadastro name="senha" placeholder="Senha" />
           </div>
 
-          <button className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32">
+          <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32">
             ENTRAR
           </button>
-
+          <Link to={"/cadastro-doador"}>
           <span className="link-underline text-align-center d-flex jc-center color-science mb-32">Não tem uma conta? Cadastre-se aqui!</span>
+          </Link>
           <div className="ou-container d-flex jc-center ai-center color-haiti mb-32">
             <div className="hr-ou bg-haiti"></div>
             <span className="m-0-8" >ou</span>
@@ -34,8 +57,8 @@ function Login() {
           </div>
           <button className="btnGoogle">
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
-                </button>
-        </div>
+          </button>
+        </form>
         
       </div>
     </>
