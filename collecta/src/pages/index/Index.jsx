@@ -61,7 +61,7 @@ function Index() {
         <div className="meu-container">
           <div className="pos-absolute tet">
             <span className="color-ice texto-hero head-large">
-              <span className="texto1-hero">
+              <span className="texto1-hero color-ice">
                 Promover o <span className="color-white">bem</span> e
                 <span className="color-white"> Conectar</span> pessoas
               </span>
