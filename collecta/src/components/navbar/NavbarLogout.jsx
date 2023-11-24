@@ -14,7 +14,7 @@ function NavbarLogout() {
 
       <header>
         <div className="header-bg bg-chambray">
-          <div className="container">
+          <div className="meu-container">
             <div className="header-container d-flex jc-between">
               <Link to="/">
                 <img
@@ -42,7 +42,7 @@ function NavbarLogout() {
                   </span>
                 </button>
               </section>
-              <Link to={"/terceiraPagina"}>
+              <Link to={"/login"}>
               <section>
                 <button className="bg-ice body-medium border-none p-8-32 br-5 cursor-pointer">ENTRAR</button>
               </section>

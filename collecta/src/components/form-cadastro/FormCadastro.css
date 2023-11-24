@@ -37,6 +37,7 @@
     position: absolute;
     justify-self: center;
     margin-left: 36%;
+    padding: 2%;
 }
 .txtEtapaCadastro{
     color: var(--yonder);
@@ -44,7 +45,7 @@
     font-weight: 500;
     padding: 10px;
     margin-left: 52%;
-    margin-top: 5%;
+    
 }
 .txtTituloFormulario{
     padding: 8px;
@@ -53,7 +54,7 @@
     display: flex;
     align-items: center;
     padding: 8px;
-    margin-right: 30%;
+    margin-right: 50%;
 }
 .txtInfo{
     font-size: 12px;
@@ -143,3 +144,4 @@
     display: flex;
     justify-content: space-between;
 }
+

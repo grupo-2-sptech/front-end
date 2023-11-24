@@ -8,11 +8,16 @@
     box-sizing: border-box;
     text-decoration: none; 
     font-family: 'Inter', sans-serif;
+    color: var(--haiti);
 }
 
 a {
     color: inherit;
     text-decoration: inherit; /* no underline */
+}
+
+textarea {
+    resize: none;
 }
 
 .material-symbols-outlined {
@@ -23,7 +28,7 @@ a {
   'opsz' 24
 }
 
-.container{
+.meu-container{
     width: 80%;
     margin: 0 auto;
 }
@@ -63,6 +68,9 @@ body {
     color: var(--white);
 }
 
+.color-yonder {
+    color: var(--yonder);
+}
 .color-science {
     color: var(--science);
 }
@@ -112,8 +120,19 @@ body {
     background-color: var(--white);
 }
 
+.bg-science {
+    background-color: var(--science);
+}
+
+.bg-blueberry {
+    background-color: var(--blueberry);
+}
 .bg-seashell {
     background-color: var(--seashell);
+}
+
+.bg-sky {
+    background-color: var(--sky);
 }
 /* Fontes  */
 
@@ -270,7 +289,7 @@ body {
 
 /* Margin */
 
-.m-0auto {
+.c {
     margin: 0 auto;
 }
 
@@ -286,19 +305,19 @@ body {
     margin: 8px;
 }
 
-.mb-22 {
+.mmb-22 {
     margin-bottom: 22px;
 }
 
-.mb-32 {
+.mmb-32 {
     margin-bottom: 32px;
 }
 
-.mb-128 {
+.mmb-128 {
     margin-bottom: 128px;
 }
 
-.mb-100 {
+.mmb-100 {
     margin-bottom: 100px;
 }
 
@@ -306,28 +325,72 @@ body {
     margin-top: 100px;
 }
 
+.mt-64 {
+    margin-top: 64px;
+}
+
 .mt-128 {
     margin-top: 128px;
 }
 
-.mb-16 {
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mmb-16 {
     margin-bottom: 16px;
 }
 
-.mb-8 {
+.mmb-8 {
     margin-bottom: 8px;
+}
+
+.mmb-60 {
+    margin-bottom: 60px;
+}
+
+.mt-60 {
+    margin-top: 60px;
 }
 
 .ml-8 {
     margin-left: 8px;
 }
 
+.mt-56 {
+    margin-top: 56px;
+}
+
+.ml-16 {
+    margin-left: 16px;
+}
+
+.ml-32 {
+    margin-left: 32px;
+}
+
+.mr-32 {
+    margin-right: 32px;
+}
+
 .mt-190 {
     margin-top: 190px;
 }
 
+.mt-32 {
+    margin-top: 32px;
+}
+
 .p-8-16 {
     padding: 8px 16px;
+}
+
+.p-8 {
+    padding: 8px;
+}
+
+.p-32-0 {
+    padding: 32px 0;
 }
 
 .p-16-32 {
@@ -398,6 +461,7 @@ body {
 
 .link-underline {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .weight-bold {
