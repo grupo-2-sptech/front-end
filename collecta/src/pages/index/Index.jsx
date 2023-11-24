@@ -15,27 +15,31 @@ import iMaos from "../../assets/icon/i-maos.svg";
 import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
+import React, { useEffect, useState } from "react";
 
 import api from "../../api/api"
 
 
 function Index() {
+  const [campanhas, setCampanhas] = useState([]);
+
+  useEffect(() => {
+    buscarCampanhas();
+  }, []);
 
   function buscarCampanhas() {
     const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGVtcGxvQGVtYWlsLmNvbSIsImlhdCI6MTcwMDQyMTAzNiwiZXhwIjoxNzA0MDIxMDM2fQ.4ptQP7YFCvmJiZbIT7C0XiplEOwEp0MHhiMIc6oEvcXze8tvHCx7veYSLGHfd2H9asWnz_qpJGnw5W-aVPPVxw';
-  
-    api
-      .get('/campanhas', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        }
-      })            
+
+    api.get('/campanhas', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+      withCredentials: true,
+    })
       .then((resposta) => {
-        // Atualize o estado do componente ou faça algo com os dados aqui
-        console.log(resposta.data);
+        setCampanhas(resposta.data);
       })
       .catch((erro) => {
-        // Trate o erro aqui, por exemplo, exibindo uma mensagem ao usuário
         console.error('Erro ao buscar campanhas:', erro);
       });
   }
@@ -54,7 +58,6 @@ function Index() {
       
     
       <NavbarLogout />
-      <button onClick={buscarCampanhas}>CLICA AQUI</button>
       <div className="body-index">
       <div className="hero-container w-100 mmb-100">
         <img src={maos} className="hero-background" />
@@ -89,38 +92,21 @@ function Index() {
       </div>
       <div className="meu-container">
         <div className="card-box jc-between">
-          <Card
-            titulo="Projeto AUjuda"
-            responsavel="AUmigos Leais"
-            texto="Alimentando animais na rua de São Paulo com iniciativa da ETEC de Guaianases. Nossos animais de rua merecem tanto amor quanto qualquer outro animal."
-            porcentagem={p}
-            valor="7.253"
-            local="São Paulo, SP"
-            tag="Animais"
-            img={imagens[4]}
-          />
+        {campanhas.map((campanha) => (
+            <Card
+              key={campanha.id}
+              titulo={campanha.nome}
+              responsavel={campanha.responsavel}
+              texto={campanha.descricao}
+              porcentagem={campanha.porcentagem}
+              valor={campanha.valor}
+              local={campanha.local}
+              tag={campanha.categoriaCampanha}
+              img={imagens[3]}
+            />
+          ))}
 
-          <Card
-            titulo="Abrace Marmitada"
-            responsavel="Instituto Marmitada"
-            texto="Fazendo o bem sem olhar a quem."
-            porcentagem={p1}
-            valor="46.168"
-            local="Maceió, Alagoas"
-            tag="Alimentação"
-            img={imagens[2]}
-          />
 
-          <Card
-            titulo="Adote uma muda"
-            responsavel="Instituto Mata Atlântica"
-            texto="Vamos juntos promover a recuperação e a preservação de matas nativas e suas nascentes!"
-            porcentagem={p2}
-            valor="5.312"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Socioambiental"
-            img={imagens[5]}
-          />
         </div>
 
         <div className="card-heading d-flex jc-between ai-center mmb-32 mt-190">
@@ -134,42 +120,21 @@ function Index() {
       </div>
       <div className="meu-container">
         <div className="card-box jc-between">
-        <CardPontual
-            titulo="Adapta"
-            responsavel="Instituto Camaleão"
-            texto="Reabilitação e inclusão para pessoas com câncer de cabeça e pescoço"
-            porcentagem={p}
-            valor="15.123"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Saúde"
-            dias="18"
-            img={imagens[3]}
-          />
-          <CardPontual
-            titulo="Ação de rua - SP"
-            responsavel="Ação de rua - SP"
-            texto="Ação de combate à fome nas ruas de São Paulo"
-            porcentagem={p3}
-            valor="120.239"
-            dias="90"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Rua"
-            img={imagens[0]}
-          />
+        {campanhas.map((campanha) => (
+            <CardPontual
+              key={campanha.id}
+              titulo={campanha.nome}
+              responsavel={campanha.responsavel}
+              texto={campanha.descricao}
+              porcentagem={campanha.porcentagem}
+              valor={campanha.valor}
+              dias={campanha.dias}
+              local={campanha.local}
+              tag={campanha.categoriaCampanha}
+              img={imagens[3]}
+            />
+          ))}
 
-          
-
-          <CardPontual
-            titulo="Banho de dignidade"
-            responsavel="Amigos da Rua e Seus Pets"
-            texto="Comprar um ônibus e adequá-lo para que moradores de rua tomem banho, cortem cabelo, façam barba, etc"
-            porcentagem={p2}
-            valor="13.623"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Rua"
-            dias="55"
-            img={imagens[1]}
-          />
         </div>
       </div>
 
