@@ -10,8 +10,17 @@ import iRecorrente from "../../assets/icon/i-recorrente.svg";
 import iFace from "../../assets/icon/i-face.svg";
 import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
+import iEdit from "../../assets/icon/i-edit.svg";
+import React, { useState } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+
 
 function InfoCampanha() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <>
       <Navbar />
@@ -60,6 +69,47 @@ function InfoCampanha() {
                   <span>R$ </span>
                   <span id="valorArrecadado">9.999</span>
                   <span className="body-large"> por mês</span>
+                  <span className="btn-edit">
+                    <img src={iEdit} className="icon-editar" onClick={handleShowModal} />
+                    <Modal show={showModal} onHide={handleCloseModal} centered size="lg">
+                      <Modal.Header closeButton>
+                        <Modal.Title>Editar Campanha</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <Form>
+                          <Form.Group controlId="formTitulo">
+                            <Form.Label style={{fontWeight: 700}}>Título da campanha</Form.Label>
+                            <Form.Control type="text" />
+                          </Form.Group>
+
+                          <Form.Group controlId="formDescricao">
+                            <Form.Label style={{fontWeight: 700}}>Descrição da campanha</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
+                          </Form.Group>
+
+                          <Form.Group controlId="formUrlImagem">
+                            <Form.Label style={{fontWeight: 700}}>URL da imagem</Form.Label>
+                            <Form.Control type="text" />
+                          </Form.Group>
+
+                          <Form.Group controlId="formCategoria">
+                            <Form.Label style={{fontWeight: 700}}>Categoria da campanha</Form.Label>
+                            <Form.Control type="text" />
+                          </Form.Group>
+
+                          <Form.Group controlId="formUtilizacaoDinheiro">
+                            <Form.Label style={{fontWeight: 700}}>Utilização do dinheiro doado</Form.Label>
+                            <Form.Control type="text" />
+                          </Form.Group>
+                        </Form>
+                      </Modal.Body>
+                      <Modal.Footer style={{justifyContent: 'center'}}>
+                        <Button variant="primary" onClick={handleCloseModal} style={{ borderRadius: '20px', width: '150px', display: 'flex', justifyContent: 'center'}}>
+                          Salvar
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </span>
                 </div>
                 <div className="body-large mmb-22">
                   <span>Ajudado por </span>
