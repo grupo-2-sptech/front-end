@@ -2,8 +2,8 @@ import upload from "../../assets/icon/i-upload.svg";
 
 import Navbar from "../../components/navbar/Navbar";
 
-import "./Campanha.css";
-import "../../components/card/card.css";
+import "./campanha.css";
+import "../../components/card/Card.css";
 
 function Campanha() {
 
