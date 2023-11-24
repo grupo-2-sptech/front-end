@@ -1,6 +1,6 @@
 import Index from "./pages/index/Index";
 import CriarCampanhaPontual from "./pages/campanha/Campanha";
-import Campanha from "./pages/campanha/campanha.jsx";
+import Campanha from "./pages/campanha/Campanha.jsx";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import Login from "./pages/login/Login.jsx";
 import InfoCampanha from "./pages/info-campanha/info-campanha";
