@@ -38,6 +38,18 @@ function Campanha() {
                 </select>
               </div>
               <div className="mmb-32">
+                <div className="head-xsmall mmb-8">Localidade</div>
+                <input
+                  type="text"
+                  className="w-70 br-10 h-65 border-outline p-16"
+                />
+                <span className="hifen">-</span>
+                <input
+                  type="text"
+                  className="w-20 br-10 h-65 border-outline p-16"
+                />
+              </div>
+              <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Descrição do projeto</div>
                 <textarea
                   name=""
