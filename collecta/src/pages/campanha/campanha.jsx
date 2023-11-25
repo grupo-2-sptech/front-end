@@ -6,8 +6,6 @@ import "./campanha.css";
 import "../../components/card/Card.css";
 
 function Campanha() {
-
-  
   return (
     <>
       <Navbar />
@@ -47,22 +45,24 @@ function Campanha() {
                   className="w-100 br-10 border-outline p-8"
                 ></textarea>
               </div>
+
               <div className="mmb-32 d-flex jc-between">
-                <div>
-                  <div className="head-xsmall mmb-8">Data início <span className="body-medium">(dia/mes/ano)</span></div>
-                  <input type="date" className="input-data-campanha" />
-                </div>
-                <div>
-                  <div className="head-xsmall mmb-8">Data fim <span className="body-medium">(dia/mes/ano)</span></div>
-                  <input type="date" className="input-data-campanha" />
-                </div>
-              </div>
-              <div className="mmb-32">
-                <div className="head-xsmall mmb-8">Meta de arrecadação</div>
-                <input
-                  type="text"
-                  className="w-100 br-10 h-65 border-outline p-16"
-                />
+                <span>
+                  <div className="head-xsmall mmb-8">
+                    Data fim <span className="body-medium">(dia/mes/ano)</span>
+                  </div>
+                  <input
+                    type="date"
+                    className="br-10 h-65 border-outline p-16 input-meta-dia"
+                  />
+                </span>
+                <span>
+                  <div className="head-xsmall mmb-8">Meta de arrecadação</div>
+                  <input
+                    type="text"
+                    className=" br-10 h-65 border-outline p-16 input-meta-dia"
+                  />
+                </span>
               </div>
               {/* <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
