@@ -7,7 +7,7 @@ import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
 import "./Index.css";
-import "../../components/card/card.css";
+import "../../components/card/Card.css";
 import costura01 from "../../assets/background/costura01.svg";
 import iGrafico from "../../assets/icon/i-grafico.svg";
 import iAjuda from "../../assets/icon/i-ajuda.svg";

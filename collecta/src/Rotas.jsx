@@ -1,5 +1,6 @@
 import Index from "./pages/index/Index";
-import CriarCampanhaPontual from "./pages/campanha/Campanha.jsx";
+import CriarCampanhaPontual from "./pages/campanha/campanha.jsx";
+import CampanhaRecorrente from "./pages/campanha/campanha-recorrente.jsx";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import Login from "./pages/login/Login.jsx";
 import InfoCampanha from "./pages/info-campanha/info-campanha";
@@ -18,6 +19,7 @@ function Rotas() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/criar-campanha" element={<CriarCampanhaPontual />} />
+          <Route path="/criar-campanha-recorrente" element={<CampanhaRecorrente />} />
           <Route path="/cadastro-doador" element={<Cadastro />} />
           <Route path="/info-campanha" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />

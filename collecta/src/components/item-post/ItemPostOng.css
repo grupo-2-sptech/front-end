@@ -38,3 +38,8 @@
     width: 100%;
     border-radius: 5px;
 }
+
+.modal{
+    --bs-modal-width: 700px;
+    --bs-modal-padding: 2rem;
+}

@@ -15,6 +15,19 @@
     width: 270px;
 }
 
+.w-70 {
+    width: 70%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.hifen {
+    font-size: 20px;
+    margin: 0px 4%;
+}
+
 .input-box-upload {
     width: 100%;
     background-color: var(--white);
@@ -28,4 +41,21 @@
     padding: 10px;
     border-radius: 10px;
     border: 1px solid var(--science);
+}
+
+.hifen {
+    font-size: 20px;
+    margin: 0px 4%;
+}
+
+.w-70 {
+    width: 70%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+.input-meta-dia {
+    width: 300px;
 }

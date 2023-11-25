@@ -1,8 +1,8 @@
 import NavbarLogout from "../../components/navbar/NavbarLogout";
-import "./login.css";
+import "./Login.css";
 import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
-import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
+import IconGoogle from "../../assets/cadastro/iconGoogle.svg";
 // import backgroundIllustration from "../../assets/background/background-illustration-login.svg"
 import api from "../../api/api.js"
 import { Link } from "react-router-dom";
