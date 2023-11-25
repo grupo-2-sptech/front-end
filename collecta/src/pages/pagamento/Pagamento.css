@@ -54,9 +54,10 @@
     padding: 25px;
     gap: 30px;
     border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: gray 0 0 10px 0;
+    border: 1px solid var(--outline);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
     text-align: center;
+    width: 350px;
 }
 
 .donation-primary-value-box {
@@ -68,23 +69,15 @@
     border: 1px solid var(--outline);
     box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
     text-align: center;
-    width: 240px;
-    height: 190px;
+    width: 350px;
+    height: 300px;
     cursor: pointer;
 }
 
 .donation-primary-value-box:hover {
-    display: flex;
-    flex-direction: column;
-    background-color: #f1efef;
-    padding: 50px;
-    gap: 30px;
-    border-radius: 10px;
-    border: 1px solid var(--outline);
-    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
-    text-align: center;
-    width: 250px;
-    cursor: pointer;
+   
+    background-color: #eeeeee;
+    transition: ease-in-out 0.5s;
 }
 
 
@@ -158,7 +151,7 @@
     flex-direction: column;
     gap: 40px;
     margin-bottom: 40px;
-    margin-top: 20px;
+    margin-top: 5%;
 }
 
 .donations-values {

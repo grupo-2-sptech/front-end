@@ -3,7 +3,6 @@ import "./login.css";
 import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
-// import backgroundIllustration from "../../assets/background/background-illustration-login.svg"
 import api from "../../api/api.js"
 import { Link, useNavigate } from "react-router-dom";
 
@@ -52,7 +51,7 @@ function Login() {
             <InputCadastro name="senha" placeholder="Senha" />
           </div>
 
-          <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32">
+          <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32 mg-top-5">
             ENTRAR
           </button>
           <Link to={"/cadastro-doador"}>

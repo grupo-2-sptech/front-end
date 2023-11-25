@@ -23,7 +23,7 @@
 }
 
 .box-select-box{
-    width: 200px;
+    width: 30%;
     height: 54px;
     cursor: pointer;
     margin-top: 70px;
@@ -36,7 +36,7 @@
     font-size: 22px;
     font-weight: 700;
     appearance: none;
-    background-image: url(../../assets/icon/arrow-down.png);
+    background-image: url(../../assets/icon/arrow-down.svg);
     background-repeat: no-repeat;
     background-size: 35px;
     background-position-x: 90%;
@@ -63,4 +63,15 @@
 
 .footer {
     height: 230px;
+}
+#qtdCampanhas{
+    margin-right: 10px;
+}
+.txtStatus204{
+    width: 100%;
+    text-align: center;
+    height: 41.5vh;
+}
+.card{
+    margin-top: 2%;
 }

@@ -51,8 +51,15 @@
 .w-700 {
     width: 700px;
 }
-#ex-with-icons-tabs-2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;    
+.cardPost{
+    margin-left: 26%;
+}
+.campoCriarPubli{
+    margin-left: 26%;
+}
+.txtNoContent{
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+
 }

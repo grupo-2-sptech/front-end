@@ -36,3 +36,6 @@
 #campoCriarPubli{
     width: 50%;
 }
+#entradaTextoTitulo{
+    border-bottom: 1px solid var(--outline);
+}

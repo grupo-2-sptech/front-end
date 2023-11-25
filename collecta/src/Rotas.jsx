@@ -23,7 +23,7 @@ function Rotas() {
           <Route path="/login" element={<Login />} />
           <Route path="/voluntariado" element={<Voluntariado />} />
           <Route path="/feed-ong" element={<FeedOng />} />
-          <Route path="/pagamento" element={<Pagamento />} />
+          <Route path="/pagamento/:id" element={<Pagamento />} />
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/dashboard" element={<Dashboard />} />
         </Routes>

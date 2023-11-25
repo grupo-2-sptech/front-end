@@ -29,7 +29,7 @@ function Navbar() {
                   <span className="color-white">Criar campanha</span>
                 </section>
               </Link>
-              <Link to={"/terceiraPagina"}>
+              <Link to={"/explorar"}>
                 <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
                 </section>

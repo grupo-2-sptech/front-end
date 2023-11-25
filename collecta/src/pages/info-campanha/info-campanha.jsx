@@ -1,7 +1,7 @@
 import Navbar from "../../components/navbar/NavbarLogout";
 import ItemPostOng from "../../components/item-post/ItemPostOng";
 import Textarea from "../../components/textarea-feed/Textarea";
-import "./info-campanha.css";
+
 import "../../../styles/global.css";
 import iMissao from "../../assets/icon/i-missao.svg";
 import thumb from "../../assets/img/acao.png";
@@ -14,30 +14,48 @@ import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
 import api from "../../api/api";
 import Footer from "../../components/footer/Footer";
-import  { useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
+import "./info-campanha.css";
+import NavbarLogout from "../../components/navbar/NavbarLogout.jsx";
 
 
 function InfoCampanha() {
+  var token = localStorage.getItem('token');
+  var tipoConta = localStorage.getItem('tipoConta');
+  
+  // if(tipoConta == "DOADOR"){
+  //   var textarea = document.getElementById("campoCriarPubli")
+  //   var deletar = document.getElementById("btnDeletar")
+  //   var editar = document.getElementById("btnEditar")
+  //   textarea.style.display = 'none'
+  //   editar.style.display = 'none'
+  //   deletar.style.display = 'none'
+  // }
 
+  const navigate = useNavigate();
+  const navigateToPage = (path) =>{
+      navigate(path)
+  }
+
+  // função para copiar url em um botão
 
     const [url, setUrl] = useState(window.location.href);
   
     const copiarParaAreaDeTransferencia = async () => {
       try {
         await navigator.clipboard.writeText(url);
-        alert('URL copiada para a área de transferência!');
       } catch (err) {
         console.error('Erro ao copiar para a área de transferência:', err);
       }
     };
   
-  var token = localStorage.getItem('token');
+
+
+
+  // pegando os dados da campanha
   const { id } = useParams();
-
-  console.log({id})
-
-  
 
   api.get(`/campanhas/${id}`, {
     headers: {
@@ -46,10 +64,6 @@ function InfoCampanha() {
   }
   )
   .then((respostaObtida) => {
-    console.log(respostaObtida);
-    console.log(respostaObtida);
-    console.log(respostaObtida.data);
-    
     atualizarInfo(respostaObtida.data);
   })
   .catch((erroOcorrido) => { 
@@ -65,10 +79,49 @@ function InfoCampanha() {
         categoria.innerHTML = respostaObtida.categoriaCampanha;
         descricao.innerHTML = respostaObtida.descricao;
     }
-    
+
+// renderizando posts no feed
+const [posts, setPosts] = useState([]);
+
+useEffect(() => {
+  listar();
+  }, []);
+
+  function listar() {
+    api.get("/posts", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    )
+    .then((respostaObtida) => {
+      setPosts(respostaObtida.data)
+ 
+    })
+    .catch((erroOcorrido) => { 
+     console.log(erroOcorrido);
+    })
+  }
+
+  // conversão de data 
+
+  function formatarData(dataString) {
+    const data = new Date(dataString);
+  
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    };
+  
+    return new Intl.DateTimeFormat('pt-BR', options).format(data);
+  }
+
+var status = "Doador";
+
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
@@ -146,7 +199,7 @@ function InfoCampanha() {
                 </div>
               </div>
               <div className="container-btn-campanha d-flex jc-between">
-                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
+                <button onClick={() => navigateToPage(`/pagamento/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
                   Doar
                 </button>
                 <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
@@ -301,13 +354,26 @@ function InfoCampanha() {
             </div>
           </div>
           <div
-            className="tab-pane fade"
+            className="tab-pane fade campoFeed"
             id="ex-with-icons-tabs-2"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-2"
           >
             <Textarea/>
-            <ItemPostOng/>
+            {posts && posts.length > 0 ? (
+                posts.map((post) => (
+                  <ItemPostOng
+                    key={post.id}
+                    postId={post.id}
+                    titulo={post.titulo}
+                    nomeOng="AUmigos Leais"
+                    conteudo={post.conteudo}
+                    data={formatarData(post.data)}
+                  />
+                ))
+              ) : (
+                <p className="txtNoContent">Não há publicações no feed</p>
+              )}
           </div>
           <div
             className="tab-pane fade"
