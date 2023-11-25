@@ -21,7 +21,7 @@ function CampanhaRecorrente() {
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
-                  Qual o nome do seu projeto ?
+                  Qual o nome do seu projeto?
                 </div>
                 <input
                   type="text"
@@ -30,14 +30,28 @@ function CampanhaRecorrente() {
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
-                  Qual a categoria do seu projeto ?
+                  Qual a categoria do seu projeto?
                 </div>
+                
+
                 <select name="" id="" className="w-100 br-10 h-65 p-8">
                   <option value="0">tal</option>
                   <option value="1">tal</option>
                   <option value="2">tal</option>
                 </select>
               </div>
+              <div className="mmb-32">
+                <div className="head-xsmall mmb-8">Localidade</div>
+                <input
+                  type="text"
+                  className="w-70 br-10 h-65 border-outline p-16"
+                />
+                <span className="hifen">-</span>
+                <input
+                  type="text"
+                  className="w-20 br-10 h-65 border-outline p-16"
+                />
+                </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Descreva seu projeto:</div>
                 <textarea
@@ -62,7 +76,7 @@ function CampanhaRecorrente() {
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
-                  Qual sua meta de arrecadação ?
+                  Qual sua meta de arrecadação?
                 </div>
                 <input
                   type="text"

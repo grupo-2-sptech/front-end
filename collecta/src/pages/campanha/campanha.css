@@ -29,3 +29,8 @@
     border-radius: 10px;
     border: 1px solid var(--science);
 }
+
+.hifen {
+    font-size: 20px;
+    margin: 0px 4%;
+}
