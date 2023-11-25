@@ -51,6 +51,7 @@
 .w-700 {
     width: 700px;
 }
+
 .cardPost{
     margin-left: 26%;
 }
@@ -61,5 +62,16 @@
     width: 100%;
     text-align: center;
     margin-top: 3%;
+}
 
+.btn-edit{
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.icon-editar{
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
 }

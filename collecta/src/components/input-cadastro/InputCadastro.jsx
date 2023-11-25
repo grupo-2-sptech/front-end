@@ -3,7 +3,7 @@ import "./InputCadastro.css"
 function InputCadastro(props){
     return(
         <>
-            <input required="true" type={props.type} className="input" name={props.name} id={props.id} placeholder={props.placeholder}/>
+            <input required={true} type={props.type} className="input" name={props.name} id={props.id} placeholder={props.placeholder}/>
         </>
     )
 

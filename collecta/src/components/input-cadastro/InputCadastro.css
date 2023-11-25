@@ -8,12 +8,4 @@
     border-radius: 10px;
     border: 1px solid var(--outline);
 }
-#inputCep{
-    display: none;
-}
-#inputSenha{
-    display: none;
-}
-#inputConfirmarSenha{
-    display: none;
-}
+

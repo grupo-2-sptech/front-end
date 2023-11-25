@@ -16,6 +16,10 @@ a {
     text-decoration: inherit; /* no underline */
 }
 
+textarea {
+    resize: none;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -125,6 +129,10 @@ body {
 }
 .bg-seashell {
     background-color: var(--seashell);
+}
+
+.bg-sky {
+    background-color: var(--sky);
 }
 /* Fontes  */
 
@@ -281,7 +289,7 @@ body {
 
 /* Margin */
 
-.m-0auto {
+.c {
     margin: 0 auto;
 }
 
@@ -353,7 +361,6 @@ body {
     margin-top: 56px;
 }
 
-
 .ml-16 {
     margin-left: 16px;
 }
@@ -376,6 +383,10 @@ body {
 
 .p-8-16 {
     padding: 8px 16px;
+}
+
+.p-8 {
+    padding: 8px;
 }
 
 .p-32-0 {

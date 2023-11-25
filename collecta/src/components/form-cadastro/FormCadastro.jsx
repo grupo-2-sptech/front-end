@@ -5,10 +5,11 @@ import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../input-cadastro/InputCadastro"
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
 import NavbarLogout from "../navbar/NavbarLogout"
-import "./FormCadastro.css"
 import "../../../styles/global.css"
 import api from "../../api/api"
 import { useNavigate } from "react-router"
+import "./FormCadastro.css"
+import { Link } from "react-router-dom"
 
 
 function FormCadastro(){
@@ -23,7 +24,7 @@ function FormCadastro(){
         var nome = document.getElementById("inputNome");
         var email = document.getElementById("inputEmail");
         var cpfCnpj = document.getElementById("inputCpfCnpj");
-        var cep = document.getElementById("inputCep");
+        var telefone = document.getElementById("inputTelefone");
         var senha = document.getElementById("inputSenha");
         var dtNasc = document.getElementById("inputDtNasc");
         var btnAvancar = document.getElementById("botaoAvancar");
@@ -33,7 +34,7 @@ function FormCadastro(){
         nome.style.display = 'none';
         email.style.display = 'none';
         cpfCnpj.style.display = 'none';
-        cep.style.display = 'block';
+        telefone.style.display = 'block';
         senha.style.display = 'block';
         dtNasc.style.display = 'block';
         btnAvancar.style.display = 'none';
@@ -47,7 +48,7 @@ function FormCadastro(){
         var nome = document.getElementById("inputNome");
         var email = document.getElementById("inputEmail");
         var cpfCnpj = document.getElementById("inputCpfCnpj");
-        var cep = document.getElementById("inputCep");
+        var telefone = document.getElementById("inputTelefone");
         var senha = document.getElementById("inputSenha");
         var dtNasc = document.getElementById("inputDtNasc");
         var btnAvancar = document.getElementById("botaoAvancar");
@@ -57,7 +58,7 @@ function FormCadastro(){
         nome.style.display = 'block';
         email.style.display = 'block';
         cpfCnpj.style.display = 'block';
-        cep.style.display = 'none';
+        telefone.style.display = 'none';
         senha.style.display = 'none';
         dtNasc.style.display = 'none';
         btnAvancar.style.display = 'block';
@@ -121,8 +122,6 @@ function FormCadastro(){
             }
 
             api.post("/doadores", novoUsuario).then((res) =>{
-                alert("usuario cadastrado com sucesso");
-                console.log(res)
                 navigateToPage("/login")
             }).catch((erro) => {
                 alert("erro ao cadastrar")
@@ -145,17 +144,19 @@ function FormCadastro(){
             <form onSubmit={cadastrar} className="boxFormulario">
                 
                 <span className="txtEtapaCadastro">ETAPA <span id="etapa">1</span>/2</span>
-                <h2 className="txtTituloFormulario">Cadastrar-se</h2>
+                <h2 className="txtTituloFormulario">Cadastro Doador</h2>
                 <InputCadastro name="nome" id="inputNome" placeholder="Nome"/>
                 <InputCadastro name="email" id="inputEmail" placeholder="Email"/>
                 <InputCadastro name="cpf" id="inputCpfCnpj" placeholder="CPF"/>
-                <InputCadastro name="telefone" id="inputCep" placeholder="Telefone"/>
+                <InputCadastro name="telefone" id="inputTelefone" placeholder="Telefone"/>
                 <InputCadastro type="date" name="dtNasc" id="inputDtNasc" placeholder="Data de nascimento"/>
                 <InputCadastro name="senha" id="inputSenha" placeholder="Senha"/>
 
                 <div className="campoInfo">
                     <img src={IconInfo} alt="Imagem de um circulo com a letra 'i' ao centro representando a palavra 'informação'" />
-                    <span className="txtInfo">Sou ONG ou pessoa fisíca?</span>
+                    <Link to={"/cadastro-ong"}>
+                    <span className="txtInfo">Sou uma ONG? Clique aqui</span>
+                    </Link>
                 </div>
                 <div className="campoBotoes">
                 <button className="btnAvancar" id="botaoAvancar" onClick={avancarCadastro}>

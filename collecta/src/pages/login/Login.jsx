@@ -1,10 +1,10 @@
 import NavbarLogout from "../../components/navbar/NavbarLogout";
-import "./login.css";
 import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
 import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
 import api from "../../api/api.js"
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
 
 function Login() {
 
@@ -62,8 +62,8 @@ function Login() {
             <span className="m-0-8" >ou</span>
             <div className="hr-ou bg-haiti"></div>
           </div>
-          <button className="btnGoogle">
-                  <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
+          <button id="btnGoogleLogin" className="btnGoogleLogin">
+                  <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entrar com Google
           </button>
         </form>
         

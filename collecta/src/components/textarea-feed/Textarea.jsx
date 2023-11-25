@@ -44,7 +44,7 @@ function Textarea(){
     return(
         <>
         <form id="campoCriarPubli" className="campoCriarPubli">
-            <textarea className="entradaTexto titulo" value={tituloTextarea} onChange={getTitulo} id="entradaTextoTitulo" cols="30" rows="1" placeholder="Digite o titulo da publicação"></textarea>
+            <textarea className="entradaTexto tituloFeed" value={tituloTextarea} onChange={getTitulo} id="entradaTextoTitulo" cols="30" rows="1" placeholder="Digite o titulo da publicação"></textarea>
             <textarea className="entradaTexto" value={conteudoTextarea} onChange={getConteudo}  id="" cols="30" rows="4" maxLength={530} placeholder="Digite um texto"></textarea>
             <div className="btnsPubli">
                 <img src={Anexo} alt="" />

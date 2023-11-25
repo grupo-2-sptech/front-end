@@ -2,7 +2,6 @@ import {useRef, useState} from "react";
 import NavBar from "../../components/navbar/Navbar";
 import "./Pagamento.css";
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
-import qrCodeImage from "../../assets/img/qr-code.png";
 import {useNavigate} from "react-router-dom";
 import api from "../../api/api";
 
@@ -25,9 +24,9 @@ function Pagamento() {
         var total = document.getElementById("valorTotal")
         var repassado = document.getElementById("valorRepassado")
         var taxa = document.getElementById("valorTaxa")
-        total.innerHTML = valor.toFixed(2)
-        repassado.innerHTML = (parseFloat(valor) * 0.9).toFixed(2)
-        taxa.innerHTML = (parseFloat(valor)  * 0.1).toFixed()
+        total.innerHTML = valor
+        repassado.innerHTML = parseFloat(valor) * 0.9
+        taxa.innerHTML = parseFloat(valor)  * 0.1
         console.log(e.target.value)
     };
 

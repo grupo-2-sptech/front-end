@@ -3,6 +3,7 @@
     background-color: #fff;
     border-radius: 10px;
     border: 1px solid var(--outline);
+    margin-top: 1%;
 }
 .entradaTexto{
     border: none;

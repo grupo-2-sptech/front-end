@@ -32,9 +32,7 @@ function Index() {
       }
       )
       .then((respostaObtida) => {
-        console.log(respostaObtida);
-        console.log(respostaObtida.status);
-        console.log(respostaObtida.data);
+
         
         setCampanhas(respostaObtida.data)
         qtdCampanhas.innerHTML = campanhas.length 

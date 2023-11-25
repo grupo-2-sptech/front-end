@@ -12,9 +12,13 @@ import iRecorrente from "../../assets/icon/i-recorrente.svg";
 import iFace from "../../assets/icon/i-face.svg";
 import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
+import iEdit from "../../assets/icon/i-edit.svg";
+
+import { Modal, Button, Form } from "react-bootstrap";
+
 import api from "../../api/api";
 import Footer from "../../components/footer/Footer";
-import  { useEffect, useState } from 'react';
+import  React, { useEffect, useState } from 'react';
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import "./info-campanha.css";
@@ -57,6 +61,7 @@ function InfoCampanha() {
   // pegando os dados da campanha
   const { id } = useParams();
 
+
   api.get(`/campanhas/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -65,10 +70,13 @@ function InfoCampanha() {
   )
   .then((respostaObtida) => {
     atualizarInfo(respostaObtida.data);
+    atualizarModalEditarCampanha(respostaObtida.data.nome, respostaObtida.data.descricao, respostaObtida.data.categoriaCampanha, respostaObtida.data.dataFim, respostaObtida.data.dataInicio, respostaObtida.data.statusCampanha, respostaObtida.data.tipoCampanha)
+
   })
   .catch((erroOcorrido) => { 
      console.log(erroOcorrido);
     })
+
 
     function atualizarInfo(respostaObtida){
         var titulo = document.getElementById("tituloCampanha")
@@ -96,6 +104,7 @@ useEffect(() => {
     )
     .then((respostaObtida) => {
       setPosts(respostaObtida.data)
+
  
     })
     .catch((erroOcorrido) => { 
@@ -117,7 +126,80 @@ useEffect(() => {
     return new Intl.DateTimeFormat('pt-BR', options).format(data);
   }
 
-var status = "Doador";
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
+  // edição de campanha modal
+
+  function atualizarModalEditarCampanha(tituloCadastrado, descricaoCadastrada, categoriaCadastrada, dataFimCadastrada, dataInicioCadastrada, statusCadastrado, tipoCampanhaCadastrado){
+    setTitulo(tituloCadastrado)
+    setCategoria(categoriaCadastrada)
+    setDataFim(dataFimCadastrada)
+    setDescricao(descricaoCadastrada)
+    setDataInicio(dataInicioCadastrada)
+    setStatus(statusCadastrado)
+    setTipoCampanha(tipoCampanhaCadastrado)
+  }
+  
+
+  const [titulo, setTitulo] = useState('')
+  const [descricao, setDescricao] = useState('')
+  const [categoria, setCategoria] = useState('')
+  const [dataFim, setDataFim] = useState('')
+  const [dataInicio, setDataInicio] = useState('')
+  const [status, setStatus] = useState('')
+  const [tipoCampanha, setTipoCampanha] = useState('')
+
+
+
+  const handleChangeTitulo = (e) => {
+    setTitulo(e.target.value)
+    console.log(titulo)
+  };
+
+  const handleChangeDescricao = (e) => {
+    setDescricao(e.target.value)
+    console.log(descricao)
+  };
+
+  const handleChangeCategoria = (e) => {
+    setCategoria(e.target.value)
+    console.log(categoria)
+  };
+
+  const handleChangeDataFim = (e) => {
+    setDataFim(e.target.value)
+    console.log(dataFim)
+  };
+
+  // endpoint de edição
+
+  function editarCampanha(){
+    console.log("editando")
+    var campanhaEditada = {
+      nome: titulo, 
+      descricao: descricao,
+      categoriaCampanha: categoria,
+      dataFim: dataFim,
+      dataInicio: dataInicio,
+      statusCampanha: status,
+      tipoCampanha: tipoCampanha
+    }
+
+    api.put(`/campanhas/${id}`, campanhaEditada, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }).then((res) => {
+      alert("editou")
+      handleCloseModal()
+    }).catch((erro) => {
+      console.log(erro)
+    })
+
+  }
 
   return (
     <>
@@ -163,10 +245,104 @@ var status = "Doador";
 
             <div className="d-flex jc-between fd-column">
               <div className="cards-campanha bg-white p-16 color-haiti mmb-8 br-5 border-outline">
-                <div className="head-medium">
+                <div className="head-medium d-flex jc-between">
+                  <span>
                   <span>R$ </span>
                   <span id="valorArrecadado">9.999</span>
                   <span className="body-large"> por mês</span>
+                  </span>
+                  <span>
+                    <span className="btn-edit d-flex ai-center">
+                      <img
+                        src={iEdit}
+                        className="icon-editar"
+                        onClick={handleShowModal}
+                      />
+                    </span>
+                    <Modal
+                      show={showModal}
+                      onHide={handleCloseModal}
+                      centered
+                      size="lg"
+                    >
+                      <Modal.Header closeButton>
+                        <Modal.Title>Editar Campanha</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                        <Form>
+                          <Form.Group controlId="formTitulo">
+                            <Form.Label style={{ fontWeight: 700 }}>
+                              Título da campanha
+                            </Form.Label>
+                            <Form.Control 
+                            type="text"
+                            name="titulo"
+                            value={titulo}
+                            onChange={handleChangeTitulo}
+                            />
+                          </Form.Group>
+
+                          <Form.Group controlId="formDescricao">
+                            <Form.Label style={{ fontWeight: 700 }}>
+                              Descrição da campanha
+                            </Form.Label>
+                            <Form.Control
+                              as="textarea"
+                              rows={3}
+                              name="descricao"
+                              value={descricao}
+                              onChange={handleChangeDescricao}
+                              />
+                          </Form.Group>
+
+                          <Form.Group controlId="formUrlImagem">
+                            <Form.Label style={{ fontWeight: 700 }}>
+                              URL da imagem
+                            </Form.Label>
+                            <Form.Control type="text" />
+                          </Form.Group>
+
+                          <Form.Group controlId="formCategoria">
+                            <Form.Label style={{ fontWeight: 700 }}>
+                              Categoria da campanha
+                            </Form.Label>
+                            <Form.Control 
+                              type="text"
+                              name="categoria"
+                              value={categoria}
+                              onChange={handleChangeCategoria}
+                              />
+                          </Form.Group>
+
+                          <Form.Group controlId="formUtilizacaoDinheiro">
+                            <Form.Label style={{ fontWeight: 700 }}>
+                              Data final da campanha
+                            </Form.Label>
+                            <Form.Control 
+                            type="text"
+                            name="dataFim"
+                            value={dataFim}
+                            onChange={handleChangeDataFim}
+                            />
+                          </Form.Group>
+                        </Form>
+                      </Modal.Body>
+                      <Modal.Footer style={{ justifyContent: "center" }}>
+                        <Button
+                          variant="primary"
+                          onClick={editarCampanha}
+                          style={{
+                            borderRadius: "20px",
+                            width: "150px",
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        >
+                          Salvar
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                  </span>
                 </div>
                 <div className="body-large mmb-22">
                   <span>Ajudado por </span>
