@@ -1,6 +1,6 @@
 // import React from "react";
 import Logo from "../../assets/logo/logo-collecta.png";
-import "../../components/navbar/navbar.css";
+import "../../components/navbar/Navbar.css";
 
 import { Link } from "react-router-dom";
 
