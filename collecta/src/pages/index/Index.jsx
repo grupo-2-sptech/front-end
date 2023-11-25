@@ -54,7 +54,6 @@ function Index() {
       
     
       <NavbarLogout />
-      <button onClick={buscarCampanhas}>CLICA AQUI</button>
       <div className="body-index">
       <div className="hero-container w-100 mmb-100">
         <img src={maos} className="hero-background" />
