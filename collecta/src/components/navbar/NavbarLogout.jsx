@@ -1,6 +1,6 @@
 // import React from "react";
 import Logo from "../../assets/logo/logo-collecta.png";
-import "../../components/navbar/navbar.css";
+import "../../components/navbar/Navbar.css";
 
 import { Link } from "react-router-dom";
 
@@ -23,13 +23,13 @@ function NavbarLogout() {
                   className="header-logo-icon"
                 />
               </Link>
-              
+            <Link to={"/explorar"} className="link-sem-decoracao">
                 <section className="header-item body-small d-flex ai-center">
                     <Link to="/explorar">
                       <span className="color-white">Explorar</span>
                     </Link>
                 </section>
-              
+                </Link>
               <section className="conjunto-barra-busca-projeto d-flex">
                 <section>
                   <input

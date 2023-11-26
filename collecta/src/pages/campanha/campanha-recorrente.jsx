@@ -5,8 +5,7 @@ import Navbar from "../../components/navbar/Navbar";
 import "./campanha.css";
 import "../../components/card/Card.css";
 
-function Campanha() {
-
+function CampanhaRecorrente() {
   return (
     <>
       <Navbar />
@@ -15,21 +14,26 @@ function Campanha() {
           <div className="container-campanha">
             <div className="w-770 d-flex fd-column">
               <div className="titulo text-align-center d-flex fd-column">
-                <span className="head-medium">Crie sua campanha pontual</span>
+                <span className="head-medium">Crie sua campanha recorrente</span>
                 <span>
-                  Campanha pontual é uma campanha que possui uma data de início
-                  e fim, onde será encerrada independente se bateu a meta ou não
+                  Campanha recorrente é uma campanha que vai durar até que você a encerre.
                 </span>
               </div>
               <div className="mmb-32">
-                <div className="head-xsmall mmb-8">Nome do projeto</div>
+                <div className="head-xsmall mmb-8">
+                  Qual o nome do seu projeto?
+                </div>
                 <input
                   type="text"
                   className="w-100 br-10 h-65 border-outline p-16"
                 />
               </div>
               <div className="mmb-32">
-                <div className="head-xsmall mmb-8">Categoria</div>
+                <div className="head-xsmall mmb-8">
+                  Qual a categoria do seu projeto?
+                </div>
+                
+
                 <select name="" id="" className="w-100 br-10 h-65 p-8">
                   <option value="0">tal</option>
                   <option value="1">tal</option>
@@ -47,45 +51,47 @@ function Campanha() {
                   type="text"
                   className="w-20 br-10 h-65 border-outline p-16"
                 />
-              </div>
+                </div>
               <div className="mmb-32">
-                <div className="head-xsmall mmb-8">Descrição do projeto</div>
+                <div className="head-xsmall mmb-8">Descreva seu projeto:</div>
                 <textarea
                   name=""
                   id=""
                   cols="30"
-                  rows="10"
+                  rows="7"
                   className="w-100 br-10 border-outline p-8"
                 ></textarea>
               </div>
-
-              <div className="mmb-32 d-flex jc-between">
-                <span>
-                  <div className="head-xsmall mmb-8">
-                    Data fim <span className="body-medium">(dia/mes/ano)</span>
-                  </div>
-                  <input
-                    type="date"
-                    className="br-10 h-65 border-outline p-16 input-meta-dia"
-                  />
-                </span>
-                <span>
-                  <div className="head-xsmall mmb-8">Meta de arrecadação</div>
-                  <input
-                    type="text"
-                    className=" br-10 h-65 border-outline p-16 input-meta-dia"
-                  />
-                </span>
-              </div>
-              {/* <div className="mmb-32">
+              <div className="mmb-32">
                 <div className="head-xsmall mmb-8">
-                  Meta de arrecadação avulsa ou mensal?
+                  Informe qual será a utilização do dinheiro arrecadado:
                 </div>
-                <div className="dois-botoes d-flex w-100 jc-evenly">
-                  <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Avulsa</button>
-                  <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Mensal</button>
+                <textarea
+                  name=""
+                  id=""
+                  cols="30"
+                  rows="7"
+                  className="w-100 br-10 border-outline p-8"
+                ></textarea>
+              </div>
+              <div className="mmb-32">
+                <div className="head-xsmall mmb-8">
+                  Qual sua meta de arrecadação?
                 </div>
-              </div> */}
+                <input
+                  type="text"
+                  className="w-100 br-10 h-65 border-outline p-16"
+                />
+              </div>
+              {/*<div className="mmb-32">
+                                <div className="head-xsmall mmb-8">
+                                    Meta de arrecadação avulsa ou mensal?
+                                </div>
+                                <div className="dois-botoes d-flex w-100 jc-evenly">
+                                    <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Avulsa</button>
+                                    <button className="btn-opcoes bg-sky p-16-vertical w-270 body-medium br-5 border-none color-white">Mensal</button>
+                                </div>
+                            </div>*/}
               <div className="head-xsmall mmb-8">Foto do projeto</div>
               <div className="text-box-3 body-medium mmb-8">
                 A imagem será utilizada como card do projeto
@@ -108,4 +114,4 @@ function Campanha() {
   );
 }
 
-export default Campanha;
+export default CampanhaRecorrente;

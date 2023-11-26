@@ -3,8 +3,9 @@ import Personagem from "../../assets/cadastro/personagem.svg"
 import LinhaTracejada from "../../assets/cadastro/linha-tracejada.svg"
 import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../../components/input-cadastro/InputCadastro.jsx"
-import IconGoogle from "../../assets/cadastro/IconGoogle.svg"
+import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
 import NavbarLogout from "../../components/navbar/NavbarLogout.jsx"
+import { Link } from 'react-router-dom';
 import "./CadastroOng.css"
 import "../../../styles/global.css"
 import { Link } from "react-router-dom"
@@ -182,6 +183,7 @@ function cadastroOng(){
                     <span className="txtInfo">Sou um doador? Clique aqui</span>
                     </Link>
                 </div>
+
                 <div className="campoBotoes">
                 <button className="btnAvancar" id="botaoAvancar" onClick={avancarCadastro}>
                     PRÓXIMO
@@ -194,11 +196,8 @@ function cadastroOng(){
                 
                 </div>
                 
-                <span className="txtContaExiste">
-    
-                    Já tem uma conta? Faça login
-                    
-                </span>
+                <span className="txtContaExiste"><Link to={"/login"} className="color-science">Já tem uma conta? Faça login</Link></span>
+
                 <div className="separador">
                     <hr className="meiaLinha" />
                     <span className="txtSeparador">ou</span>

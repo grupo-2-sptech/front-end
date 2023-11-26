@@ -73,13 +73,13 @@
     outline: none;
     font-size: 20px;
     color: var(--white);
-    margin-top: 2%;
+    margin-top: 16px;
     cursor: pointer;
 }
 
 .txtContaExiste{
     font-size: 16px;
-    margin-top: 3%;
+    margin-top: 32px;
     font-weight: 500;
     cursor: default;
 }
@@ -144,6 +144,7 @@
     display: flex;
     justify-content: space-between;
 }
+
 #inputCep{
     display: none;
 }
@@ -156,3 +157,4 @@
 #inputSenha{
     display: none;
 }
+

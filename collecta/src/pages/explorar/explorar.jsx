@@ -5,14 +5,14 @@ import "./explorar.css"
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
-
 import "../index/Index.css";
 import "../../components/card/card.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api.js"
 import { useNavigate } from "react-router";
 import Footer from "../../components/footer/Footer.jsx";
-
+import logoNome from "../../assets/logo/logo-collectiva-branco.png";
+import iSelect from "../../assets/icon/i-select-box.svg";
 
 function Index() {
   var token = localStorage.getItem('token');
