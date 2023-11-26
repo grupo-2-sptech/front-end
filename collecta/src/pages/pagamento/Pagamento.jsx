@@ -2,7 +2,7 @@ import {useRef, useState} from "react";
 import NavBar from "../../components/navbar/Navbar";
 import "./Pagamento.css";
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import api from "../../api/api";
 
 function Pagamento() {
@@ -47,7 +47,7 @@ function Pagamento() {
     const spanRef = useRef();
 
     function buscarInfoPagto(id){
-        api.get(`/pagamentos/${id}`, {
+        api.get(`/contribuicoes/monetarias/${id}`, {
             headers:{
                 Authorization: `Bearer ${token}`,
             },
@@ -60,18 +60,39 @@ function Pagamento() {
           })
     }
 
+    const [idFinanceiro, setIdFinanceiro] = useState("");
+    const { id } = useParams();
+    function buscarInfoCampanha(id){
+        api.get(`/campanhas/${id}`, {
+            headers:{
+                Authorization: `Bearer ${token}`,
+            },
+          }).then((res) => {
+            setIdFinanceiro(res.data.financeiroCampanha.id)
+          }).catch((erro) => {
+            console.log(erro)
+          })
+    }
+
+
+    var idUsuario = localStorage.getItem("id")
+
+
     const gerarPix = () => {
-      var valor = `${spanRef.current.textContent}.00`;
-      var cpf = "51372945865"
-      var nome = "Maria Lucia Goncalves"
+    var valor = spanRef.current.textContent + ".00";
+    buscarInfoCampanha(id)
 
       var pagamento = {
-        nomeTitular: nome,
-        cpf: cpf,
-        valor: valor
+        idDoador: idUsuario,
+        parcelas: 1,
+        valor: valor,
+        formaPagamento: "PIX",
+        idFinanceiro: idFinanceiro
       }
 
-      api.post("/pagamentos", pagamento, {
+      console.log(pagamento)
+
+      api.post("/contribuicoes/monetarias", pagamento, {
         headers:{
             Authorization: `Bearer ${token}`,
         },

@@ -18,31 +18,41 @@ function Index() {
   var token = localStorage.getItem('token');
  
   const [campanhas, setCampanhas] = useState([]);
-  var qtdCampanhas = document.getElementById("qtdCampanhas")
+  // var qtdCampanhas = document.getElementById("qtdCampanhas")
+  const [qtdCampanhas, setQtdCampanhas] = useState(0);
+
+  const [genero, setGenero] = useState('')
+
+  function mudarGenero(e){
+    setGenero(e.target.value)
+  }
+
 
   useEffect(() => {
     listar();
-    }, []);
+    }, [genero]);
 
     function listar() {
-      api.get("/campanhas", {
+      var corpo = "SAUDE"
+      api.get(`/campanhas/genero/${genero}`,  {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }
       )
       .then((respostaObtida) => {
-
-        
         setCampanhas(respostaObtida.data)
-        qtdCampanhas.innerHTML = campanhas.length 
+        setQtdCampanhas(respostaObtida.data.length);
    
       })
       .catch((erroOcorrido) => { 
        console.log(erroOcorrido);
+       if(erroOcorrido.status == 404){
+        console.log("Não foi encontrado campanha deste genero")
+       }
       })
     }
-    console.log(campanhas)
+
 
     const navigate = useNavigate();
     const navigateToPage = (path) =>{
@@ -51,10 +61,6 @@ function Index() {
 
 
 
-  const p = 54;
-  const p1 = 24;
-  const p2 = 19;
-  const p3 = 129;
   return (
     <>
       <script>
@@ -71,7 +77,7 @@ function Index() {
         <div className="container">
           <div className="box-projetos">
             <span className="box-projetos-text">Quero ver projetos de</span>
-            <select className="box-select-box">
+            <select value={genero} onChange={mudarGenero} className="box-select-box">
               <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
               <option value="ALIMENTACAO">Alimentação</option>
               <option value="ANIMAIS">Animais</option>
@@ -80,7 +86,7 @@ function Index() {
               <option value="COMBATE_A_POBREZA">Combate a Pobreza</option>
               <option value="CULTURA_E_ARTE">Cultura e Arte</option>
               <option value="EDUCACAO">Educação</option>
-              <option value="EMPREENDEDORISMO">Empreendedorismp</option>
+              <option value="EMPREENDEDORISMO">Empreendedorismo</option>
               <option value="ESPORTES">Esportes</option>
               <option value="HABITACAO">Habitação</option>
               <option value="IDOSOS">Idosos</option>
@@ -93,7 +99,7 @@ function Index() {
               <option value="OUTROS">Outros</option>
             </select>
           </div>
-          <div className="projetos-encontrados"><span id="qtdCampanhas"></span> projetos encontrados:</div>
+          <div className="projetos-encontrados"><span id="qtdCampanhas">{qtdCampanhas}</span> projetos encontrados:</div>
         </div>
         <div className="container">
           <div className="card-box jc-between">
@@ -102,10 +108,10 @@ function Index() {
                   <Card
                     key={campanha.id}
                     titulo={campanha.nome}
-                    responsavel="AUmigos Leais"
+                    responsavel={campanha.organizacao.nomeFantasia}
                     texto={campanha.descricao}
-                    porcentagem={p}
-                    valor="7.253"
+                    porcentagem={(campanha.financeiroCampanha.valorAtingido * 100) / campanha.financeiroCampanha.valorMeta}
+                    valor={campanha.financeiroCampanha.valorAtingido}
                     local="São Paulo, SP"
                     tag={campanha.categoriaCampanha}
                     img={imagens[4]}

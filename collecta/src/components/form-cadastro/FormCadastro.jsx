@@ -121,7 +121,7 @@ function FormCadastro(){
                 senha : senha
             }
 
-            api.post("/doadores", novoUsuario).then((res) =>{
+            api.post("/login/cadastro/doador", novoUsuario).then((res) =>{
                 navigateToPage("/login")
             }).catch((erro) => {
                 alert("erro ao cadastrar")

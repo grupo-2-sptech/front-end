@@ -70,23 +70,35 @@ function InfoCampanha() {
   )
   .then((respostaObtida) => {
     atualizarInfo(respostaObtida.data);
-    atualizarModalEditarCampanha(respostaObtida.data.nome, respostaObtida.data.descricao, respostaObtida.data.categoriaCampanha, respostaObtida.data.dataFim, respostaObtida.data.dataInicio, respostaObtida.data.statusCampanha, respostaObtida.data.tipoCampanha)
-
+    // setDataInicio(respostaObtida.data.dataInicio)
+    // setStatusCampanha(respostaObtida.data.statusCampanha)
   })
   .catch((erroOcorrido) => { 
      console.log(erroOcorrido);
     })
 
-
+const [progresso, setProgresso] = useState(0)
     function atualizarInfo(respostaObtida){
+        var porcentagem = (respostaObtida.financeiroCampanha.valorAtingido * 100) / respostaObtida.financeiroCampanha.valorMeta;
         var titulo = document.getElementById("tituloCampanha")
         var categoria = document.getElementById("descricaoCampanha")
         var descricao = document.getElementById("descricaoProjeto")
+        var respCamp = document.getElementById("responsavelCampanha")
+        var valorMeta = document.getElementById("valorMeta")
+        var valorArrecadado = document.getElementById("valorArrecadado")
+        var porcentagemAtual = document.getElementById("porcentagemAtual")
+        var tipoCampanha = document.getElementById("tipoCampanha")
         
         titulo.innerHTML = respostaObtida.nome;
+        tipoCampanha.innerHTML = respostaObtida.tipoCampanha;
         categoria.innerHTML = respostaObtida.categoriaCampanha;
         descricao.innerHTML = respostaObtida.descricao;
-    }
+        respCamp.innerHTML = respostaObtida.organizacao.nomeFantasia;
+        valorMeta.innerHTML = respostaObtida.financeiroCampanha.valorMeta;
+        valorArrecadado.innerHTML = respostaObtida.financeiroCampanha.valorAtingido;
+        porcentagemAtual.innerHTML = porcentagem;
+        setProgresso(porcentagem)
+      }
 
 // renderizando posts no feed
 const [posts, setPosts] = useState([]);
@@ -132,16 +144,6 @@ useEffect(() => {
   const handleCloseModal = () => setShowModal(false);
 
   // edição de campanha modal
-
-  function atualizarModalEditarCampanha(tituloCadastrado, descricaoCadastrada, categoriaCadastrada, dataFimCadastrada, dataInicioCadastrada, statusCadastrado, tipoCampanhaCadastrado){
-    setTitulo(tituloCadastrado)
-    setCategoria(categoriaCadastrada)
-    setDataFim(dataFimCadastrada)
-    setDescricao(descricaoCadastrada)
-    setDataInicio(dataInicioCadastrada)
-    setStatus(statusCadastrado)
-    setTipoCampanha(tipoCampanhaCadastrado)
-  }
   
 
   const [titulo, setTitulo] = useState('')
@@ -149,8 +151,8 @@ useEffect(() => {
   const [categoria, setCategoria] = useState('')
   const [dataFim, setDataFim] = useState('')
   const [dataInicio, setDataInicio] = useState('')
-  const [status, setStatus] = useState('')
   const [tipoCampanha, setTipoCampanha] = useState('')
+  const [statusCampanha, setStatusCampanha] = useState('')
 
 
 
@@ -173,6 +175,10 @@ useEffect(() => {
     setDataFim(e.target.value)
     console.log(dataFim)
   };
+  const handleChangeTipoCampanha = (e) => {
+    setTipoCampanha(e.target.value)
+  
+  };
 
   // endpoint de edição
 
@@ -182,11 +188,12 @@ useEffect(() => {
       nome: titulo, 
       descricao: descricao,
       categoriaCampanha: categoria,
-      dataFim: dataFim,
-      dataInicio: dataInicio,
-      statusCampanha: status,
-      tipoCampanha: tipoCampanha
+      dataFim: dataFim + "T23:59:00",
+      tipoCampanha: tipoCampanha,
+      statusCampanha: statusCampanha,
+      dataInicio: dataInicio
     }
+    console.log(campanhaEditada)
 
     api.put(`/campanhas/${id}`, campanhaEditada, {
       headers: {
@@ -221,10 +228,10 @@ useEffect(() => {
                 campanha - SP
               </div>
               <div
-                id="responsavelCampanha"
+                
                 className="w-100 text-align-center body-xlarge color-haiti"
               >
-                por Ação de Rua
+                por <span id="responsavelCampanha">Ação de Rua</span>
               </div>
             </div>
             <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
@@ -249,7 +256,7 @@ useEffect(() => {
                   <span>
                   <span>R$ </span>
                   <span id="valorArrecadado">9.999</span>
-                  <span className="body-large"> por mês</span>
+                  <span className="body-large"> Arrecadado</span>
                   </span>
                   <span>
                     <span className="btn-edit d-flex ai-center">
@@ -277,7 +284,7 @@ useEffect(() => {
                             <Form.Control 
                             type="text"
                             name="titulo"
-                            value={titulo}
+                            // value={titulo}
                             onChange={handleChangeTitulo}
                             />
                           </Form.Group>
@@ -290,16 +297,19 @@ useEffect(() => {
                               as="textarea"
                               rows={3}
                               name="descricao"
-                              value={descricao}
                               onChange={handleChangeDescricao}
                               />
                           </Form.Group>
 
                           <Form.Group controlId="formUrlImagem">
                             <Form.Label style={{ fontWeight: 700 }}>
-                              URL da imagem
+                              Tipo da Campanha
                             </Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control
+                            type="text"
+                            name="tipoCampanha"
+                            onChange={handleChangeTipoCampanha}
+                            />
                           </Form.Group>
 
                           <Form.Group controlId="formCategoria">
@@ -309,7 +319,7 @@ useEffect(() => {
                             <Form.Control 
                               type="text"
                               name="categoria"
-                              value={categoria}
+                              // value={categoria}
                               onChange={handleChangeCategoria}
                               />
                           </Form.Group>
@@ -319,9 +329,8 @@ useEffect(() => {
                               Data final da campanha
                             </Form.Label>
                             <Form.Control 
-                            type="text"
+                            type="date"
                             name="dataFim"
-                            value={dataFim}
                             onChange={handleChangeDataFim}
                             />
                           </Form.Group>
@@ -353,7 +362,7 @@ useEffect(() => {
                   <progress
                     className="mmb-32 card-progress-bar"
                     id="file"
-                    value="30"
+                    value={progresso}
                     max="100"
                   ></progress>
                 </div>
@@ -393,7 +402,7 @@ useEffect(() => {
                 </span>
                 <span className="ml-32 d-flex ai-center">
                   <img src={iCategoria} />
-                  <span className="ml-8 body-xsmall">Urbano</span>
+                  <span id="tipoCampanha" className="ml-8 body-xsmall">Urbano</span>
                 </span>
               </div>
               <div>
@@ -418,7 +427,7 @@ useEffect(() => {
                 <div>
                   <div className="mmb-22">
                     <div>
-                      <span className="body-small">Ação de rua</span>
+                      <span id="responsavelCampanha" className="body-small">Ação de rua</span>
                     </div>
                     <div>
                       <span className="body-tiny">19 projetos</span>

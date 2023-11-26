@@ -2,6 +2,7 @@ import { useState } from "react";
 import api from "../../api/api";
 import Anexo from "../../assets/icon/i-anexo.svg"
 import "./Textarea.css"
+import { useParams } from "react-router-dom";
 function Textarea(){
 
     var token  = localStorage.getItem("token")
@@ -16,7 +17,7 @@ function Textarea(){
     const getConteudo = (e) => {
         setConteudoTextarea(e.target.value)
     }
-
+    const { id } = useParams();
     function publicar(e){
         e.preventDefault();
         var dataHoje = new Date()
@@ -27,8 +28,9 @@ function Textarea(){
         var post = {
             titulo: tituloTextarea,
             conteudo:conteudoTextarea,
-            data: dataHoje
+            idCampanha: id
         }
+        console.log(post)
 
         api.post("/posts", post, {
             headers : {

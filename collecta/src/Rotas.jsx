@@ -11,6 +11,7 @@ import Explorar from "./pages/explorar/explorar.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import CriarMissao from "./pages/criar-missao/CriarMissao.jsx";
+import Teste from "./Teste.jsx";
 
 function Rotas() {
   return (
@@ -29,6 +30,7 @@ function Rotas() {
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/dashboard" element={<Dashboard />} /> 
           <Route path="/criar-missao" element={<CriarMissao />} /> 
+          <Route path="/teste" element={<Teste />} /> 
         </Routes>
       </BrowserRouter>
     </>

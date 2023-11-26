@@ -122,7 +122,7 @@ function cadastroOng(){
             alert("Digite o nome fantasia completo")
         } else if(razao.length < 3){
             alert("Digite a razão social completa")
-        } else if(cnpj.length != 11){
+        } else if(cnpj.length != 14){
             alert("Digite um cnpj válido")
         } else if(email.length < 3){
             alert("Email deve ter no minimo 3 caracteres")
@@ -137,13 +137,13 @@ function cadastroOng(){
                 nomeSocial: razao,
                 nomeFantasia: nome,
                 cnpj: cnpj,
-                dataFundacao: dtFund,
+                dataFundacao: dtFund + "T12:00:00",
                 email: email,
                 telefone: telefone,
                 senha : senha
             }
 
-            api.post("/organizacoes", novoUsuario).then((res) =>{
+            api.post("/login/cadastro/organizacao", novoUsuario).then((res) =>{
                 navigateToPage("/login")
             }).catch((erro) => {
                 alert("erro ao cadastrar")
