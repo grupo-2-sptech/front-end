@@ -27,7 +27,13 @@ function Voluntariado(){
             <NavBar/>
             <CampoFiltrar />
             <main className="main">
-                <CardVoluntariado/>
+            <CardVoluntariado
+                nome="Nome da Vaga"
+                descricao="Descrição da Vaga"
+                estado="São Paulo"
+                diaMesAno="01/12/2023"
+                horas="10:00"
+            />
             </main>
         </>
     )

@@ -26,14 +26,11 @@ function InfoCampanha() {
   const { id } = useParams();
 
   useEffect(() => {
-    // Armazenar o ID da campanha no sessionStorage quando a rota mudar
     sessionStorage.setItem('campanhaId', id);
 
-    // Recuperar o ID da campanha do sessionStorage
     const storedCampanhaId = sessionStorage.getItem('campanhaId');
     console.log('ID da campanha armazenado:', storedCampanhaId);
 
-    // Lógica adicional com o ID da campanha, se necessário
   }, [id]);
 
 
