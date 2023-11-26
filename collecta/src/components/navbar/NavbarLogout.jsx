@@ -25,7 +25,9 @@ function NavbarLogout() {
               </Link>
             <Link to={"/explorar"} className="link-sem-decoracao">
                 <section className="header-item body-small d-flex ai-center">
-                  <span className="color-white">Explorar</span>
+                    <Link to="/explorar">
+                      <span className="color-white">Explorar</span>
+                    </Link>
                 </section>
                 </Link>
               <section className="conjunto-barra-busca-projeto d-flex">

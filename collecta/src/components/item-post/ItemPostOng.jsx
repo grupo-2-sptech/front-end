@@ -8,7 +8,24 @@ import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function ItemPostOng() {
+import api from "../../api/api"
+function ItemPostOng({titulo, postId, data, conteudo}){
+
+    var token = localStorage.getItem("token")
+
+    function deletar(id){
+        api.delete(`/posts/${id}`, {
+            headers: {
+                Authorization : `Bearer ${token}`,
+            },
+        }).then((res) => {
+            window.location.reload();
+        }).catch((erro) => {
+            console.log(erro)
+        })
+    }
+
+
     const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
@@ -18,9 +35,12 @@ function ItemPostOng() {
             <div className="cardPost">
                 <div className="headerCard">
                     <div className="tituloPost">
-                        <h2>Nome da ong</h2>
 
-                        <img src={Editar} className="btnEditar" alt="" onClick={handleShowModal} />
+                        <h2>
+                        {titulo}
+                        </h2>
+
+                        <img src={Editar} id="btnEditar" className="btnEditar" alt="Botão azul em forma quadrada com pontas arredondadas e icone de lápis ao centro" onClick={handleShowModal} />
                         <Modal
                             show={showModal}
                             onHide={handleCloseModal}
@@ -51,11 +71,12 @@ function ItemPostOng() {
                         </Modal>
 
 
-                        <img src={Deletar} className="btnDeletar" alt="" />
+                        <img src={Deletar} id="btnDeletar" onClick={() => deletar(postId)} className="btnDeletar" alt="Botão vermelho em forma quadrada com pontas arredondadas e icone de 'X' ao centro" />
+
                     </div>
-                    <span>25/10/2025</span>
+                    <span>{data}</span>
                 </div>
-                <p className="txtPublicacao">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p className="txtPublicacao">{conteudo}</p>
                 <img src={imgPost} className="imgPost" alt="" />
                 <CampoComentario />
                 <Comentario />

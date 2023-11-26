@@ -6,6 +6,7 @@ import "./campanha.css";
 import "../../components/card/Card.css";
 
 function Campanha() {
+
   return (
     <>
       <Navbar />

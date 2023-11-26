@@ -20,7 +20,7 @@ body {
     width: 100%;
 }
 
-.btnGoogle{
+.btnGoogleLogin{
     width: 100%;
     padding: 16px 0 16px 0;
     background-color: var(--white);
@@ -49,3 +49,4 @@ body {
 .w-205px {
     width: 205px;
 }
+

@@ -44,7 +44,7 @@ function Navbar() {
                   </Link>
                 </div>
               </div>
-              <Link to={"/terceiraPagina"} className="link-sem-decoracao">
+              <Link to={"/explorar"} className="link-sem-decoracao">
                 <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
                 </section>

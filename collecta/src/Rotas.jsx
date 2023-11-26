@@ -12,6 +12,8 @@ import Explorar from "./pages/explorar/explorar.jsx"
 import NotFoundPage from "./pages/not-found/NotFoundPage.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
+import CriarMissao from "./pages/criar-missao/CriarMissao.jsx";
+import Teste from "./Teste.jsx";
 
 function Rotas() {
   return (
@@ -25,11 +27,12 @@ function Rotas() {
           <Route path="/info-campanha/:id" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />
           <Route path="/voluntariado" element={<Voluntariado />} />
-          <Route path="/feedOng" element={<FeedOng />} />
-          <Route path="/pagamento" element={<Pagamento />} />
+          <Route path="/feed-ong" element={<FeedOng />} />
+          <Route path="/pagamento/:id" element={<Pagamento />} />
           <Route path="/cadastro-ong" element={<CadastroOng/>}/>
           <Route path="/explorar" element={<Explorar />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} /> 
+          <Route path="/criar-missao/:id" element={<CriarMissao />} /> 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
