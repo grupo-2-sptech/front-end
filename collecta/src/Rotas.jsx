@@ -9,6 +9,7 @@ import FeedOng from "./pages/feed/FeedOng";
 import Pagamento from "./pages/pagamento/Pagamento.jsx";
 import CadastroOng from "./pages/cadastro-ong/CadastroOng"
 import Explorar from "./pages/explorar/explorar.jsx"
+import NotFoundPage from "./pages/not-found/NotFoundPage.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 
@@ -29,6 +30,7 @@ function Rotas() {
           <Route path="/cadastro-ong" element={<CadastroOng/>}/>
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </>
