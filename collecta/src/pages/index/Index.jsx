@@ -30,15 +30,14 @@ function Index() {
     buscarCampanhasContinuas();
   }, []);
 
+  const token = localStorage.getItem("token")
+
   function buscarCampanhasPontuais() {
-    const token =
-      "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlvbGVAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDkzMTU0MiwiZXhwIjoxNzA0NTMxNTQyfQ.K3kEW1ySPMCeVW4rCFT7_6cohK-aQzWw4KryfsiMHQ5G2VF050U76ByNoeIMhClu2smqNpa4Y9s_49dtewWINQ";
+
 
     api
       .get("/campanhas/top3", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+
         params: {
           tipoCampanha: "POR_DATA",
         },
@@ -57,14 +56,11 @@ function Index() {
   }
 
   function buscarCampanhasContinuas() {
-    const token =
-      "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlvbGVAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDkzMTU0MiwiZXhwIjoxNzA0NTMxNTQyfQ.K3kEW1ySPMCeVW4rCFT7_6cohK-aQzWw4KryfsiMHQ5G2VF050U76ByNoeIMhClu2smqNpa4Y9s_49dtewWINQ";
 
+      
     api
       .get("/campanhas/top3", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+
         params: {
           tipoCampanha: "CONTINUA",
         },
@@ -116,21 +112,24 @@ function Index() {
         </div>
         <div className="meu-container">
           <div className="card-box jc-between">
-            {campanhasContinuas.map((campanhaContinua) => (
-              <Link className="link-sem-decoracao" to={`/info-campanha/${campanhaContinua.id}`} key={campanhaContinua.id}>
-                <Card
-                  
-                  titulo={campanhaContinua.nome}
-                  responsavel={campanhaContinua.organizacao.nomeFantasia}
-                  texto={campanhaContinua.descricao}
-                  porcentagem={porcentagem}
-                  valor={campanhaContinua.financeiroCampanha.valorAtingido}
-                  local={campanhaContinua.local}
-                  tag={campanhaContinua.categoriaCampanha}
-                  img={imagens[3]}
-                />
-              </Link>
-            ))}
+          {campanhasContinuas.length === 0 ? (
+      <p>Não tem campanhas</p>
+    ) : (
+      campanhasContinuas.map((campanhaContinua) => (
+        <Link className="link-sem-decoracao" to={`/info-campanha/${campanhaContinua.id}`} key={campanhaContinua.id}>
+          <Card
+            titulo={campanhaContinua.nome}
+            responsavel={campanhaContinua.organizacao.nomeFantasia}
+            texto={campanhaContinua.descricao}
+            porcentagem={porcentagem}
+            valor={campanhaContinua.financeiroCampanha.valorAtingido}
+            local={campanhaContinua.local}
+            tag={campanhaContinua.categoriaCampanha}
+            img={imagens[3]}
+          />
+        </Link>
+      ))
+    )}
           </div>
           <div className="card-heading d-flex jc-between ai-center mmb-32 mt-190">
             <span className="head-medium color-haiti">Campanhas pontuais</span>
@@ -138,20 +137,24 @@ function Index() {
         </div>
         <div className="meu-container">
           <div className="card-box jc-between">
-            {campanhasPontuais.map((campanhaPontual) => (
+          {campanhasPontuais.length === 0 ? (
+          <p>Não tem campanhas</p>
+          ) : (
+            campanhasPontuais.map((campanhaPontual) => (
               <Link className="link-sem-decoracao" to={`/info-campanha/${campanhaPontual.id}`} key={campanhaPontual.id}>
-              <CardPontual
-                titulo={campanhaPontual.nome}
-                responsavel={campanhaPontual.organizacao.nomeFantasia}
-                texto={campanhaPontual.descricao}
-                porcentagem={porcentagem}
-                valor={campanhaPontual.financeiroCampanha.valorAtingido}
-                local={campanhaPontual.local}
-                tag={campanhaPontual.categoriaCampanha}
-                img={imagens[3]}
-              />
+                <CardPontual
+                  titulo={campanhaPontual.nome}
+                  responsavel={campanhaPontual.organizacao.nomeFantasia}
+                  texto={campanhaPontual.descricao}
+                  porcentagem={porcentagem}
+                  valor={campanhaPontual.financeiroCampanha.valorAtingido}
+                  local={campanhaPontual.local}
+                  tag={campanhaPontual.categoriaCampanha}
+                  img={imagens[3]}
+                />
               </Link>
-            ))}
+            ))
+          )}
           </div>
         </div>
 
