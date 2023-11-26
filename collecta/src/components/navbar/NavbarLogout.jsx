@@ -1,10 +1,24 @@
 // import React from "react";
 import Logo from "../../assets/logo/logo-collecta.png";
 import "../../components/navbar/Navbar.css";
+import React, { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
 function NavbarLogout() {
+  const [isTipoConta, setIsTipoConta] = useState(false);
+  
+  const conta = sessionStorage.getItem('tipoConta'); 
+  function buscarTipoConta() {
+    if (conta == 'DOADOR') {
+      setIsTipoConta(true);
+    }
+  }
+
+  useEffect(() => {
+    buscarTipoConta();
+  }, []); 
+
   return (
     <>
       <link

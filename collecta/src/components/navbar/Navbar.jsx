@@ -2,12 +2,34 @@
 import Logo from "../../assets/logo/logo-collecta.png";
 import Perfil from "../../assets/img/perfil.png";
 import "../../components/navbar/Navbar.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [isTipoConta, setIsTipoConta] = useState(0);
+
+  const conta = sessionStorage.getItem("tipoConta");
+  function buscarTipoConta() {
+    if (conta == "DOADOR") {
+      setIsTipoConta(1);
+    } else if (conta == "ORGANIZACAO") {
+        setIsTipoConta(2);
+    }
+  }
+
+  useEffect(() => {
+    buscarTipoConta();
+  }, []);
+  const navigate = useNavigate();
+  function sair() {
+    handleCloseModal();
+    sessionStorage.clear();
+    navigate("/");
+    location.reload();
+  }
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
@@ -32,7 +54,7 @@ function Navbar() {
                 />
               </Link>
               <div class="dropdown">
-                <button
+              {isTipoConta == 2 ? <button
                   class="bg-ice dropdown-toggle border-none br-5 p-8"
                   type="button"
                   id="dropdownMenuButton"
@@ -41,7 +63,8 @@ function Navbar() {
                   aria-expanded="false"
                 >
                   Criar campanha
-                </button>
+                </button> : null}
+                
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                   <Link class="dropdown-item" to={"/criar-campanha"}>
                     Pontual
@@ -72,19 +95,38 @@ function Navbar() {
               </section>
               <section>
                 <div className="icone-perfil">
-                  <img src={Perfil} alt="" className="img-perfil" onClick={handleShowModal}
+                  <img
+                    src={Perfil}
+                    alt=""
+                    className="img-perfil"
+                    onClick={handleShowModal}
                   />
-                  <Modal show={showModal} onHide={handleCloseModal} centered size="sm" style={{ display: "flex", alignItems: "center", marginLeft: "750px", marginTop: "-300px"}}>
+                  <Modal
+                    show={showModal}
+                    onHide={handleCloseModal}
+                    centered
+                    size="sm"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      marginLeft: "750px",
+                      marginTop: "-300px",
+                    }}
+                  >
                     <Modal.Header closeButton>
                       <Modal.Title>Perfil</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                 
-                      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
-                  
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "center",
+                          marginTop: "20px",
+                        }}
+                      >
                         <Button
-                          variant="danger" 
-                          onClick={handleCloseModal}
+                          variant="danger"
+                          onClick={sair}
                           style={{
                             borderRadius: "20px",
                             width: "150px",
@@ -97,10 +139,6 @@ function Navbar() {
                       </div>
                     </Modal.Body>
                   </Modal>
-
-
-
-
                 </div>
               </section>
             </div>

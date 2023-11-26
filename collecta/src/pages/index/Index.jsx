@@ -3,6 +3,7 @@ import "../../../styles/global.css";
 import imagens from "../../assets/img/ImagensExternas";
 
 import NavbarLogout from "../../components/navbar/NavbarLogout";
+import Navbar from "../../components/navbar/Navbar";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
@@ -21,6 +22,20 @@ import { Link } from "react-router-dom";
 import api from "../../api/api";
 
 function Index() {
+  const [isTipoConta, setIsTipoConta] = useState(0);
+  
+  const conta = sessionStorage.getItem('tipoConta'); 
+  function buscarTipoConta() {
+    if (conta == 'DOADOR') {
+      setIsTipoConta(1);
+    } else if (conta == 'ORGANIZACAO') {
+      setIsTipoConta(2);
+    }
+  }
+
+  useEffect(() => {
+    buscarTipoConta();
+  }, []); 
   const [campanhasPontuais, setCampanhasPontuais] = useState([]);
   const [campanhasContinuas, setCampanhasContinuas] = useState([]);
   const [porcentagem, setPorcentagem] = useState(0);
@@ -80,13 +95,7 @@ function Index() {
   }
   return (
     <>
-      <script>
-        {window.addEventListener("scroll", function () {
-          var header = document.querySelector("header");
-          header.classList.toggle("sticky", window.scrollY > 0);
-        })}
-      </script>
-      <NavbarLogout />
+      {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <div className="body-index">
         <div className="hero-container w-100 mmb-100">
           <img src={maos} className="hero-background" />
