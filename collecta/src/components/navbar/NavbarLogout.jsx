@@ -23,11 +23,11 @@ function NavbarLogout() {
                   className="header-logo-icon"
                 />
               </Link>
-              
+            <Link to={"/explorar"} className="link-sem-decoracao">
                 <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
                 </section>
-              
+                </Link>
               <section className="conjunto-barra-busca-projeto d-flex">
                 <section>
                   <input
