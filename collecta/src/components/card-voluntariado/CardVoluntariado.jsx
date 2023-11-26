@@ -44,7 +44,7 @@ function CardVoluntariado(props){
             <div className="card-voluntariado">
                 <img src={Voluntarios} alt="" id="imgVaga" className="img-vaga"/>
                     <div className="tituloCard">
-                        <h2 className="tituloVaga">{props.nome}</h2>
+                        <h2 className="head-xsmall">{props.nome}</h2>
                         <img src={Seta} id="iconBtnSeta" className="btnSeta" alt="Seta apontando para baixo" onClick={mostrarMenos} />
                         <img src={Info} id="iconBtnInfo" className="btnInfo" alt="Botão redondo com letra 'i' centralizada ao meio" onClick={mostrarInformacoes} />
                     </div>
