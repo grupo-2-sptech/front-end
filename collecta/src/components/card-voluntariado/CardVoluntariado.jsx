@@ -5,6 +5,8 @@ import Coracao from "../../assets/icon/btn-heart.svg"
 import Next from "../../assets/icon/btn-next.svg"
 import Back from "../../assets/icon/btn-back.svg"
 import Seta from "../../assets/icon/i-setabottom.svg"
+import iDeletar from "../../assets/icon/i-deletar.svg"
+import iEditar from "../../assets/icon/i-editar.svg"
 
 function CardVoluntariado(){
 
@@ -45,7 +47,11 @@ function CardVoluntariado(){
 
     return(
         <>
-            <div className="card-voluntariado">
+            <div className="card-voluntariado p-16">
+                <div className="d-flex icon-gerenciar-missao w-100">
+                <img src={iDeletar} alt="Ícone com uma lixeira" className="margin-right-10px cursor-pointer w-30px" />
+                <img src={iEditar} alt="Ícone com um lápis" className="w-30px cursor-pointer" />
+                </div>
                 <img src={Voluntarios} alt="" id="imgVaga" className="img-vaga"/>
                     <div className="tituloCard">
                         <h2 className="tituloVaga">Amigo que faz - Cozinheira</h2>

@@ -17,7 +17,7 @@ function Voluntariado(){
             console.log(erro);
         })
     }
-    window.onload(buscarVagas)
+    
 
     return(
         <>
