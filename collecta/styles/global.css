@@ -475,3 +475,8 @@ body {
   -webkit-line-clamp: 3; /* Número de linhas antes da truncagem */
   text-overflow: ellipsis;
 }
+
+.link-sem-decoracao {
+    text-decoration: none;
+    outline: none;
+}
