@@ -480,3 +480,8 @@ body {
     text-decoration: none;
     outline: none;
 }
+
+.link-sem-decoracao:hover {
+    text-decoration: none;
+    outline: none;
+}

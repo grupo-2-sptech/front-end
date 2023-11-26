@@ -21,7 +21,7 @@ function Rotas() {
           <Route path="/criar-campanha" element={<CriarCampanhaPontual />} />
           <Route path="/criar-campanha-recorrente" element={<CampanhaRecorrente />} />
           <Route path="/cadastro-doador" element={<Cadastro />} />
-          <Route path="/info-campanha" element={<InfoCampanha />} />
+          <Route path="/info-campanha/:id" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />
           <Route path="/voluntariado" element={<Voluntariado />} />
           <Route path="/feedOng" element={<FeedOng />} />
