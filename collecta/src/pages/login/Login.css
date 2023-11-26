@@ -45,3 +45,7 @@ body {
     position: relative;
     overflow: hidden;
 }
+
+.w-205px {
+    width: 205px;
+}
