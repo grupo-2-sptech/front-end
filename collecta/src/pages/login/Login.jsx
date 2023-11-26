@@ -11,6 +11,7 @@ function Login() {
   const navigate = useNavigate();
   const navigateToPage = (path) =>{
       navigate(path)
+  }
 
   function navegarCadastroOng() {
     window.location.href = '/cadastro-ong';
@@ -82,12 +83,12 @@ function Login() {
           </div>
 
 
-          <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32 mg-top-5">
+          <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32 ">
 
             ENTRAR
           </button>
           {/* <Link to={"/cadastro-doador"}> */}
-          <span className="link-underline text-align-center d-flex jc-center color-science mmb-32" data-toggle="modal" data-target="#ExemploModalCentralizado">Não tem uma conta? Cadastre-se aqui!</span>
+          <span className="link-underline text-align-center d-flex jc-center color-science mmb-32 mg-top-5" data-toggle="modal" data-target="#ExemploModalCentralizado">Não tem uma conta? Cadastre-se aqui!</span>
           {/* </Link> */}
           <div className="ou-container d-flex jc-center ai-center color-haiti mmb-32">
             <div className="hr-ou bg-haiti"></div>
@@ -105,4 +106,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Login

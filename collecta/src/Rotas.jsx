@@ -1,5 +1,5 @@
 import Index from "./pages/index/Index";
-import CriarCampanhaPontual from "./pages/campanha/campanha.jsx";
+import CriarCampanhaPontual from "./pages/campanha/Campanha.jsx";
 import CampanhaRecorrente from "./pages/campanha/campanha-recorrente.jsx";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import Login from "./pages/login/Login.jsx";
@@ -13,7 +13,7 @@ import NotFoundPage from "./pages/not-found/NotFoundPage.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
 import CriarMissao from "./pages/criar-missao/CriarMissao.jsx";
-import Teste from "./Teste.jsx";
+
 
 function Rotas() {
   return (

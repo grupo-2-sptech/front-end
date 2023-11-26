@@ -8,7 +8,6 @@ import NavbarLogout from "../../components/navbar/NavbarLogout.jsx"
 import { Link } from 'react-router-dom';
 import "./CadastroOng.css"
 import "../../../styles/global.css"
-import { Link } from "react-router-dom"
 import { useNavigate } from "react-router"
 import api from "../../api/api.js"
 
