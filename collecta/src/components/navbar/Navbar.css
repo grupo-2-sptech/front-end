@@ -62,7 +62,7 @@
     height: 50px;
 }
 
-header.sticky {
+/* header.sticky {
     -webkit-transition: 0.3s;
     transition: .3s;
     z-index: 2; 
@@ -72,7 +72,7 @@ header.sticky {
     backdrop-filter: blur( 8px );
     background-color: rgba(0, 0, 0, 0.346);
     -webkit-backdrop-filter: blur( 8px );
-}
+} */
 
 .logo-nome-collectiva {
     width: 300px;

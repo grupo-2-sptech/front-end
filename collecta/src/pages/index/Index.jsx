@@ -139,8 +139,8 @@ function Index() {
         <div className="meu-container">
           <div className="card-box jc-between">
             {campanhasPontuais.map((campanhaPontual) => (
+              <Link className="link-sem-decoracao" to={`/info-campanha/${campanhaPontual.id}`} key={campanhaPontual.id}>
               <CardPontual
-                key={campanhaPontual.id}
                 titulo={campanhaPontual.nome}
                 responsavel={campanhaPontual.organizacao.nomeFantasia}
                 texto={campanhaPontual.descricao}
@@ -150,6 +150,7 @@ function Index() {
                 tag={campanhaPontual.categoriaCampanha}
                 img={imagens[3]}
               />
+              </Link>
             ))}
           </div>
         </div>
