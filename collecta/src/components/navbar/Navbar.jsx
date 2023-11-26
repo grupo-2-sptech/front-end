@@ -24,12 +24,27 @@ function Navbar() {
                   className="header-logo-icon"
                 />
               </Link>
-              <Link to={"/segundaPagina"}>
-                <section className="header-item body-small d-flex ai-center">
-                  <span className="color-white">Criar campanha</span>
-                </section>
-              </Link>
-              <Link to={"/terceiraPagina"}>
+              <div class="dropdown">
+                <button
+                  class="bg-ice dropdown-toggle border-none br-5 p-8"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Criar campanha
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <Link class="dropdown-item" to={"/criar-campanha"}>
+                    Pontual
+                  </Link>
+                  <Link class="dropdown-item" to={"/criar-campanha-recorrente"}>
+                    Recorrente
+                  </Link>
+                </div>
+              </div>
+              <Link to={"/terceiraPagina"} className="link-sem-decoracao">
                 <section className="header-item body-small d-flex ai-center">
                   <span className="color-white">Explorar</span>
                 </section>
