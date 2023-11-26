@@ -1,25 +1,31 @@
-import "./NotFoundPage.css"
+import "./NotFoundPage.css";
+import { Link } from "react-router-dom";
 
 function NotFoundPage() {
-    return (
-        <>
-         <div id="clouds">
-            <div class="cloud x1"></div>
-            <div class="cloud x1_5"></div>
-            <div class="cloud x2"></div>
-            <div class="cloud x3"></div>
-            <div class="cloud x4"></div>
-            <div class="cloud x5"></div>
+  return (
+    <>
+      <div className="body-nf color-haiti">
+        <h1 className="h1-nf">Erro 404</h1>
+        <p class="zoom-area">
+          <span>A PÁGINA BUSCADA <b>NÃO FOI ENCONTRADA!</b></span>
+        </p>
+        <section class="error-container">
+          <span>4</span>
+          <span>
+            <span class="screen-reader-text">0</span>
+          </span>
+          <span>4</span>
+        </section>
+        <div class="link-container">
+            <Link to={"/"}>
+          <span className="color-science">
+            Voltar para a página inicial
+            </span>
+            </Link>
         </div>
-        <div class='c'>
-            <div class='_404 mmb-32'>404</div>
-            <hr className="mmb-32"/>
-            <div class='_1 mmb-16'>A PÁGINA</div>
-            <div class='_2 mmb-32'>NÃO FOI ENCONTRADA</div>
-            <a class='btn' href='#'>VOLTAR PARA TELA INICIAL</a>
-        </div>
-        </>
-    )
+      </div>
+    </>
+  );
 }
 
 export default NotFoundPage;
