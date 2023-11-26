@@ -23,6 +23,12 @@ function Voluntariado(){
         <>
             <NavBar/>
             <CampoFiltrar />
+            <div className="container-nova-missao w-100 d-flex jc-center mt-32">
+                <div className="nova-missao d-flex jc-center ai-center br-10 head-xsmall fd-column">
+                    <span>Adicionar missão</span>
+                    <span>+</span>
+                </div>
+            </div>
             <main className="main">
                 <CardVoluntariado/>
             </main>
