@@ -2,10 +2,17 @@
 import Logo from "../../assets/logo/logo-collecta.png";
 import Perfil from "../../assets/img/perfil.png";
 import "../../components/navbar/Navbar.css";
+import React, { useState } from "react";
+import { Modal, Button, Form } from "react-bootstrap";
 
 import { Link } from "react-router-dom";
 
 function Navbar() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => setShowModal(true);
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <>
       <link
@@ -65,7 +72,35 @@ function Navbar() {
               </section>
               <section>
                 <div className="icone-perfil">
-                  <img src={Perfil} alt="" className="img-perfil" />
+                  <img src={Perfil} alt="" className="img-perfil" onClick={handleShowModal}
+                  />
+                  <Modal show={showModal} onHide={handleCloseModal} centered size="sm" style={{ display: "flex", alignItems: "center", marginLeft: "750px", marginTop: "-300px"}}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Perfil</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                 
+                      <div style={{ display: "flex", justifyContent: "center", marginTop: "20px" }}>
+                  
+                        <Button
+                          variant="danger" 
+                          onClick={handleCloseModal}
+                          style={{
+                            borderRadius: "20px",
+                            width: "150px",
+                            display: "flex",
+                            justifyContent: "center",
+                          }}
+                        >
+                          Sair
+                        </Button>
+                      </div>
+                    </Modal.Body>
+                  </Modal>
+
+
+
+
                 </div>
               </section>
             </div>
