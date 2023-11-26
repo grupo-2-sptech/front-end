@@ -24,7 +24,7 @@ function Rotas() {
           <Route path="/cadastro-doador" element={<Cadastro />} />
           <Route path="/info-campanha/:id" element={<InfoCampanha />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/voluntariado" element={<Voluntariado />} />
+          <Route path="/voluntariado/:id" element={<Voluntariado />} />
           <Route path="/feedOng" element={<FeedOng />} />
           <Route path="/pagamento" element={<Pagamento />} />
           <Route path="/cadastro-ong" element={<CadastroOng/>}/>

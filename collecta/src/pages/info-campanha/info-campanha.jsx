@@ -11,14 +11,32 @@ import iFace from "../../assets/icon/i-face.svg";
 import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
 import iEdit from "../../assets/icon/i-edit.svg";
-import React, { useState } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+
 
 function InfoCampanha() {
   const [showModal, setShowModal] = useState(false);
-
+  
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+  
+  const { id } = useParams();
+
+  useEffect(() => {
+    // Armazenar o ID da campanha no sessionStorage quando a rota mudar
+    sessionStorage.setItem('campanhaId', id);
+
+    // Recuperar o ID da campanha do sessionStorage
+    const storedCampanhaId = sessionStorage.getItem('campanhaId');
+    console.log('ID da campanha armazenado:', storedCampanhaId);
+
+    // Lógica adicional com o ID da campanha, se necessário
+  }, [id]);
+
+
 
   return (
     <>
@@ -176,9 +194,11 @@ function InfoCampanha() {
                 <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
                   Doar
                 </button>
-                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
-                  Voluntariar-se
-                </button>
+                <Link to={`/voluntariado/${id}`}>
+                  <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
+                    Voluntariar-se
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -246,10 +266,10 @@ function InfoCampanha() {
         </div>
       </div>
       <div className="meu-container">
-        <ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul className="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="ex-with-icons-tab-1"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-1"
@@ -257,12 +277,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-1"
               aria-selected="true"
             >
-              <i class="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
+              <i className="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-2"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-2"
@@ -270,12 +290,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-2"
               aria-selected="false"
             >
-              <i class="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
+              <i className="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-3"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-3"
@@ -283,14 +303,14 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-3"
               aria-selected="false"
             >
-              <i class="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
+              <i className="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
             </a>
           </li>
         </ul>
 
-        <div class="tab-content" id="ex-with-icons-content">
+        <div className="tab-content" id="ex-with-icons-content">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="ex-with-icons-tabs-1"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-1"
@@ -328,7 +348,7 @@ function InfoCampanha() {
             </div>
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex-with-icons-tabs-2"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-2"
@@ -336,7 +356,7 @@ function InfoCampanha() {
             Tab 2 content
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex-with-icons-tabs-3"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-3"
