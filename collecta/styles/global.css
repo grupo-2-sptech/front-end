@@ -468,6 +468,10 @@ body {
     font-weight: 700;
 }
 
+.mg-top-5{
+    margin-top: 5%;
+
+}
 .truncate-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -484,4 +488,5 @@ body {
 .link-sem-decoracao:hover {
     text-decoration: none;
     outline: none;
+
 }

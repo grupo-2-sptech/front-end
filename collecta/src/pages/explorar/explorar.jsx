@@ -1,54 +1,66 @@
 import "../../../styles/global.css";
 
 import imagens from "../../assets/img/ImagensExternas";
-
+import "./explorar.css"
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
-
 import "../index/Index.css";
-import "../../components/card/Card.css";
-
+import "../../components/card/card.css";
+import { useEffect, useState } from "react";
+import api from "../../api/api.js"
+import { useNavigate } from "react-router";
+import Footer from "../../components/footer/Footer.jsx";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import iSelect from "../../assets/icon/i-select-box.svg";
-// import { useEffect, useState } from "react";
-// import api from "../../api/api.js"
-
 
 function Index() {
+  var token = localStorage.getItem('token');
+ 
+  const [campanhas, setCampanhas] = useState([]);
+  // var qtdCampanhas = document.getElementById("qtdCampanhas")
+  const [qtdCampanhas, setQtdCampanhas] = useState(0);
 
-  // var token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjcmlzdGhpYW4uc2lsdmFAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDE3NzM4OCwiZXhwIjoxNzAzNzc3Mzg4fQ.FHVM1Hc21LQbIs0GlqLq4ZyEcqd9vESqTKobZUbXPwtPeSFn--89kvykXY-G6f1dAz8TlzUPJF1smC_ShdXcIQ';
+  const [genero, setGenero] = useState('')
 
-  // const [campanhas, setCampanhas] = useState([]);
-
-  // useEffect(() => {
-  //   listar();
-  //   }, []);
-
-  //   function listar() {
-  //     api.get("/campanhas", {
-  //       headers: {
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //     })
-  //     .then((respostaObtida) => {
-  //       console.log(respostaObtida);
-  //       console.log(respostaObtida.status);
-  //       console.log(respostaObtida.data);
-  //       setCampanhas(respostaObtida.data)
-  //     })
-  //     .catch((erroOcorrido) => { 
-  //      console.log(erroOcorrido);
-  //     })
-  //   }
-  //   console.log(campanhas)
+  function mudarGenero(e){
+    setGenero(e.target.value)
+  }
 
 
+  useEffect(() => {
+    listar();
+    }, [genero]);
 
-  const p = 54;
-  const p1 = 24;
-  const p2 = 19;
-  const p3 = 129;
+    function listar() {
+      var corpo = "SAUDE"
+      api.get(`/campanhas/genero/${genero}`,  {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+      )
+      .then((respostaObtida) => {
+        setCampanhas(respostaObtida.data)
+        setQtdCampanhas(respostaObtida.data.length);
+   
+      })
+      .catch((erroOcorrido) => { 
+       console.log(erroOcorrido);
+       if(erroOcorrido.status == 404){
+        console.log("Não foi encontrado campanha deste genero")
+       }
+      })
+    }
+
+
+    const navigate = useNavigate();
+    const navigateToPage = (path) =>{
+        navigate(path)
+    }
+
+
+
   return (
     <>
       <script>
@@ -65,107 +77,56 @@ function Index() {
         <div className="container">
           <div className="box-projetos">
             <span className="box-projetos-text">Quero ver projetos de</span>
-            <span className="box-select-box">
-              <span className="selected">Animais</span>
-              <img className="select-box" src={iSelect}/>
-            </span>
+            <select value={genero} onChange={mudarGenero} className="box-select-box">
+              <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
+              <option value="ALIMENTACAO">Alimentação</option>
+              <option value="ANIMAIS">Animais</option>
+              <option value="ARRECADACAO_DE_FUNDOS">Arrecadação de Fundos</option>
+              <option value="CRIANCAS">Crianças</option>
+              <option value="COMBATE_A_POBREZA">Combate a Pobreza</option>
+              <option value="CULTURA_E_ARTE">Cultura e Arte</option>
+              <option value="EDUCACAO">Educação</option>
+              <option value="EMPREENDEDORISMO">Empreendedorismo</option>
+              <option value="ESPORTES">Esportes</option>
+              <option value="HABITACAO">Habitação</option>
+              <option value="IDOSOS">Idosos</option>
+              <option value="IGUALDADE_DE_GENERO">Igualdade de Genero</option>
+              <option value="INOVACAO_SOCIAL">Inovação Social</option>
+              <option value="MEIO_AMBIENTE">Meio Ambiente</option>
+              <option value="SAUDE">Saúde</option>
+              <option value="SAUDE_MENTAL">Saúde Mental</option>
+              <option value="TECNOLOGIA">Tecnologia</option>
+              <option value="OUTROS">Outros</option>
+            </select>
           </div>
-          <div className="projetos-encontrados">xx projetos encontrados</div>
+          <div className="projetos-encontrados"><span id="qtdCampanhas">{qtdCampanhas}</span> projetos encontrados:</div>
         </div>
         <div className="container">
           <div className="card-box jc-between">
-          {/* {campanhas?.map((campanha) => (
-                            <Card
-                              key={campanha.id}
-                              titulo="campanha.nome"
-                              responsavel="AUmigos Leais"
-                              texto="camapanha.descricao"
-                              porcentagem={p}
-                              valor="7.253"
-                              local="São Paulo, SP"
-                              tag="{campanha.categoriaCampanha}"
-                              img={imagens[4]}
-                            />
-                    ))} */}
-            <Card
-              titulo="Projeto AUjuda"
-              responsavel="AUmigos Leais"
-              texto="Alimentando animais na rua de São Paulo com iniciativa da ETEC de Guaianases. Nossos animais de rua merecem tanto amor quanto qualquer outro animal."
-              porcentagem={p}
-              valor="7.253"
-              local="São Paulo, SP"
-              tag="Animais"
-              img={imagens[4]}
-            />
-
-            <Card
-              titulo="Abrace Marmitada"
-              responsavel="Instituto Marmitada"
-              texto="Fazendo o bem sem olhar a quem."
-              porcentagem={p1}
-              valor="46.168"
-              local="Maceió, Alagoas"
-              tag="Alimentação"
-              img={imagens[2]}
-            />
-
-            <Card
-              titulo="Adote uma muda"
-              responsavel="Instituto Mata Atlântica"
-              texto="Vamos juntos promover a recuperação e a preservação de matas nativas e suas nascentes!"
-              porcentagem={p2}
-              valor="5.312"
-              local="Santa Cruz da Baixa Verde - PE"
-              tag="Socioambiental"
-              img={imagens[5]}
-            />
-          </div>
-
-        </div>
-        <div className="container">
-          <div className="card-box jc-between">
-            <CardPontual
-              titulo="Adapta"
-              responsavel="Instituto Camaleão"
-              texto="Reabilitação e inclusão para pessoas com câncer de cabeça e pescoço"
-              porcentagem={p}
-              valor="15.123"
-              local="Santa Cruz da Baixa Verde - PE"
-              tag="Saúde"
-              dias="18"
-              img={imagens[3]}
-            />
-            <CardPontual
-              titulo="Ação de rua - SP"
-              responsavel="Ação de rua - SP"
-              texto="Ação de combate à fome nas ruas de São Paulo"
-              porcentagem={p3}
-              valor="120.239"
-              dias="90"
-              local="Santa Cruz da Baixa Verde - PE"
-              tag="Rua"
-              img={imagens[0]}
-            />
-
-
-
-            <CardPontual
-              titulo="Banho de dignidade"
-              responsavel="Amigos da Rua e Seus Pets"
-              texto="Comprar um ônibus e adequá-lo para que moradores de rua tomem banho, cortem cabelo, façam barba, etc"
-              porcentagem={p2}
-              valor="13.623"
-              local="Santa Cruz da Baixa Verde - PE"
-              tag="Rua"
-              dias="55"
-              img={imagens[1]}
-            />
+          {campanhas && campanhas.length > 0 ? (
+                campanhas.map((campanha) => (
+                  <Card
+                    key={campanha.id}
+                    titulo={campanha.nome}
+                    responsavel={campanha.organizacao.nomeFantasia}
+                    texto={campanha.descricao}
+                    porcentagem={(campanha.financeiroCampanha.valorAtingido * 100) / campanha.financeiroCampanha.valorMeta}
+                    valor={campanha.financeiroCampanha.valorAtingido}
+                    local="São Paulo, SP"
+                    tag={campanha.categoriaCampanha}
+                    img={imagens[4]}
+                    onClick={() => navigateToPage(`/info-campanha/${campanha.id}`)}
+                  />
+                ))
+                
+              ) : (
+                <p className="txtStatus204">Nenhuma campanha encontrada</p>
+              )}
+            
           </div>
         </div>
 
-        <footer className="footer bg-chambray mt-128 d-flex jc-center ai-center">
-          <img src={logoNome} className="logo-nome-collectiva" />
-        </footer>
+        <Footer/>
       </div>
     </>
   )

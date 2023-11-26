@@ -1,5 +1,7 @@
 import Navbar from "../../components/navbar/NavbarLogout";
-import "./info-campanha.css";
+import ItemPostOng from "../../components/item-post/ItemPostOng";
+import Textarea from "../../components/textarea-feed/Textarea";
+
 import "../../../styles/global.css";
 import iMissao from "../../assets/icon/i-missao.svg";
 import thumb from "../../assets/img/acao.png";
@@ -11,22 +13,209 @@ import iFace from "../../assets/icon/i-face.svg";
 import iTwitter from "../../assets/icon/i-twitter.svg";
 import iInstagram from "../../assets/icon/i-instagram.svg";
 import iEdit from "../../assets/icon/i-edit.svg";
-import React, { useState } from "react";
+
 import { Modal, Button, Form } from "react-bootstrap";
 
+import api from "../../api/api";
+import Footer from "../../components/footer/Footer";
+import  React, { useEffect, useState } from 'react';
+import { useParams } from "react-router";
+import { useNavigate } from "react-router-dom";
+import "./info-campanha.css";
+import NavbarLogout from "../../components/navbar/NavbarLogout.jsx";
+
+
 function InfoCampanha() {
+  var token = localStorage.getItem('token');
+  var tipoConta = localStorage.getItem('tipoConta');
+  
+  // if(tipoConta == "DOADOR"){
+  //   var textarea = document.getElementById("campoCriarPubli")
+  //   var deletar = document.getElementById("btnDeletar")
+  //   var editar = document.getElementById("btnEditar")
+  //   textarea.style.display = 'none'
+  //   editar.style.display = 'none'
+  //   deletar.style.display = 'none'
+  // }
+
+  const navigate = useNavigate();
+  const navigateToPage = (path) =>{
+      navigate(path)
+  }
+
+  // função para copiar url em um botão
+
+    const [url, setUrl] = useState(window.location.href);
+  
+    const copiarParaAreaDeTransferencia = async () => {
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch (err) {
+        console.error('Erro ao copiar para a área de transferência:', err);
+      }
+    };
+  
+
+
+
+  // pegando os dados da campanha
+  const { id } = useParams();
+
+
+  api.get(`/campanhas/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  )
+  .then((respostaObtida) => {
+    atualizarInfo(respostaObtida.data);
+    // setDataInicio(respostaObtida.data.dataInicio)
+    // setStatusCampanha(respostaObtida.data.statusCampanha)
+  })
+  .catch((erroOcorrido) => { 
+     console.log(erroOcorrido);
+    })
+
+const [progresso, setProgresso] = useState(0)
+    function atualizarInfo(respostaObtida){
+        var porcentagem = (respostaObtida.financeiroCampanha.valorAtingido * 100) / respostaObtida.financeiroCampanha.valorMeta;
+        var titulo = document.getElementById("tituloCampanha")
+        var categoria = document.getElementById("descricaoCampanha")
+        var descricao = document.getElementById("descricaoProjeto")
+        var respCamp = document.getElementById("responsavelCampanha")
+        var valorMeta = document.getElementById("valorMeta")
+        var valorArrecadado = document.getElementById("valorArrecadado")
+        var porcentagemAtual = document.getElementById("porcentagemAtual")
+        var tipoCampanha = document.getElementById("tipoCampanha")
+        
+        titulo.innerHTML = respostaObtida.nome;
+        tipoCampanha.innerHTML = respostaObtida.tipoCampanha;
+        categoria.innerHTML = respostaObtida.categoriaCampanha;
+        descricao.innerHTML = respostaObtida.descricao;
+        respCamp.innerHTML = respostaObtida.organizacao.nomeFantasia;
+        valorMeta.innerHTML = respostaObtida.financeiroCampanha.valorMeta;
+        valorArrecadado.innerHTML = respostaObtida.financeiroCampanha.valorAtingido;
+        porcentagemAtual.innerHTML = porcentagem;
+        setProgresso(porcentagem)
+      }
+
+// renderizando posts no feed
+const [posts, setPosts] = useState([]);
+
+useEffect(() => {
+  listar();
+  }, []);
+
+  function listar() {
+    api.get("/posts", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+    )
+    .then((respostaObtida) => {
+      setPosts(respostaObtida.data)
+
+ 
+    })
+    .catch((erroOcorrido) => { 
+     console.log(erroOcorrido);
+    })
+  }
+
+  // conversão de data 
+
+  function formatarData(dataString) {
+    const data = new Date(dataString);
+  
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    };
+  
+    return new Intl.DateTimeFormat('pt-BR', options).format(data);
+  }
+
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
 
+  // edição de campanha modal
+  
+
+  const [titulo, setTitulo] = useState('')
+  const [descricao, setDescricao] = useState('')
+  const [categoria, setCategoria] = useState('')
+  const [dataFim, setDataFim] = useState('')
+  const [dataInicio, setDataInicio] = useState('')
+  const [tipoCampanha, setTipoCampanha] = useState('')
+  const [statusCampanha, setStatusCampanha] = useState('')
+
+
+
+  const handleChangeTitulo = (e) => {
+    setTitulo(e.target.value)
+    console.log(titulo)
+  };
+
+  const handleChangeDescricao = (e) => {
+    setDescricao(e.target.value)
+    console.log(descricao)
+  };
+
+  const handleChangeCategoria = (e) => {
+    setCategoria(e.target.value)
+    console.log(categoria)
+  };
+
+  const handleChangeDataFim = (e) => {
+    setDataFim(e.target.value)
+    console.log(dataFim)
+  };
+  const handleChangeTipoCampanha = (e) => {
+    setTipoCampanha(e.target.value)
+  
+  };
+
+  // endpoint de edição
+
+  function editarCampanha(){
+    console.log("editando")
+    var campanhaEditada = {
+      nome: titulo, 
+      descricao: descricao,
+      categoriaCampanha: categoria,
+      dataFim: dataFim + "T23:59:00",
+      tipoCampanha: tipoCampanha,
+      statusCampanha: statusCampanha,
+      dataInicio: dataInicio
+    }
+    console.log(campanhaEditada)
+
+    api.put(`/campanhas/${id}`, campanhaEditada, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      },
+    }).then((res) => {
+      alert("editou")
+      handleCloseModal()
+    }).catch((erro) => {
+      console.log(erro)
+    })
+
+  }
+
+
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
-            <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
+            <button onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
               <span>
                 <img src={iMissao} />
               </span>
@@ -37,13 +226,13 @@ function InfoCampanha() {
                 id="tituloCampanha"
                 className="w-100 text-align-center head-medium color-haiti"
               >
-                Ação de Rua - SP
+                campanha - SP
               </div>
               <div
-                id="responsavelCampanha"
+                
                 className="w-100 text-align-center body-xlarge color-haiti"
               >
-                por Ação de Rua
+                por <span id="responsavelCampanha">Ação de Rua</span>
               </div>
             </div>
             <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
@@ -68,7 +257,7 @@ function InfoCampanha() {
                   <span>
                   <span>R$ </span>
                   <span id="valorArrecadado">9.999</span>
-                  <span className="body-large"> por mês</span>
+                  <span className="body-large"> Arrecadado</span>
                   </span>
                   <span>
                     <span className="btn-edit d-flex ai-center">
@@ -93,42 +282,65 @@ function InfoCampanha() {
                             <Form.Label style={{ fontWeight: 700 }}>
                               Título da campanha
                             </Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control 
+                            type="text"
+                            name="titulo"
+                            // value={titulo}
+                            onChange={handleChangeTitulo}
+                            />
                           </Form.Group>
 
                           <Form.Group controlId="formDescricao">
                             <Form.Label style={{ fontWeight: 700 }}>
                               Descrição da campanha
                             </Form.Label>
-                            <Form.Control as="textarea" rows={3} />
+                            <Form.Control
+                              as="textarea"
+                              rows={3}
+                              name="descricao"
+                              onChange={handleChangeDescricao}
+                              />
                           </Form.Group>
 
                           <Form.Group controlId="formUrlImagem">
                             <Form.Label style={{ fontWeight: 700 }}>
-                              URL da imagem
+                              Tipo da Campanha
                             </Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control
+                            type="text"
+                            name="tipoCampanha"
+                            onChange={handleChangeTipoCampanha}
+                            />
                           </Form.Group>
 
                           <Form.Group controlId="formCategoria">
                             <Form.Label style={{ fontWeight: 700 }}>
                               Categoria da campanha
                             </Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control 
+                              type="text"
+                              name="categoria"
+                              // value={categoria}
+                              onChange={handleChangeCategoria}
+                              />
                           </Form.Group>
 
                           <Form.Group controlId="formUtilizacaoDinheiro">
                             <Form.Label style={{ fontWeight: 700 }}>
-                              Utilização do dinheiro doado
+                              Data final da campanha
                             </Form.Label>
-                            <Form.Control type="text" />
+                            <Form.Control 
+                            type="date"
+                            name="dataFim"
+                            onChange={handleChangeDataFim}
+                            />
                           </Form.Group>
                         </Form>
                       </Modal.Body>
                       <Modal.Footer style={{ justifyContent: "center" }}>
                         <Button
                           variant="primary"
-                          onClick={handleCloseModal}
+                          onClick={editarCampanha}
                           style={{
                             borderRadius: "20px",
                             width: "150px",
@@ -151,7 +363,7 @@ function InfoCampanha() {
                   <progress
                     className="mmb-32 card-progress-bar"
                     id="file"
-                    value="30"
+                    value={progresso}
                     max="100"
                   ></progress>
                 </div>
@@ -173,7 +385,7 @@ function InfoCampanha() {
                 </div>
               </div>
               <div className="container-btn-campanha d-flex jc-between">
-                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
+                <button onClick={() => navigateToPage(`/pagamento/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
                   Doar
                 </button>
                 <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
@@ -191,7 +403,7 @@ function InfoCampanha() {
                 </span>
                 <span className="ml-32 d-flex ai-center">
                   <img src={iCategoria} />
-                  <span className="ml-8 body-xsmall">Urbano</span>
+                  <span id="tipoCampanha" className="ml-8 body-xsmall">Urbano</span>
                 </span>
               </div>
               <div>
@@ -202,7 +414,7 @@ function InfoCampanha() {
                 </div>
                 <div>
                   <span className="body-medium">Compartilhar</span>
-                  <button className="btn-copiar body-tiny bg-seashell">
+                  <button onClick={copiarParaAreaDeTransferencia} className="btn-copiar body-tiny bg-seashell">
                     COPIAR LINK
                   </button>
                 </div>
@@ -216,7 +428,7 @@ function InfoCampanha() {
                 <div>
                   <div className="mmb-22">
                     <div>
-                      <span className="body-small">Ação de rua</span>
+                      <span id="responsavelCampanha" className="body-small">Ação de rua</span>
                     </div>
                     <div>
                       <span className="body-tiny">19 projetos</span>
@@ -246,10 +458,10 @@ function InfoCampanha() {
         </div>
       </div>
       <div className="meu-container">
-        <ul class="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
-          <li class="nav-item" role="presentation">
+        <ul className="nav nav-tabs mmb-3" id="ex-with-icons" role="tablist">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link active"
+              className="nav-link active"
               id="ex-with-icons-tab-1"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-1"
@@ -257,12 +469,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-1"
               aria-selected="true"
             >
-              <i class="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
+              <i className="fa fa-thumb-tack icon-tab" aria-hidden="true"></i>Sobre
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-2"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-2"
@@ -270,12 +482,12 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-2"
               aria-selected="false"
             >
-              <i class="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
+              <i className="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
             </a>
           </li>
-          <li class="nav-item" role="presentation">
+          <li className="nav-item" role="presentation">
             <a
-              class="nav-link"
+              className="nav-link"
               id="ex-with-icons-tab-3"
               data-mdb-toggle="tab"
               href="#ex-with-icons-tabs-3"
@@ -283,14 +495,14 @@ function InfoCampanha() {
               aria-controls="ex-with-icons-tabs-3"
               aria-selected="false"
             >
-              <i class="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
+              <i className="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
             </a>
           </li>
         </ul>
 
-        <div class="tab-content" id="ex-with-icons-content">
+        <div className="tab-content" id="ex-with-icons-content">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="ex-with-icons-tabs-1"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-1"
@@ -299,7 +511,7 @@ function InfoCampanha() {
               <div className="head-xsmall mmb-32">
                 <span>O projeto</span>
               </div>
-              <div className="body-medium">
+              <div id="descricaoProjeto" className="body-medium">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
                 maxime quo deleniti nisi aspernatur non eveniet possimus
                 delectus tenetur aliquid pariatur ipsam consequatur, sunt,
@@ -328,15 +540,29 @@ function InfoCampanha() {
             </div>
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade campoFeed"
             id="ex-with-icons-tabs-2"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-2"
           >
-            Tab 2 content
+            <Textarea/>
+            {posts && posts.length > 0 ? (
+                posts.map((post) => (
+                  <ItemPostOng
+                    key={post.id}
+                    postId={post.id}
+                    titulo={post.titulo}
+                    nomeOng="AUmigos Leais"
+                    conteudo={post.conteudo}
+                    data={formatarData(post.data)}
+                  />
+                ))
+              ) : (
+                <p className="txtNoContent">Não há publicações no feed</p>
+              )}
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="ex-with-icons-tabs-3"
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-3"
@@ -367,8 +593,9 @@ function InfoCampanha() {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 }
 
-export default InfoCampanha;
+export default InfoCampanha

@@ -1,7 +1,6 @@
 .cardPost{
-    width: 40%;
+    width: 50%;
     background-color: #fff;
-    /* height: 65vh; */
     margin-top: 1%;
     box-shadow: var(--middle-shadow);
     border-radius: 5px;
@@ -31,8 +30,9 @@
     width: 100%;
     text-align: justify;
     line-height: 1.5em;
-    margin-top: 5%;
+
 }
+
 .imgPost{
     margin-top: 4%;
     width: 100%;

@@ -27,7 +27,7 @@
 .boxFormulario{
     background-color: var(--seashell);
     height: 80%;
-    width: 27%;
+    width: 25%;
     border-radius: 10px;
     border: 1px solid var(--outline);
     box-shadow: var(--middle-shadow);
@@ -36,7 +36,7 @@
     align-items: center;
     position: absolute;
     justify-self: center;
-    margin-left: 36%;
+    margin-left: 38%;
     padding: 2%;
 }
 .txtEtapaCadastro{
@@ -145,3 +145,13 @@
     justify-content: space-between;
 }
 
+#inputDtNasc{
+    display: none;
+    padding-right: 10px;
+}
+#inputTelefone{
+    display: none;
+}
+#inputSenha{
+    display: none;
+}
