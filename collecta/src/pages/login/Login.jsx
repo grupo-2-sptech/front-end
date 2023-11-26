@@ -60,7 +60,6 @@ function Login() {
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
           </button>
         </form>
-        
       </div>
     </>
   );

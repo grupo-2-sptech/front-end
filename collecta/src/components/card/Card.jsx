@@ -19,7 +19,7 @@ function Card(props) {
           <span className="card-responsavel body-small mmb-22">
             por {props.responsavel}
           </span>
-          <span className="body-small mmb-32 card-desc">
+          <span className="body-small mmb-32 card-desc truncate-text">
             {props.texto}
           </span>
         </section>
@@ -40,10 +40,6 @@ function Card(props) {
         </section>
       </section>
       <section className="card-rodape p-16-lateral p-8-vertical bg-ice">
-        <section className="card-local mmb-8 d-flex">
-          <img src={iLocal} />
-          <span className="body-xsmall ml-8">{props.local}</span>
-        </section>
         <section className="card-tag d-flex">
           <img src={iTag} />
           <span className="body-xsmall ml-8">{props.tag}</span>

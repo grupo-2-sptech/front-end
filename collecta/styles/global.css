@@ -467,3 +467,11 @@ body {
 .weight-bold {
     font-weight: 700;
 }
+
+.truncate-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 3; /* Número de linhas antes da truncagem */
+  text-overflow: ellipsis;
+}

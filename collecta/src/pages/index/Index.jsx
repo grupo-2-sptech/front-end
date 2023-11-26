@@ -15,34 +15,69 @@ import iMaos from "../../assets/icon/i-maos.svg";
 import iOlho from "../../assets/icon/i-olho.svg";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import maos from "../../assets/img/maos.png";
+import React, { useEffect, useState } from "react";
 
 import api from "../../api/api"
 
 
 function Index() {
+  const [campanhasPontuais, setCampanhasPontuais] = useState([]);
+  const [campanhasContinuas, setCampanhasContinuas] = useState([]);
+  const [porcentagem, setPorcentagem] = useState(0);
 
-  function buscarCampanhas() {
-    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJleGVtcGxvQGVtYWlsLmNvbSIsImlhdCI6MTcwMDQyMTAzNiwiZXhwIjoxNzA0MDIxMDM2fQ.4ptQP7YFCvmJiZbIT7C0XiplEOwEp0MHhiMIc6oEvcXze8tvHCx7veYSLGHfd2H9asWnz_qpJGnw5W-aVPPVxw';
-  
-    api
-      .get('/campanhas', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        }
-      })            
+  useEffect(() => {
+    buscarCampanhasPontuais();
+    buscarCampanhasContinuas();
+  }, []);
+
+  function buscarCampanhasPontuais() {
+    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlvbGVAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDkzMTU0MiwiZXhwIjoxNzA0NTMxNTQyfQ.K3kEW1ySPMCeVW4rCFT7_6cohK-aQzWw4KryfsiMHQ5G2VF050U76ByNoeIMhClu2smqNpa4Y9s_49dtewWINQ';
+
+    api.get('/campanhas/top3', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+      params: {
+        tipoCampanha: 'POR_DATA',
+      },
+      withCredentials: true,
+    })
       .then((resposta) => {
-        // Atualize o estado do componente ou faça algo com os dados aqui
-        console.log(resposta.data);
+        setCampanhasPontuais(resposta.data);
+        const valorMeta = resposta.data[0].financeiroCampanha.valorMeta;
+        const valorAtingido = resposta.data[0].financeiroCampanha.valorAtingido;
+        var novaPorcentagem = (valorAtingido / valorMeta) * 100;
+        setPorcentagem(novaPorcentagem);
       })
       .catch((erro) => {
-        // Trate o erro aqui, por exemplo, exibindo uma mensagem ao usuário
         console.error('Erro ao buscar campanhas:', erro);
       });
   }
-    const p = 54;
-    const p1 = 24;
-    const p2 = 19;
-    const p3 = 129; 
+
+  function buscarCampanhasContinuas() {
+    const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJlbWlvbGVAc3B0ZWNoLnNjaG9vbCIsImlhdCI6MTcwMDkzMTU0MiwiZXhwIjoxNzA0NTMxNTQyfQ.K3kEW1ySPMCeVW4rCFT7_6cohK-aQzWw4KryfsiMHQ5G2VF050U76ByNoeIMhClu2smqNpa4Y9s_49dtewWINQ';
+
+    api.get('/campanhas/top3', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+      params: {
+        tipoCampanha: 'CONTINUA',
+      },
+      withCredentials: true,
+    })
+      .then((resposta) => {
+        setCampanhasContinuas(resposta.data);
+        console.log(resposta.data);
+        const valorMeta = resposta.data[0].financeiroCampanha.valorMeta;
+        const valorAtingido = resposta.data[0].financeiroCampanha.valorAtingido;
+        var novaPorcentagem = (valorAtingido / valorMeta) * 100;
+        setPorcentagem(novaPorcentagem);
+      })
+      .catch((erro) => {
+        console.error('Erro ao buscar campanhas:', erro);
+      });
+  }
     return (
         <>
             <script>
@@ -51,8 +86,6 @@ function Index() {
         header.classList.toggle("sticky", window.scrollY > 0);
       })}
     </script>
-      
-    
       <NavbarLogout />
       <div className="body-index">
       <div className="hero-container w-100 mmb-100">
@@ -78,97 +111,48 @@ function Index() {
       </div>
       <div className="meu-container">
         <div className="card-heading d-flex jc-between ai-center mmb-32">
-          <span className="head-medium color-haiti">Campanhas assinatura</span>
-          <div>
-            <button className="body-xsmall p-8-16 bg-chambray border-none br-5 color-white">
-              VER TODOS
-            </button>
-          </div>
+          <span className="head-medium color-haiti">Campanhas contínuas</span>
         </div>
       </div>
       <div className="meu-container">
         <div className="card-box jc-between">
-          <Card
-            titulo="Projeto AUjuda"
-            responsavel="AUmigos Leais"
-            texto="Alimentando animais na rua de São Paulo com iniciativa da ETEC de Guaianases. Nossos animais de rua merecem tanto amor quanto qualquer outro animal."
-            porcentagem={p}
-            valor="7.253"
-            local="São Paulo, SP"
-            tag="Animais"
-            img={imagens[4]}
-          />
+        {campanhasContinuas.map((campanhaContinua) => (
+            <Card
+              key={campanhaContinua.id}
+              titulo={campanhaContinua.nome}
+              responsavel={campanhaContinua.organizacao.nomeFantasia}
+              texto={campanhaContinua.descricao}
+              porcentagem={porcentagem}
+              valor={campanhaContinua.financeiroCampanha.valorAtingido}
+              local={campanhaContinua.local}
+              tag={campanhaContinua.categoriaCampanha}
+              img={imagens[3]}
+            />
+          ))}
 
-          <Card
-            titulo="Abrace Marmitada"
-            responsavel="Instituto Marmitada"
-            texto="Fazendo o bem sem olhar a quem."
-            porcentagem={p1}
-            valor="46.168"
-            local="Maceió, Alagoas"
-            tag="Alimentação"
-            img={imagens[2]}
-          />
 
-          <Card
-            titulo="Adote uma muda"
-            responsavel="Instituto Mata Atlântica"
-            texto="Vamos juntos promover a recuperação e a preservação de matas nativas e suas nascentes!"
-            porcentagem={p2}
-            valor="5.312"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Socioambiental"
-            img={imagens[5]}
-          />
         </div>
 
         <div className="card-heading d-flex jc-between ai-center mmb-32 mt-190">
           <span className="head-medium color-haiti">Campanhas pontuais</span>
-          <div>
-            <button className="body-xsmall p-8-16 bg-chambray border-none br-5 color-white">
-              VER TODOS
-            </button>
-          </div>
         </div>
       </div>
       <div className="meu-container">
         <div className="card-box jc-between">
-        <CardPontual
-            titulo="Adapta"
-            responsavel="Instituto Camaleão"
-            texto="Reabilitação e inclusão para pessoas com câncer de cabeça e pescoço"
-            porcentagem={p}
-            valor="15.123"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Saúde"
-            dias="18"
+        {campanhasPontuais.map((campanhaPontual) => (
+            <CardPontual
+            key={campanhaPontual.id}
+            titulo={campanhaPontual.nome}
+            responsavel={campanhaPontual.organizacao.nomeFantasia}
+            texto={campanhaPontual.descricao}
+            porcentagem={porcentagem}
+            valor={campanhaPontual.financeiroCampanha.valorAtingido}
+            local={campanhaPontual.local}
+            tag={campanhaPontual.categoriaCampanha}
             img={imagens[3]}
-          />
-          <CardPontual
-            titulo="Ação de rua - SP"
-            responsavel="Ação de rua - SP"
-            texto="Ação de combate à fome nas ruas de São Paulo"
-            porcentagem={p3}
-            valor="120.239"
-            dias="90"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Rua"
-            img={imagens[0]}
-          />
+            />
+          ))}
 
-          
-
-          <CardPontual
-            titulo="Banho de dignidade"
-            responsavel="Amigos da Rua e Seus Pets"
-            texto="Comprar um ônibus e adequá-lo para que moradores de rua tomem banho, cortem cabelo, façam barba, etc"
-            porcentagem={p2}
-            valor="13.623"
-            local="Santa Cruz da Baixa Verde - PE"
-            tag="Rua"
-            dias="55"
-            img={imagens[1]}
-          />
         </div>
       </div>
 
