@@ -78,6 +78,6 @@ header.sticky {
     width: 300px;
 }
 
-/* .logo-navbar {
-    width: 70px;
-} */
+.modal-header .btn-close{
+    margin: 0!important;
+}
