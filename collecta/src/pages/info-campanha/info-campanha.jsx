@@ -4,7 +4,7 @@ import "../../../styles/global.css";
 import iMissao from "../../assets/icon/i-missao.svg";
 import thumb from "../../assets/img/acao.png";
 import iDashboard from "../../assets/icon/i-dashboard.svg";
-import iLocalizacao from "../../assets/icon/i-localizacao.svg";
+import iVisualizacao from "../../assets/icon/i-visualizacao.svg";
 import iCategoria from "../../assets/icon/i-categoria.svg";
 import iRecorrente from "../../assets/icon/i-recorrente.svg";
 import iFace from "../../assets/icon/i-face.svg";
@@ -186,8 +186,8 @@ function InfoCampanha() {
             <div>
               <div className="mt-16 d-flex">
                 <span className="d-flex ai-center">
-                  <img src={iLocalizacao} />
-                  <span className="ml-8 body-xsmall">São Paulo - SP</span>
+                  <img src={iVisualizacao} />
+                  <span className="ml-8 body-xsmall">x visualizações</span>
                 </span>
                 <span className="ml-32 d-flex ai-center">
                   <img src={iCategoria} />
