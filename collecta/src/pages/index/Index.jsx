@@ -101,10 +101,6 @@ function Index() {
               <span className="color-ice">
                 FAZEMOS ISSO <span className="color-white">JUNTOS</span>
               </span>
-              <br />
-              <button className="p-16-lateral p-8-vertical body-medium br-5 border-none bg-chambray color-white cursor-pointer">
-                SAIBA MAIS
-              </button>
             </span>
           </div>
         </div>
@@ -167,11 +163,6 @@ function Index() {
             <span className="head-small mmb-32">
               Venha fazer parte dessa história!
             </span>
-            <div>
-              <button className="btn-criar-campanha border-none bg-chambray color-white br-5 body-large">
-                CRIAR CAMPANHA
-              </button>
-            </div>
           </span>
         </div>
       </div>

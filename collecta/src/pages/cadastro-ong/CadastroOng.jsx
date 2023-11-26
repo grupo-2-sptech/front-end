@@ -5,6 +5,7 @@ import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../../components/input-cadastro/InputCadastro.jsx"
 import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
 import NavbarLogout from "../../components/navbar/NavbarLogout.jsx"
+import { Link } from 'react-router-dom';
 import "./CadastroOng.css"
 import "../../../styles/global.css"
 
@@ -96,10 +97,6 @@ function cadastroOng(){
                 <InputCadastro name="estado" id="inputEstado" placeholder="Estado"/>
                 <InputCadastro name="senha" id="inputSenha" placeholder="Senha"/>
                 <InputCadastro name="confirmarSenha" id="inputConfirmarSenha" placeholder="Confirme a senha"/>
-                <div className="campoInfo">
-                    <img src={IconInfo} alt="Imagem de um circulo com a letra 'i' ao centro representando a palavra 'informação'" />
-                    <span className="txtInfo">Sou ONG ou pessoa fisíca?</span>
-                </div>
                 <div className="campoBotoes">
                 <button className="btnAvancar" id="botaoAvancar" onClick={avancarCadastro}>
                     PRÓXIMO
@@ -111,7 +108,9 @@ function cadastroOng(){
                 </button>
                 
                 </div>
-                <span className="txtContaExiste">Já tem uma conta? Faça login</span>
+                
+                <span className="txtContaExiste"><Link to={"/login"} className="color-science">Já tem uma conta? Faça login</Link></span>
+                
                 <div className="separador">
                     <hr className="meiaLinha" />
                     <span className="txtSeparador">ou</span>
