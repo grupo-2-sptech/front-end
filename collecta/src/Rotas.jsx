@@ -29,8 +29,7 @@ function Rotas() {
           <Route path="/cadastro-ong" element={<CadastroOng/>}/>
           <Route path="/explorar" element={<Explorar />} />
           <Route path="/dashboard" element={<Dashboard />} /> 
-          <Route path="/criar-missao" element={<CriarMissao />} /> 
-          <Route path="/teste" element={<Teste />} /> 
+          <Route path="/criar-missao/:id" element={<CriarMissao />} /> 
         </Routes>
       </BrowserRouter>
     </>

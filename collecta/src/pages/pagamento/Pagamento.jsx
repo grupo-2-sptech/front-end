@@ -31,7 +31,7 @@ function Pagamento() {
     };
 
     const handleBack = () => {
-        navigate('/');
+        navigate(-1);
     };
 
     function passarValor(valor){

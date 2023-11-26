@@ -208,13 +208,14 @@ useEffect(() => {
 
   }
 
+
   return (
     <>
       <Navbar/>
       <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
-            <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
+            <button onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
               <span>
                 <img src={iMissao} />
               </span>

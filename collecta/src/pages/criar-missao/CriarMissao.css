@@ -42,3 +42,6 @@
     border-radius: 10px;
     border: 1px solid var(--science);
 }
+.input-url{
+    border: none;
+}
