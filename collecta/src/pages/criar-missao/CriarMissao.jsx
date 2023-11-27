@@ -1,13 +1,30 @@
 import upload from "../../assets/icon/i-upload.svg";
 
 import Navbar from "../../components/navbar/Navbar";
+import NavbarLogout from "../../components/navbar/NavbarLogout";
 
 import "./CriarMissao.css";
 import "../../components/card/card.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 
 function CriarMissao() {
+
+  const [isTipoConta, setIsTipoConta] = useState(0);
+  
+  const conta = localStorage.getItem('tipoConta'); 
+  function buscarTipoConta() {
+    if (conta == 'DOADOR') {
+      setIsTipoConta(1);
+    } else if (conta == 'ORGANIZACAO') {
+      setIsTipoConta(2);
+    }
+  }
+
+  useEffect(() => {
+    buscarTipoConta();
+  }, []); 
 
   const { id } = useParams();
 
@@ -47,7 +64,7 @@ function CriarMissao() {
 
   return (
     <>
-      <Navbar />
+      {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <div className="meu-container mmb-60">
         <div className="container-pai">
           <div className="container-campanha">

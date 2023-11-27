@@ -31,7 +31,7 @@ function Login() {
     }
 
     api.post("/login", usuario).then((res) => {
-      console.log(res)
+      console.log('OIIIIIIIIIIIII' +res.data.token)
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('tipoConta', res.data.tipoConta);
       localStorage.setItem('id', res.data.id);
@@ -84,7 +84,6 @@ function Login() {
 
 
           <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32 ">
-
             ENTRAR
           </button>
           {/* <Link to={"/cadastro-doador"}> */}

@@ -5,15 +5,30 @@ import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../../components/input-cadastro/InputCadastro.jsx"
 import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
 import NavbarLogout from "../../components/navbar/NavbarLogout.jsx"
+import Navbar from "../../components/navbar/Navbar.jsx"
 import { Link } from 'react-router-dom';
 import "./CadastroOng.css"
 import "../../../styles/global.css"
 import { useNavigate } from "react-router"
 import api from "../../api/api.js"
+import React, { useState, useEffect } from "react"
 
 
 function cadastroOng(){
-
+    const [isTipoConta, setIsTipoConta] = useState(0);
+  
+    const conta = localStorage.getItem('tipoConta'); 
+    function buscarTipoConta() {
+      if (conta == 'DOADOR') {
+        setIsTipoConta(1);
+      } else if (conta == 'ORGANIZACAO') {
+        setIsTipoConta(2);
+      }
+    }
+  
+    useEffect(() => {
+      buscarTipoConta();
+    }, []); 
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const navigate = useNavigate();
@@ -122,7 +137,7 @@ function cadastroOng(){
             alert("Digite o nome fantasia completo")
         } else if(razao.length < 3){
             alert("Digite a razão social completa")
-        } else if(cnpj.length != 14){
+        } else if(cnpj.length != 18){
             alert("Digite um cnpj válido")
         } else if(email.length < 3){
             alert("Email deve ter no minimo 3 caracteres")
@@ -157,7 +172,7 @@ function cadastroOng(){
     return(
         <>
             
-        <NavbarLogout />
+        {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
         
         <section className="formularioCadastro">
         <img src={Cadeado} className="imgCadeado" alt="Imagem de um cadeado conectado com icones de documento, configuração e compartilhamento" />

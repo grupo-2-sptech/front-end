@@ -13,6 +13,20 @@ import { Link } from "react-router-dom"
 
 
 function FormCadastro(){
+    const [isTipoConta, setIsTipoConta] = useState(0);
+  
+    const conta = localStorage.getItem('tipoConta'); 
+    function buscarTipoConta() {
+      if (conta == 'DOADOR') {
+        setIsTipoConta(1);
+      } else if (conta == 'ORGANIZACAO') {
+        setIsTipoConta(2);
+      }
+    }
+  
+    useEffect(() => {
+      buscarTipoConta();
+    }, []); 
 
     const navigate = useNavigate();
     const navigateToPage = (path) =>{
@@ -135,7 +149,7 @@ function FormCadastro(){
 
     return(
         <>
-        <NavbarLogout />
+        {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
         <section className="formularioCadastro">
         <img src={Cadeado} className="imgCadeado" alt="Imagem de um cadeado conectado com icones de documento, configuração e compartilhamento" />
                  

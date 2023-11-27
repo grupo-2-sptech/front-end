@@ -6,17 +6,17 @@ function NotFoundPage() {
     <>
       <div className="body-nf color-haiti">
         <h1 className="h1-nf">Erro 404</h1>
-        <p class="zoom-area">
+        <p className="zoom-area">
           <span>A PÁGINA BUSCADA <b>NÃO FOI ENCONTRADA!</b></span>
         </p>
-        <section class="error-container">
+        <section className="error-container">
           <span>4</span>
           <span>
-            <span class="screen-reader-text">0</span>
+            <span className="screen-reader-text">0</span>
           </span>
           <span>4</span>
         </section>
-        <div class="link-container">
+        <div className="link-container">
             <Link to={"/"}>
           <span className="color-science">
             Voltar para a página inicial
