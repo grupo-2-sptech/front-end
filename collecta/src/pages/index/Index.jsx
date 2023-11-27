@@ -125,7 +125,7 @@ function Index() {
             valor={campanhaContinua.financeiroCampanha.valorAtingido}
             local={campanhaContinua.local}
             tag={campanhaContinua.categoriaCampanha}
-            img={imagens[3]}
+            img={campanhaContinua.urlImagem}
           />
         </Link>
       ))
@@ -150,7 +150,7 @@ function Index() {
                   valor={campanhaPontual.financeiroCampanha.valorAtingido}
                   local={campanhaPontual.local}
                   tag={campanhaPontual.categoriaCampanha}
-                  img={imagens[3]}
+                  img={campanhaPontual.urlImagem}
                 />
               </Link>
             ))
