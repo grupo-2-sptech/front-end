@@ -1,14 +1,30 @@
 import upload from "../../assets/icon/i-upload.svg";
 
 import Navbar from "../../components/navbar/Navbar";
+import NavbarLogout from "../../components/navbar/NavbarLogout";
 
 import "./campanha.css";
 import "../../components/card/Card.css";
 import api from "../../api/api";
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function CampanhaRecorrente() {
+  const [isTipoConta, setIsTipoConta] = useState(0);
+  
+  const conta = localStorage.getItem('tipoConta'); 
+  function buscarTipoConta() {
+    if (conta == 'DOADOR') {
+      setIsTipoConta(1);
+    } else if (conta == 'ORGANIZACAO') {
+      setIsTipoConta(2);
+    }
+  }
+
+  useEffect(() => {
+    buscarTipoConta();
+  }, []); 
+
   var token = localStorage.getItem("token")
   const [genero, setGenero] = useState('')
 
@@ -81,7 +97,7 @@ function CampanhaRecorrente() {
   
   return (
     <>
-      <Navbar />
+      {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <div className="meu-container mmb-60">
         <div className="container-pai">
           <div className="container-campanha">
