@@ -9,6 +9,7 @@ function Textarea(){
 
     const [tituloTextarea, setTituloTextarea] = useState('');
     const [conteudoTextarea, setConteudoTextarea] = useState('');
+    const [urlImagem, setUrlImagem] = useState('');
 
     const getTitulo = (e) => {
         setTituloTextarea(e.target.value)
@@ -16,6 +17,10 @@ function Textarea(){
 
     const getConteudo = (e) => {
         setConteudoTextarea(e.target.value)
+    }
+
+    const getUrlImagem = (e) => {
+        setUrlImagem(e.target.value)
     }
     const { id } = useParams();
     function publicar(e){
@@ -28,7 +33,8 @@ function Textarea(){
         var post = {
             titulo: tituloTextarea,
             conteudo:conteudoTextarea,
-            idCampanha: id
+            idCampanha: id, 
+            urlImagem: urlImagem
         }
         console.log(post)
 
@@ -49,7 +55,7 @@ function Textarea(){
             <textarea className="entradaTexto tituloFeed" value={tituloTextarea} onChange={getTitulo} id="entradaTextoTitulo" cols="30" rows="1" placeholder="Digite o titulo da publicação"></textarea>
             <textarea className="entradaTexto" value={conteudoTextarea} onChange={getConteudo}  id="" cols="30" rows="4" maxLength={530} placeholder="Digite um texto"></textarea>
             <div className="btnsPubli">
-                <img src={Anexo} alt="" />
+                <input type="text" onChange={getUrlImagem} name="urlImg" className="inputImg" id="" placeholder="Insira a url da imagem aqui" />
                 <button onClick={publicar} className="btnPublicar">Publicar</button>
             </div>
         </form>

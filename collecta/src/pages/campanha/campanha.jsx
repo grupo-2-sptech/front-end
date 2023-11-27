@@ -6,21 +6,21 @@ import "./campanha.css";
 import "../../components/card/Card.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
+import { useNavigate } from "react-router";
 
 function Campanha() {
   var token = localStorage.getItem("token")
   const [genero, setGenero] = useState('')
-  // const [valorMeta, setValorMeta] = useState('')
-  // const [idCampanhaCriada, setIdCampanhaCriada] = useState('')
-
-  // useEffect(() => {
-  //   console.log("atualizando variavel")
-  // }, [valorMeta, idCampanhaCriada]);
 
   var idUsuario = localStorage.getItem("id")
   var dataHoje = new Date()
   function mudarGenero(e){
     setGenero(e.target.value)
+  }
+  
+  const navigate = useNavigate();
+  const navigateToPage = (path) =>{
+      navigate(path)
   }
   
   var dataAtual = new Date();
@@ -36,7 +36,7 @@ function Campanha() {
 
     api.post("/financeiros", financeiro
     ).then((res) => {
-      alert("FINANCEIRO CAMAPNHA CADASTRADO")
+      navigateToPage("/")
       console.log(res.data)
     }).catch((erro) =>{
       console.log(erro)
@@ -44,7 +44,7 @@ function Campanha() {
   }
 
 
-  async function cadastrarCampanha(e){
+    function cadastrarCampanha(e){
     e.preventDefault();
     var valorMeta = e.target.valorMeta.value
 
@@ -60,33 +60,18 @@ function Campanha() {
       dataInicio: dataAtualFormatada
     }
 
-  // api.post("/campanhas", campanha, {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`
-  //   }
-  // }).then((res) => {
-  //   alert("deu certo cadastrar a campanha")
-  //   console.log(res.data)
-  //   console.log(res.data.id)
-  //   cadastrarFinanceiroCampanha(res.data.id, valorMeta)
-  // }).catch((erro) => {
-  //   console.log(erro)
-  // })
-
-  try {
-    const response = await api.post("/campanhas", campanha);
-
-    const novaIdCampanha = response.data.id;
-    //setIdCampanhaCriada(novaIdCampanha);
-
-    // Usar a novaValorMeta, que é o valor atualizado
-    await cadastrarFinanceiroCampanha(novaIdCampanha, valorMeta);
-
-    alert("deu certo cadastrar a campanha");
-    console.log(response.data);
-  } catch (erro) {
-    console.log(erro);
-  }
+  api.post("/campanhas", campanha, {
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  }).then((res) => {
+    // alert("deu certo cadastrar a campanha")
+    console.log(res.data)
+    console.log(res.data.id)
+     cadastrarFinanceiroCampanha(res.data.id, valorMeta)
+  }).catch((erro) => {
+    console.log(erro)
+  })
     
 
   }
