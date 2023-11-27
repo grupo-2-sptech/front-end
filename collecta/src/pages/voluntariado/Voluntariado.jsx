@@ -9,11 +9,11 @@ import api from "../../api/api";
 import Navbar from "../../components/navbar/Navbar";
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function Voluntariado() {
   const [isTipoConta, setIsTipoConta] = useState(0);
-
+  var token = localStorage.getItem("token")
   const conta = localStorage.getItem("tipoConta");
   function buscarTipoConta() {
     if (conta == "DOADOR") {
@@ -22,39 +22,80 @@ function Voluntariado() {
       setIsTipoConta(2);
     }
   }
-
+  const [vagas, setVagas] = useState([]);
   useEffect(() => {
+    buscarVagas()
     buscarTipoConta();
+   
   }, []);
+  
 
-  var vagas = [];
-
+  const { id } = useParams();
   function buscarVagas() {
     api
-      .get("/contribuicoes/servicos")
+      .get(`eventos/campanha/${id}`, {
+        headers : {
+          Authorization : `Bearer ${token}`
+        }
+      })
       .then((res) => {
         console.log(res);
-        vagas.push(res.data);
+        setVagas(res.data);
       })
       .catch((erro) => {
         console.log(erro);
       });
   }
 
+  console.log("mostrando aqui")
+  console.log(vagas)
+  function formatarData(dataString) {
+    const data = new Date(dataString);
+  
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    };
+  
+    return new Intl.DateTimeFormat('pt-BR', options).format(data);
+  }
+
+  var [contador, setContador] = useState(0) ;
+  
+
+  function aumentar(){
+    if(contador < vagas.length -1){
+
+      setContador(contador + 1)
+    }
+    console.log(contador)
+  }
+
+  function diminuir(){
+    if(contador > 0){
+      setContador(contador - 1)
+    }
+  }
+
   return (
     <>
       {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <CampoFiltrar />
-      <div className="container-nova-missao w-100 d-flex jc-center mt-32">
-        {/* <Link className="link-sem-decoracao" to={`/criar-missao/${}`}> */}
-          <div className="nova-missao d-flex jc-center ai-center br-10 head-xsmall fd-column">
-            <span>Adicionar missão</span>
-            <span>+</span>
-          </div>
-        {/* </Link> */}
-      </div>
       <main className="main">
-        <CardVoluntariado />
+        
+        {vagas.length == 0 ? <p>Não há vaga de missão para esta campanha</p> : 
+        <CardVoluntariado
+        descricao={vagas[contador].descricao}
+        qtdVaga={vagas[contador].qtdVaga}
+        titulo={vagas[contador].nome}
+        img={vagas[contador].urlImagem}
+        local={vagas[contador].local}
+        data={formatarData(vagas[contador].dataHora)}
+        proximo={aumentar}
+        voltar={diminuir}
+      />
+        }
       </main>
     </>
   );
