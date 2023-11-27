@@ -4,7 +4,7 @@ import Editar from "../../assets/icon/i-editar.svg"
 import imgPost from "../../assets/img/imgPost.svg"
 import CampoComentario from "../campo-comentario/CampoComentario"
 import Comentario from "../comentario/Comentario"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -64,6 +64,20 @@ function ItemPostOng({titulo, postId, data, conteudo, urlImg}){
     
       }
 
+      const [isTipoConta, setIsTipoConta] = useState(0);
+  
+      const conta = localStorage.getItem('tipoConta'); 
+      function buscarTipoConta() {
+        if (conta == 'DOADOR') {
+          setIsTipoConta(1);
+        } else if (conta == 'ORGANIZACAO') {
+          setIsTipoConta(2);
+        }
+      }
+      useEffect(() => {
+        buscarTipoConta();
+        }, []);
+
     return (
         <>
             <div className="cardPost">
@@ -73,8 +87,8 @@ function ItemPostOng({titulo, postId, data, conteudo, urlImg}){
                         <h2>
                         {titulo}
                         </h2>
-
-                        <img src={Editar} id="btnEditar" className="btnEditar" alt="Botão azul em forma quadrada com pontas arredondadas e icone de lápis ao centro" onClick={handleShowModal} />
+                        {isTipoConta == 0 || isTipoConta == 1 ? null : <img src={Editar} id="btnEditar" className="btnEditar" alt="Botão azul em forma quadrada com pontas arredondadas e icone de lápis ao centro" onClick={handleShowModal} />
+                        }
                         <Modal
                             show={showModal}
                             onHide={handleCloseModal}
@@ -104,9 +118,9 @@ function ItemPostOng({titulo, postId, data, conteudo, urlImg}){
                             </Modal.Footer>
                         </Modal>
 
-
-                        <img src={Deletar} id="btnDeletar" onClick={() => deletar(postId)} className="btnDeletar" alt="Botão vermelho em forma quadrada com pontas arredondadas e icone de 'X' ao centro" />
-
+                        {isTipoConta == 0 || isTipoConta == 1 ? null : <img src={Deletar} id="btnDeletar" onClick={() => deletar(postId)} className="btnDeletar" alt="Botão vermelho em forma quadrada com pontas arredondadas e icone de 'X' ao centro" />
+ }
+                        
                     </div>
                     <span>{data}</span>
                 </div>

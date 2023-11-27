@@ -1,9 +1,11 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import NavBar from "../../components/navbar/Navbar";
 import "./Pagamento.css";
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
 import {useNavigate, useParams} from "react-router-dom";
 import api from "../../api/api";
+import NavbarLogout from "../../components/navbar/NavbarLogout";
+import Navbar from "../../components/navbar/Navbar";
 
 function Pagamento() {
     let navigate = useNavigate();
@@ -105,12 +107,25 @@ function Pagamento() {
 
     };
 
-
+    const [isTipoConta, setIsTipoConta] = useState(0);
+  
+    const conta = localStorage.getItem('tipoConta'); 
+    function buscarTipoConta() {
+      if (conta == 'DOADOR') {
+        setIsTipoConta(1);
+      } else if (conta == 'ORGANIZACAO') {
+        setIsTipoConta(2);
+      }
+    }
+    useEffect(() => {
+        buscarTipoConta();
+        }, []);
+  
 
 
     return (
         <>
-            <NavBar/>
+            {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
             <section className="spaceBtns">
                 <div className="container">
                     <img className="cursor-button"

@@ -1,4 +1,4 @@
-import Navbar from "../../components/navbar/NavbarLogout";
+import Navbar from "../../components/navbar/Navbar.jsx";
 import ItemPostOng from "../../components/item-post/ItemPostOng";
 import Textarea from "../../components/textarea-feed/Textarea";
 
@@ -26,22 +26,19 @@ import NavbarLogout from "../../components/navbar/NavbarLogout.jsx";
 
 function InfoCampanha() {
   var token = localStorage.getItem('token');
-  var tipoConta = localStorage.getItem('tipoConta');
   const [esconderComponente, setEsconderComponente] = useState(false);
+  const [isTipoConta, setIsTipoConta] = useState(0);
   
-  // if(tipoConta == "DOADOR"){
-  //   var textarea = document.getElementById("campoCriarPubli")
-  //   var deletar = document.getElementById("btnDeletar")
-  //   var editar = document.getElementById("btnEditar")
-  //   textarea.style.visibility = 'hidden'
-    // textarea.style.display = 'none'
-    // editar.style.display = 'none'
-    // deletar.style.display = 'none'
-  // }
+  const conta = localStorage.getItem('tipoConta'); 
+  function buscarTipoConta() {
+    if (conta == 'DOADOR') {
+      setIsTipoConta(1);
+    } else if (conta == 'ORGANIZACAO') {
+      setIsTipoConta(2);
+    }
+  }
 
-  // if (tipoConta == "DOADOR") {
-  //   setEsconderComponente(true);
-  // }
+  
   
 
   const navigate = useNavigate();
@@ -113,6 +110,7 @@ const [posts, setPosts] = useState([]);
 
 useEffect(() => {
   listar();
+  buscarTipoConta();
   }, []);
 
   function listar() {
@@ -231,16 +229,17 @@ useEffect(() => {
 
   return (
     <>
-      <Navbar/>
+      {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
-            <button style={{ display: esconderComponente ? 'none' : 'block' }}  onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
+          {isTipoConta == 0 || isTipoConta == 1 ? null: <button style={{ display: esconderComponente ? 'none' : 'block' }}  onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
               <span>
                 <img src={iMissao} />
               </span>
               <span className="body-medium ml-16">Gerenciar missões</span>
-            </button>
+            </button>}
+            
             <div className="titulo-info-campanha d-flex fd-column ai-center jc-center w-100">
               <div
                 id="tituloCampanha"
@@ -255,10 +254,11 @@ useEffect(() => {
                 por <span id="responsavelCampanha">Ação de Rua</span>
               </div>
             </div>
-            <button onClick={() => navigateToPage(`/dashboard/${id}`)}  className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
+            {isTipoConta == 0 || isTipoConta == 1 ? null : <button onClick={() => navigateToPage(`/dashboard/${id}`)}  className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
               <img src={iDashboard} />
               <span className="body-medium ml-16">Dashboard</span>
-            </button>
+            </button>}
+            
           </div>
         </div>
         <div className="meu-container mt-56">
@@ -280,13 +280,14 @@ useEffect(() => {
                   <span className="body-large"> Arrecadado</span>
                   </span>
                   <span>
-                    <span className="btn-edit d-flex ai-center">
+                  {isTipoConta == 0 || isTipoConta == 1 ? null : <span className="btn-edit d-flex ai-center">
                       <img
                         src={iEdit}
                         className="icon-editar"
                         onClick={handleShowModal}
                       />
-                    </span>
+                    </span> }
+                    
                     <Modal
                       show={showModal}
                       onHide={handleCloseModal}
@@ -577,7 +578,8 @@ useEffect(() => {
             role="tabpanel"
             aria-labelledby="ex-with-icons-tab-2"
           >
-            <Textarea/>
+            
+            {isTipoConta == 0 || isTipoConta == 1 ? null : <Textarea/> }
             {posts && posts.length > 0 ? (
                 posts.map((post) => (
                   <ItemPostOng
