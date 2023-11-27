@@ -122,7 +122,7 @@ function cadastroOng(){
             alert("Digite o nome fantasia completo")
         } else if(razao.length < 3){
             alert("Digite a razão social completa")
-        } else if(cnpj.length != 14){
+        } else if(cnpj.length != 18){
             alert("Digite um cnpj válido")
         } else if(email.length < 3){
             alert("Email deve ter no minimo 3 caracteres")

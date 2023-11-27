@@ -24,7 +24,7 @@ import api from "../../api/api";
 function Index() {
   const [isTipoConta, setIsTipoConta] = useState(0);
   
-  const conta = sessionStorage.getItem('tipoConta'); 
+  const conta = localStorage.getItem('tipoConta'); 
   function buscarTipoConta() {
     if (conta == 'DOADOR') {
       setIsTipoConta(1);
@@ -36,6 +36,7 @@ function Index() {
   useEffect(() => {
     buscarTipoConta();
   }, []); 
+
   const [campanhasPontuais, setCampanhasPontuais] = useState([]);
   const [campanhasContinuas, setCampanhasContinuas] = useState([]);
   const [porcentagem, setPorcentagem] = useState(0);

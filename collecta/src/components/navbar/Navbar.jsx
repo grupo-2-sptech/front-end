@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [isTipoConta, setIsTipoConta] = useState(0);
 
-  const conta = sessionStorage.getItem("tipoConta");
+  const conta = localStorage.getItem("tipoConta");
   function buscarTipoConta() {
     if (conta == "DOADOR") {
       setIsTipoConta(1);
@@ -26,7 +26,7 @@ function Navbar() {
   const navigate = useNavigate();
   function sair() {
     handleCloseModal();
-    sessionStorage.clear();
+    localStorage.clear();
     navigate("/");
     location.reload();
   }
@@ -53,9 +53,9 @@ function Navbar() {
                   className="header-logo-icon"
                 />
               </Link>
-              <div class="dropdown">
+              <div className="dropdown">
               {isTipoConta == 2 ? <button
-                  class="bg-ice dropdown-toggle border-none br-5 p-8"
+                  className="bg-ice dropdown-toggle border-none br-5 p-8"
                   type="button"
                   id="dropdownMenuButton"
                   data-toggle="dropdown"
@@ -65,11 +65,11 @@ function Navbar() {
                   Criar campanha
                 </button> : null}
                 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <Link class="dropdown-item" to={"/criar-campanha"}>
+                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <Link className="dropdown-item" to={"/criar-campanha"}>
                     Pontual
                   </Link>
-                  <Link class="dropdown-item" to={"/criar-campanha-recorrente"}>
+                  <Link className="dropdown-item" to={"/criar-campanha-recorrente"}>
                     Recorrente
                   </Link>
                 </div>

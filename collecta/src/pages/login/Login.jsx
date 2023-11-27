@@ -32,9 +32,9 @@ function Login() {
 
     api.post("/login", usuario).then((res) => {
       console.log('OIIIIIIIIIIIII' +res.data.token)
-      sessionStorage.setItem('token', res.data.token);
-      sessionStorage.setItem('tipoConta', res.data.tipoConta);
-      sessionStorage.setItem('id', res.data.id);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('tipoConta', res.data.tipoConta);
+      localStorage.setItem('id', res.data.id);
       navigateToPage("/")
       
     }).catch((erro) => {

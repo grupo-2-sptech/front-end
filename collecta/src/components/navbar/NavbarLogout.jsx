@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 function NavbarLogout() {
   const [isTipoConta, setIsTipoConta] = useState(false);
   
-  const conta = sessionStorage.getItem('tipoConta'); 
+  const conta = localStorage.getItem('tipoConta'); 
   function buscarTipoConta() {
     if (conta == 'DOADOR') {
       setIsTipoConta(true);
