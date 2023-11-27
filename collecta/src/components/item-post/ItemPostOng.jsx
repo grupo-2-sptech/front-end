@@ -9,7 +9,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import api from "../../api/api"
-function ItemPostOng({titulo, postId, data, conteudo}){
+function ItemPostOng({titulo, postId, data, conteudo, urlImg}){
 
     var token = localStorage.getItem("token")
 
@@ -29,6 +29,40 @@ function ItemPostOng({titulo, postId, data, conteudo}){
     const [showModal, setShowModal] = useState(false);
     const handleShowModal = () => setShowModal(true);
     const handleCloseModal = () => setShowModal(false);
+
+    const [tituloEditado, setTituloEditado] = useState('')
+    const [conteudoEditado, setConteudoEditado] = useState('')
+
+    const handleChangeTitulo = (e) => {
+        setTituloEditado(e.target.value)
+        console.log(titulo)
+      };
+
+      const handleChangeConteudo = (e) => {
+        setConteudoEditado(e.target.value)
+        console.log(titulo)
+      };
+
+    function editarPost(id){
+        console.log("editando")
+        var postEditado = {
+          titulo: tituloEditado, 
+          conteudo: conteudoEditado
+        }
+        console.log(postEditado)
+    
+        api.put(`/posts/${id}`, postEditado, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          },
+        }).then((res) => {
+          alert("editou")
+          handleCloseModal()
+        }).catch((erro) => {
+          console.log(erro)
+        })
+    
+      }
 
     return (
         <>
@@ -54,17 +88,17 @@ function ItemPostOng({titulo, postId, data, conteudo}){
                                 <Form>
                                     <Form.Group controlId="formDescricao">
                                         <Form.Label style={{ fontWeight: 700 }}>Descrição da Publicação</Form.Label>
-                                        <Form.Control as="textarea" rows={3} placeholder="Digite a descrição..." />
+                                        <Form.Control onChange={handleChangeConteudo} as="textarea" rows={3} placeholder="Digite a descrição..." />
                                     </Form.Group>
 
                                     <Form.Group controlId="formUrlImagem">
                                         <Form.Label style={{ fontWeight: 700 }}>URL da Imagem</Form.Label>
-                                        <Form.Control type="text" placeholder="Digite a URL da imagem..." />
+                                        <Form.Control onChange={handleChangeTitulo} type="text" placeholder="Digite a URL da imagem..." />
                                     </Form.Group>
-                                </Form>
+                                </Form> 
                             </Modal.Body>
                             <Modal.Footer style={{ justifyContent: 'center' }}>
-                            <Button variant="primary" onClick={handleCloseModal} style={{ borderRadius: '20px', width: '150px', display: 'flex', justifyContent: 'center'}}>
+                            <Button variant="primary" onClick={editarPost} style={{ borderRadius: '20px', width: '150px', display: 'flex', justifyContent: 'center'}}>
                                     Salvar
                                 </Button>
                             </Modal.Footer>
@@ -77,10 +111,10 @@ function ItemPostOng({titulo, postId, data, conteudo}){
                     <span>{data}</span>
                 </div>
                 <p className="txtPublicacao">{conteudo}</p>
-                <img src={imgPost} className="imgPost" alt="" />
-                <CampoComentario />
+                <img src={urlImg} className="imgPost" alt="" />
+                {/* <CampoComentario />
                 <Comentario />
-                <Comentario />
+                <Comentario /> */}
             </div>
         </>
     )

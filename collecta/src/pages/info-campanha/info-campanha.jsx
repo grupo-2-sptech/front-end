@@ -4,7 +4,6 @@ import Textarea from "../../components/textarea-feed/Textarea";
 
 import "../../../styles/global.css";
 import iMissao from "../../assets/icon/i-missao.svg";
-import thumb from "../../assets/img/acao.png";
 import iDashboard from "../../assets/icon/i-dashboard.svg";
 import iVisualizacao from "../../assets/icon/i-visualizacao.svg";
 import iCategoria from "../../assets/icon/i-categoria.svg";
@@ -28,15 +27,22 @@ import NavbarLogout from "../../components/navbar/NavbarLogout.jsx";
 function InfoCampanha() {
   var token = localStorage.getItem('token');
   var tipoConta = localStorage.getItem('tipoConta');
+  const [esconderComponente, setEsconderComponente] = useState(false);
   
   // if(tipoConta == "DOADOR"){
   //   var textarea = document.getElementById("campoCriarPubli")
   //   var deletar = document.getElementById("btnDeletar")
   //   var editar = document.getElementById("btnEditar")
-  //   textarea.style.display = 'none'
-  //   editar.style.display = 'none'
-  //   deletar.style.display = 'none'
+  //   textarea.style.visibility = 'hidden'
+    // textarea.style.display = 'none'
+    // editar.style.display = 'none'
+    // deletar.style.display = 'none'
   // }
+
+  // if (tipoConta == "DOADOR") {
+  //   setEsconderComponente(true);
+  // }
+  
 
   const navigate = useNavigate();
   const navigateToPage = (path) =>{
@@ -77,7 +83,8 @@ function InfoCampanha() {
      console.log(erroOcorrido);
     })
 
-const [progresso, setProgresso] = useState(0)
+const [progresso, setProgresso] = useState(0);
+const [urlImg, setUrlImg] = useState('');
     function atualizarInfo(respostaObtida){
         var porcentagem = (respostaObtida.financeiroCampanha.valorAtingido * 100) / respostaObtida.financeiroCampanha.valorMeta;
         var titulo = document.getElementById("tituloCampanha")
@@ -98,6 +105,7 @@ const [progresso, setProgresso] = useState(0)
         valorArrecadado.innerHTML = respostaObtida.financeiroCampanha.valorAtingido;
         porcentagemAtual.innerHTML = porcentagem;
         setProgresso(porcentagem)
+        setUrlImg(respostaObtida.urlImagem)
       }
 
 // renderizando posts no feed
@@ -108,7 +116,7 @@ useEffect(() => {
   }, []);
 
   function listar() {
-    api.get("/posts", {
+    api.get(`/posts/campanha/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -208,6 +216,18 @@ useEffect(() => {
 
   }
 
+  
+  function deletarCampanha(id){
+    api.delete(`/campanhas/${id}`, {
+        headers: {
+            Authorization : `Bearer ${token}`,
+        },
+    }).then((res) => {
+        navigateToPage("/");
+    }).catch((erro) => {
+        console.log(erro)
+    })
+  }
 
   return (
     <>
@@ -215,7 +235,7 @@ useEffect(() => {
       <div className="hero-campanha mmb-60">
         <div className="meu-container">
           <div className="head-campanha d-flex w-100 jc-between ai-center mt-64">
-            <button onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
+            <button style={{ display: esconderComponente ? 'none' : 'block' }}  onClick={() => navigateToPage(`/criar-missao/${id}`)} className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white mr-32">
               <span>
                 <img src={iMissao} />
               </span>
@@ -235,7 +255,7 @@ useEffect(() => {
                 por <span id="responsavelCampanha">Ação de Rua</span>
               </div>
             </div>
-            <button className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
+            <button onClick={() => navigateToPage(`/dashboard/${id}`)}  className="btn-campanha-adm d-flex jc-center ai-center br-5 border-none border-outline bg-white ml-32">
               <img src={iDashboard} />
               <span className="body-medium ml-16">Dashboard</span>
             </button>
@@ -246,7 +266,7 @@ useEffect(() => {
             <div className="info-campanha">
               <div className="meu-container container-imagem">
                 <div className="thumb-campanha-container d-flex jc-center">
-                  <img src={thumb} className="thumb-campanha" />
+                  <img src={urlImg} className="thumb-campanha" />
                 </div>
               </div>
             </div>
@@ -340,6 +360,20 @@ useEffect(() => {
                       <Modal.Footer style={{ justifyContent: "center" }}>
                         <Button
                           variant="primary"
+                          onClick={() => deletarCampanha(id)}
+                          style={{
+                            borderRadius: "20px",
+                            width: "150px",
+                            display: "flex",
+                            justifyContent: "center",
+                            backgroundColor: "#FF4545",
+                            border: "none"
+                          }}
+                        >
+                          Deletar
+                        </Button>
+                        <Button
+                          variant="primary"
                           onClick={editarCampanha}
                           style={{
                             borderRadius: "20px",
@@ -355,9 +389,7 @@ useEffect(() => {
                   </span>
                 </div>
                 <div className="body-large mmb-22">
-                  <span>Ajudado por </span>
-                  <span id="qtdePessoas">99</span>
-                  <span> pessoas</span>
+                  <span>Arrecadação em andamento </span>
                 </div>
                 <div>
                   <progress
@@ -388,7 +420,7 @@ useEffect(() => {
                 <button onClick={() => navigateToPage(`/pagamento/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
                   Doar
                 </button>
-                <button className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
+                <button onClick={() => navigateToPage(`/voluntariado/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
                   Voluntariar-se
                 </button>
               </div>
@@ -422,7 +454,7 @@ useEffect(() => {
             </div>
             <div className="w-470 d-flex jc-between mt-60">
               <div className="icone-perfil">
-                <img src={thumb} className="img-perfil" />
+                <img src={urlImg} className="img-perfil" />
               </div>
               <div>
                 <div>
@@ -553,6 +585,7 @@ useEffect(() => {
                     postId={post.id}
                     titulo={post.titulo}
                     nomeOng="AUmigos Leais"
+                    urlImg={post.urlImagem}
                     conteudo={post.conteudo}
                     data={formatarData(post.data)}
                   />
@@ -574,7 +607,7 @@ useEffect(() => {
               <div className="d-flex jc-around">
                 <div className="d-flex ai-center">
                   <div className="icone-perfil">
-                    <img src={thumb} className="img-perfil" />
+                    <img src={urlImg} className="img-perfil" />
                   </div>
                   <div className="ml-16">
                     <span>Nome apoiador</span>
@@ -582,7 +615,7 @@ useEffect(() => {
                 </div>
                 <div className="d-flex ai-center">
                   <div className="icone-perfil">
-                    <img src={thumb} className="img-perfil" />
+                    <img src={urlImg} className="img-perfil" />
                   </div>
                   <div className="ml-16">
                     <span>Nome apoiador</span>

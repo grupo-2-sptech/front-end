@@ -1,121 +1,42 @@
 import {useEffect, useRef, useState} from 'react';
-import Chart from 'chart.js/auto';
+
 import NavBar from "../../components/navbar/Navbar";
 import "./Dashboard.css";
+import { Navigate, useNavigate, useParams } from 'react-router';
+import api from '../../api/api';
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
-import searchIcon from "../../assets/icon/i-search.png";
-import {useNavigate} from "react-router-dom";
 
 function Dashboard() {
-    let navigate = useNavigate();
-    const chartContainer = useRef(null);
-    const chartInstance = useRef(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [showSearch, setShowSearch] = useState(false);
+    var token = localStorage.getItem("token")
+    const [meta, setMeta] = useState('')
+    const [arrecadado, setArrecadado] = useState('')
+    const [restante, setRestante] = useState('')
+    const [nomeProjeto, setNomeProjeto] = useState('')
+    const [visualizacao, setVisualizacao] = useState('')
+    const { id } = useParams();
 
-    const contributors = [
-        {name: 'Nathalia Ezime Obi', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'Alex Andrade', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'Emillie Nicole Duarte Souza', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'Cristhian Mendes da Silva', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'João Victor Mariano Pytel', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'Ericote Sousa', imageUrl: 'src/assets/icon/user-icon.png'},
-        {name: 'Fabio Figueiredo', imageUrl: 'src/assets/icon/user-icon.png'}
-    ];
 
-    const filteredContributors = contributors.filter(contributor =>
-        contributor.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    function trazerInfo(){
+        api.get(`/campanhas/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+          )
+          .then((respostaObtida) => {
+              console.log(respostaObtida)
+              setVisualizacao(respostaObtida.data.visulizacoes)
+              setNomeProjeto(respostaObtida.data.nome)
+              setMeta(respostaObtida.data.financeiroCampanha.valorMeta)
+              setArrecadado(respostaObtida.data.financeiroCampanha.valorAtingido)
+              setRestante(respostaObtida.data.financeiroCampanha.valorMeta - respostaObtida.data.financeiroCampanha.valorAtingido)
+          })
+          .catch((erroOcorrido) => { 
+             console.log(erroOcorrido);
+            })
+    }
 
-    useEffect(() => {
-        if (chartContainer.current) {
-            if (chartInstance.current) {
-                chartInstance.current.destroy();
-            }
-
-            chartInstance.current = new Chart(chartContainer.current, {
-                type: 'bar',
-                data: {
-                    labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                    datasets: [
-                        {
-                            label: 'Alcançado',
-                            data: [12000, 19000, 15000, 20000, 18000, 17000, 22000, 25000, 21000, 19000, 23000, 26000],
-                            backgroundColor: '#355D8C',
-                            borderColor: '#355D8C',
-                            borderWidth: 1,
-                            stack: 'Stack 0'
-                        },
-                        {
-                            label: 'Meta',
-                            data: [14000, 20000, 18000, 22000, 19000, 18000, 24000, 26000, 23000, 20000, 25000, 28000],
-                            backgroundColor: '#ADD5F7',
-                            borderColor: '#ADD5F7',
-                            borderWidth: 1,
-                            stack: 'Stack 0'
-                        }
-                    ]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                callback: function (value) {
-                                    return 'R$ ' + value.toLocaleString('pt-BR');
-                                }
-                            }
-                        },
-                        x: {
-                            stacked: true,
-                            grid: {
-                                display: false
-                            },
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function (context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += 'R$' + context.parsed.y.toLocaleString('pt-BR');
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        return () => {
-            if (chartInstance.current) {
-                chartInstance.current.destroy();
-            }
-        };
-    }, []);
-
-    const toggleSearch = () => {
-        setShowSearch(!showSearch);
-        if (showSearch) {
-            setSearchTerm('');
-        }
-    };
-
-    const handleBack = () => {
-        navigate('/');
-    };
+    trazerInfo()
 
     return (
         <>
@@ -125,39 +46,89 @@ function Dashboard() {
                     <img className="cursor-button"
                          src={BtnVoltar}
                          alt="Circulo redondo e na cor azul com seta para esquerda ao centro"
-                         onClick={handleBack}
+                        
                     />
                 </div>
             </section>
-            <main className="main">
-                <div className="phrase-box">
-                    <h2>Acompanhe as metas do seu projeto</h2>
+            <div className='header'>
+                <div className='headerContainer'>
+                    <div className='sepElem'>
+                        <h2 className='nomeProjeto'>{nomeProjeto}</h2>
+                        <button className='btnGerarRelatorio'>Gerar relatório</button>
+                    </div>
                 </div>
-                <div className="dashboard-container">
-                    <div className="chart-container">
-                        <canvas ref={chartContainer}></canvas>
-                    </div>
-                    <div className="contributors-container">
-                        <div className="contributors-header">
-                            <h5>Contribuintes</h5>
-                            <img src={searchIcon} alt="Search" onClick={toggleSearch}/>
-                            {showSearch && (
-                                <input
-                                    type="text"
-                                    placeholder="Procurar..."
-                                    onChange={e => setSearchTerm(e.target.value)}
-                                />
-                            )}
+            </div>
+            <main className='main'>
+                <div className='containerMain'>
+                    <section className='boxSup'>
+                        <h2 className='tituloResumo'>Resumo Financeiro</h2>
+                        <div className='divSpan'>
+                            <span>Meta:</span>
+                            <span>R${meta}</span>
                         </div>
-                        <ul>
-                            {filteredContributors.map((contributor, index) => (
-                                <li key={index}>
-                                    <img src={contributor.imageUrl} alt={contributor.name}/>
-                                    {contributor.name}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                        <div className='divSpan'>
+                            <span>Arrecadado:</span>
+                            <span>R${arrecadado}</span>
+                        </div>
+                        <div className='divSpan'>
+                            <span>Restante:</span>
+                            <span>R${restante}</span>
+                        </div>
+                    </section>
+                    <section className='boxSup'>
+                        <h2 className='tituloResumo'>Métricas</h2>
+                        <div className='divSpan'>
+                            <span>Doadores: 2</span>
+                        </div>
+                        <div className='divSpan'>
+                            <span>Visualizações: 33</span>
+                        </div>
+                    </section>
+                    <section className='boxInf'>
+                        <h2 className='tituloBoxInf'>Últimas ações da campanha</h2>
+                        <div className='divBtns'>
+                            <input type='file' className='btns' placeholder='BAIXAR MODELO'/>
+                            <button className='btns'>IMPORTAR .TXT</button>
+                        </div>
+                        <div className='tabela'>
+                            <table className="table">
+                            <thead>
+                                <tr>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Descrição</th>
+                                <th scope="col">Data</th>
+                                <th scope="col">Valor</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                </tr>
+                                <tr>
+                                <th scope="row">4</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </section>
                 </div>
             </main>
         </>
