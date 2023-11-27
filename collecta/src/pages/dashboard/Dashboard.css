@@ -1,0 +1,95 @@
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 10vh;
+}
+.headerContainer{
+    display: flex;
+    justify-content: flex-end;
+    width: 80%;
+}
+.sepElem{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 55%;
+}
+.btnGerarRelatorio{
+    width: 23%;
+    height: 40%;
+    border :none;
+    background-color:var(--tufts) ;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.main{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+ .containerMain{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.boxSup{
+    height: 35vh;
+    width: 45%;
+    background-color: var(--white);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--outline);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.boxInf{
+    width: 100%;
+    background-color: var(--white);
+    height: 45vh;
+    margin-top: 2%;
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--outline);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.tabela{
+    width: 80%;
+    margin-top: 2%;
+}
+.divBtns{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2%;
+}
+.btns{
+    height: 5vh;
+    width: 20%;
+    border: 1px dashed var(--tufts);
+    background-color: rgba(117, 193, 255, 0.58);
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
+    color: #000;
+}
+.tituloBoxInf{
+    margin-top: 2%;
+}
+.tituloResumo{
+    margin-top: 2%;
+}
+.divSpan{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    margin-top: 5%;
+}

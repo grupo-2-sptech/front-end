@@ -1,0 +1,34 @@
+.campoComentario{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-top: 2%;
+}
+.campoInput{
+    background-color: #fafafa;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--outline);
+    border-radius: 5px;
+}
+.inputComentario{
+    height: 100%;
+    width: 85%;
+    outline: none;
+    border: none;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 16px;
+}
+.btnComentario{
+    width: 13%;
+    border: none;
+    background-color: var(--blueberry);
+    color: #fff;
+    font-weight: 500;
+    border-radius: 5px;
+    height: 50%;
+    cursor: pointer;
+}

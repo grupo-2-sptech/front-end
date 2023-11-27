@@ -1,0 +1,77 @@
+.titulo-info-campanha {
+    height: 60px;
+}
+
+.btn-campanha-adm {
+    height: 57px;
+    width: 356px;
+}
+
+.thumb-campanha {
+    height: 100%;
+}
+
+.thumb-campanha-container {
+    overflow: hidden;
+    width: 700px;
+    height: 470px;
+    background-color: rebeccapurple;
+}
+
+.container-imagem {
+    width: 600px;
+}
+
+.btn-copiar {
+    padding: 7px 10px 7px 10px;
+    border-radius: 2px;
+    margin-left: 24px;
+}
+
+.cards-campanha {
+    width: 470px;
+}
+
+.btn-campanha {
+    width: 225px;
+}
+
+.w-470 {
+    width: 470px;
+}
+
+.w-388 {
+    width: 388px;
+}
+
+.icon-tab {
+    margin-right: 10px;
+}
+
+.w-700 {
+    width: 700px;
+}
+
+.cardPost{
+    margin-left: 26%;
+}
+.campoCriarPubli{
+    margin-left: 26%;
+}
+.txtNoContent{
+    width: 100%;
+    text-align: center;
+    margin-top: 3%;
+}
+
+.btn-edit{
+    box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.icon-editar{
+    width: 40px;
+    height: 30px;
+    cursor: pointer;
+}

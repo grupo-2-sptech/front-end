@@ -1,0 +1,160 @@
+.imgCadeado{
+    position: relative;
+    padding: 10px;
+    height: 50vh;
+    margin: 15vh 20vh;
+}
+.imgPersonagem{
+    position: relative;
+    padding: 10px;
+    height: 50vh;
+    margin: 15vh 40vw;
+}
+.imgLinhaTracejada{
+    padding: 10px;
+    height: 19vw;
+    position: absolute;
+    margin: 50vh 0 0 0;
+}
+.formularioCadastro{
+    height: 85vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.boxFormulario{
+    background-color: var(--seashell);
+    height: 80%;
+    border-radius: 10px;
+    border: 1px solid var(--outline);
+    box-shadow: var(--middle-shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    justify-self: center;
+    margin-left: 40%;
+    padding: 32px 64px;
+    width: 500px;
+}
+.txtEtapaCadastro{
+    color: var(--yonder);
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px;
+    margin-left: 52%;
+    margin-top: 5%;
+}
+.txtTituloFormulario{
+    padding: 8px;
+}
+.campoInfo{
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    margin-right: 30%;
+}
+.txtInfo{
+    font-size: 12px;
+    padding-left: 5px;
+    font-weight: 500;
+    text-decoration: underline;
+    color: var(--yonder);
+    cursor: pointer;
+}
+.btnAvancar{
+    width: 100%;
+    height: 100%;
+    background-color: var(--tufts);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    color: var(--white);
+    margin-top: 16px;
+    cursor: pointer;
+}
+
+.txtContaExiste{
+    font-size: 16px;
+    margin-top: 32px;
+    font-weight: 500;
+    cursor: default;
+}
+.separador{
+    margin: 2%;
+
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btnGoogle{
+    width: 70%;
+    height: 8%;
+    background-color: var(--white);
+    border-radius: 5px;
+    border: 1px solid var(--outline);
+    outline: none;
+    font-size: 20px;
+    color: var(--black);
+    font-weight: 500;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.logoGoogle{
+    margin-right: 10px;
+}
+
+.meiaLinha{
+    width: 37%;
+}
+.txtSeparador{
+    font-size: 20px;
+}
+.btnAnterior{
+    display: none;
+    width: 45%;
+    outline: none;
+    background-color: var(--science);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.btnCadastrar{
+    display: none;
+    width: 45%;
+    outline: none;
+    background-color: var(--blueberry);
+    border: none;
+    color: var(--white);
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+.campoBotoes{
+    height: 8%;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#inputCep{
+    display: none;
+}
+#inputTelefone{
+    display: none;
+}
+#inputDtFund{
+    display: none;
+}
+#inputSenha{
+    display: none;
+}
+
