@@ -1,10 +1,12 @@
 import {useEffect, useRef, useState} from 'react';
 
-import NavBar from "../../components/navbar/Navbar";
+import Navbar from "../../components/navbar/Navbar";
 import "./Dashboard.css";
 import { Navigate, useNavigate, useParams } from 'react-router';
 import api from '../../api/api';
 import BtnVoltar from "../../assets/icon/i-voltar.svg";
+import NavbarLogout from '../../components/navbar/NavbarLogout';
+
 
 function Dashboard() {
     var token = localStorage.getItem("token")
@@ -13,6 +15,7 @@ function Dashboard() {
     const [restante, setRestante] = useState('')
     const [nomeProjeto, setNomeProjeto] = useState('')
     const [visualizacao, setVisualizacao] = useState('')
+    const [isTipoConta, setIsTipoConta] = useState(0);
     const { id } = useParams();
 
 
@@ -38,9 +41,22 @@ function Dashboard() {
 
     trazerInfo()
 
+    const conta = localStorage.getItem('tipoConta'); 
+    function buscarTipoConta() {
+      if (conta == 'DOADOR') {
+        setIsTipoConta(1);
+      } else if (conta == 'ORGANIZACAO') {
+        setIsTipoConta(2);
+      }
+    }
+
+    useEffect(() => {
+        buscarTipoConta();
+      }, []);
+
     return (
         <>
-            <NavBar/>
+            {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
             <section className="spaceBtns">
                 <div className="container">
                     <img className="cursor-button"

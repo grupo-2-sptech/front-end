@@ -13,6 +13,7 @@ import { useNavigate } from "react-router";
 import Footer from "../../components/footer/Footer.jsx";
 import logoNome from "../../assets/logo/logo-collectiva-branco.png";
 import iSelect from "../../assets/icon/i-select-box.svg";
+import Navbar from "../../components/navbar/Navbar.jsx";
 
 function Index() {
   var token = localStorage.getItem('token');
@@ -59,6 +60,19 @@ function Index() {
         navigate(path)
     }
 
+    const [isTipoConta, setIsTipoConta] = useState(0);
+  
+    const conta = localStorage.getItem('tipoConta'); 
+    function buscarTipoConta() {
+      if (conta == 'DOADOR') {
+        setIsTipoConta(1);
+      } else if (conta == 'ORGANIZACAO') {
+        setIsTipoConta(2);
+      }
+    }
+    useEffect(() => {
+      buscarTipoConta();
+      }, []);
 
 
   return (
@@ -71,7 +85,7 @@ function Index() {
       </script>
 
 
-      <NavbarLogout />
+      {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
       <div className="body-index">
 
         <div className="container">
@@ -114,7 +128,7 @@ function Index() {
                     valor={campanha.financeiroCampanha.valorAtingido}
                     local="São Paulo, SP"
                     tag={campanha.categoriaCampanha}
-                    img={imagens[4]}
+                    img={campanha.urlImagem}
                     onClick={() => navigateToPage(`/info-campanha/${campanha.id}`)}
                   />
                 ))
