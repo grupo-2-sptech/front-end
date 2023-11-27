@@ -73,6 +73,7 @@ function InfoCampanha() {
   )
   .then((respostaObtida) => {
     atualizarInfo(respostaObtida.data);
+    console.log(respostaObtida.data)
     // setDataInicio(respostaObtida.data.dataInicio)
     // setStatusCampanha(respostaObtida.data.statusCampanha)
   })
@@ -421,9 +422,11 @@ useEffect(() => {
                 <button onClick={() => navigateToPage(`/pagamento/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-science color-white">
                   Doar
                 </button>
+               
                 <button onClick={() => navigateToPage(`/voluntariado/${id}`)} className="btn-campanha br-5 border-none p-32-0 head-xsmall bg-blueberry color-white">
                   Voluntariar-se
                 </button>
+                
               </div>
             </div>
           </div>
