@@ -158,3 +158,43 @@
     display: none;
 }
 
+@media (max-width:1500px){
+    .boxFormulario{
+        margin-left: 35%;
+        width: 500px;
+        /* padding: 50px; */
+        height: 100%;
+        margin-top: 50px;
+    }
+    .txtEtapaCadastro{
+        margin-top: 0;
+        font-size: 14px;
+    }
+    .input{
+        height: 50px;
+        padding: 10px;
+        font-size: 12px;
+    }
+    .txtTituloFormulario{
+        font-size: 24px;
+        margin: 0;
+    }
+    .btnAvancar{
+        margin: 0;
+        font-size: 18px;
+        height: 95%;
+    }
+    
+    .txtContaExiste{
+        font-size: 12px;
+        margin-top: 20px;
+        font-weight: 500;
+        cursor: default;
+    }
+    .separador{
+        margin:0;
+    }
+    .txtSeparador{
+        font-size: 14px;
+    }
+}
