@@ -93,3 +93,6 @@
     font-size: 25px;
     margin-top: 5%;
 }
+.visibilityTest{
+    opacity: 0;
+}

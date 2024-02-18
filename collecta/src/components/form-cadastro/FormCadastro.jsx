@@ -10,6 +10,8 @@ import api from "../../api/api"
 import { useNavigate } from "react-router"
 import "./FormCadastro.css"
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Navbar } from "react-bootstrap"
 
 
 function FormCadastro(){
@@ -183,15 +185,19 @@ function FormCadastro(){
                 </button>
                 
                 </div>
-                <span className="txtContaExiste">Já tem uma conta? Faça login</span>
-                <div className="separador">
+                <span className="txtContaExiste color-science">
+                    <Link to={"/login"}>
+                        Já tem uma conta? Faça login
+                    </Link>
+                </span>
+                {/* <div className="separador">
                     <hr className="meiaLinha" />
                     <span className="txtSeparador">ou</span>
                     <hr className="meiaLinha" />
                 </div>
                 <button className="btnGoogle">
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
-                </button>
+                </button> */}
             
             </form>
         </section>
