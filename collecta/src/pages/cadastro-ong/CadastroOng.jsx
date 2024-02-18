@@ -3,7 +3,7 @@ import Personagem from "../../assets/cadastro/personagem.svg"
 import LinhaTracejada from "../../assets/cadastro/linha-tracejada.svg"
 import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../../components/input-cadastro/InputCadastro.jsx"
-import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
+// import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
 import NavbarLogout from "../../components/navbar/NavbarLogout.jsx"
 import Navbar from "../../components/navbar/Navbar.jsx"
 import { Link } from 'react-router-dom';
@@ -212,14 +212,14 @@ function cadastroOng(){
                 
                 <span className="txtContaExiste"><Link to={"/login"} className="color-science">Já tem uma conta? Faça login</Link></span>
 
-                <div className="separador">
+                {/* <div className="separador">
                     <hr className="meiaLinha" />
                     <span className="txtSeparador">ou</span>
                     <hr className="meiaLinha" />
                 </div>
                 <button className="btnGoogle">
                   <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
-                </button>
+                </button> */}
             
             </form>
         </section>

@@ -54,6 +54,8 @@ function Dashboard() {
         buscarTipoConta();
       }, []);
 
+
+
     return (
         <>
             {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
@@ -94,16 +96,16 @@ function Dashboard() {
                     <section className='boxSup'>
                         <h2 className='tituloResumo'>Métricas</h2>
                         <div className='divSpan'>
-                            <span>Doadores: 2</span>
+                            <span>Doadores: 0</span>
                         </div>
                         <div className='divSpan'>
-                            <span>Visualizações: 33</span>
+                            <span>Visualizações: 1</span>
                         </div>
                     </section>
                     <section className='boxInf'>
                         <h2 className='tituloBoxInf'>Últimas ações da campanha</h2>
                         <div className='divBtns'>
-                            <input type='file' className='btns' placeholder='BAIXAR MODELO'/>
+                            <button type='file' className='btns' >BAIXAR MODELO</button>
                             <button className='btns'>IMPORTAR .TXT</button>
                         </div>
                         <div className='tabela'>
@@ -118,28 +120,28 @@ function Dashboard() {
                             </thead>
                             <tbody>
                                 <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th   id='rowPlanilha' scope="row">Alimentação</th>
+                                <td id='rowPlanilha'>Entrega de marmitas</td>
+                                <td id='rowPlanilha'>11/11/2023</td>
+                                <td id='rowPlanilha'>R$2.000,00</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
+                                <th id='rowPlanilha' scope="row">Ajuda</th>
+                                <td id='rowPlanilha'>Ajuda humanitaria</td>
+                                <td id='rowPlanilha'>12/10/2023</td>
+                                <td id='rowPlanilha'>R$100,00</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                                <th id='rowPlanilha' scope="row">Vestuario</th>
+                                <td id='rowPlanilha'>Roupas de frio para moradores de rua</td>
+                                <td id='rowPlanilha'>10/09/20203</td>
+                                <td id='rowPlanilha'>R$700,00</td>
                                 </tr>
                                 <tr>
-                                <th scope="row">4</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
+                                <th id='rowPlanilha' scope="row">Cesta básica</th>
+                                <td id='rowPlanilha'>Entregues na favela do jacarezinho</td>
+                                <td id='rowPlanilha'>26/11/2023</td>
+                                <td id='rowPlanilha'>R$500,00</td>
                                 </tr>
                             </tbody>
                             </table>
