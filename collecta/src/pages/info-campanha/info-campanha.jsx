@@ -277,7 +277,7 @@ useEffect(() => {
                 <div className="head-medium d-flex jc-between">
                   <span>
                   <span>R$ </span>
-                  <span id="valorArrecadado">9.999</span>
+                  <span id="valorArrecadado">0.00</span>
                   <span className="body-large"> Arrecadado</span>
                   </span>
                   <span>
@@ -328,23 +328,47 @@ useEffect(() => {
                             <Form.Label style={{ fontWeight: 700 }}>
                               Tipo da Campanha
                             </Form.Label>
-                            <Form.Control
+                            <Form.Select
                             type="text"
                             name="tipoCampanha"
                             onChange={handleChangeTipoCampanha}
-                            />
+                            >
+                              <option value="MENSAL">Recorrente</option>
+                              <option value="POR_DATA">Pontual</option>
+                            </Form.Select>
                           </Form.Group>
 
                           <Form.Group controlId="formCategoria">
                             <Form.Label style={{ fontWeight: 700 }}>
                               Categoria da campanha
                             </Form.Label>
-                            <Form.Control 
+                            <Form.Select 
                               type="text"
                               name="categoria"
                               // value={categoria}
                               onChange={handleChangeCategoria}
-                              />
+                              >
+                              <option value="">Selecione a categoria</option>
+                              <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
+                              <option value="ALIMENTACAO">Alimentação</option>
+                              <option value="ANIMAIS">Animais</option>
+                              <option value="ARRECADACAO_DE_FUNDOS">Arrecadação de Fundos</option>
+                              <option value="CRIANCAS">Crianças</option>
+                              <option value="COMBATE_A_POBREZA">Combate a Pobreza</option>
+                              <option value="CULTURA_E_ARTE">Cultura e Arte</option>
+                              <option value="EDUCACAO">Educação</option>
+                              <option value="EMPREENDEDORISMO">Empreendedorismo</option>
+                              <option value="ESPORTES">Esportes</option>
+                              <option value="HABITACAO">Habitação</option>
+                              <option value="IDOSOS">Idosos</option>
+                              <option value="IGUALDADE_DE_GENERO">Igualdade de Genero</option>
+                              <option value="INOVACAO_SOCIAL">Inovação Social</option>
+                              <option value="MEIO_AMBIENTE">Meio Ambiente</option>
+                              <option value="SAUDE">Saúde</option>
+                              <option value="SAUDE_MENTAL">Saúde Mental</option>
+                              <option value="TECNOLOGIA">Tecnologia</option>
+                              <option value="OUTROS">Outros</option>
+                            </Form.Select>
                           </Form.Group>
 
                           <Form.Group controlId="formUtilizacaoDinheiro">
@@ -435,7 +459,7 @@ useEffect(() => {
               <div className="mt-16 d-flex">
                 <span className="d-flex ai-center">
                   <img src={iVisualizacao} />
-                  <span className="ml-8 body-xsmall">x visualizações</span>
+                  <span className="ml-8 body-xsmall">0 visualizações</span>
                 </span>
                 <span className="ml-32 d-flex ai-center">
                   <img src={iCategoria} />
@@ -456,40 +480,7 @@ useEffect(() => {
                 </div>
               </div>
             </div>
-            <div className="w-470 d-flex jc-between mt-60">
-              <div className="icone-perfil">
-                <img src={urlImg} className="img-perfil" />
-              </div>
-              <div>
-                <div>
-                  <div className="mmb-22">
-                    <div>
-                      <span id="responsavelCampanha" className="body-small">Ação de rua</span>
-                    </div>
-                    <div>
-                      <span className="body-tiny">19 projetos</span>
-                    </div>
-                  </div>
-                  <div className="d-flex jc-between w-388 ai-center">
-                    <span>
-                      <img src={iFace} />
-                    </span>
-                    <span>
-                      <img src={iTwitter} />
-                    </span>
-                    <span>
-                      <img src={iInstagram} />
-                    </span>
-                    <button className="btn-copiar body-tiny bg-seashell">
-                      SEGUIR
-                    </button>
-                    <button className="btn-copiar body-tiny bg-seashell">
-                      CONTATO
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
@@ -521,19 +512,6 @@ useEffect(() => {
               <i className="fa fa-comments icon-tab" aria-hidden="true"></i>Feed
             </a>
           </li>
-          <li className="nav-item" role="presentation">
-            <a
-              className="nav-link"
-              id="ex-with-icons-tab-3"
-              data-mdb-toggle="tab"
-              href="#ex-with-icons-tabs-3"
-              role="tab"
-              aria-controls="ex-with-icons-tabs-3"
-              aria-selected="false"
-            >
-              <i className="fa fa-users icon-tab" aria-hidden="true"></i>Apoiadores
-            </a>
-          </li>
         </ul>
 
         <div className="tab-content" id="ex-with-icons-content">
@@ -550,28 +528,7 @@ useEffect(() => {
               <div id="descricaoProjeto" className="body-medium">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque
                 maxime quo deleniti nisi aspernatur non eveniet possimus
-                delectus tenetur aliquid pariatur ipsam consequatur, sunt,
-                corporis nobis nulla! Veniam quo in sequi atque minima explicabo
-                nemo harum a officia! Quia voluptate amet, assumenda dolorem
-                earum esse voluptatum laboriosam soluta illum non vitae natus
-                deleniti maxime dolores in unde quidem nam nihil, voluptates
-                iure, animi laborum molestias sed. Magni amet sed cumque facilis
-                perferendis laboriosam, explicabo vel tempore quisquam suscipit
-                culpa distinctio nemo eligendi obcaecati nobis, iste quas
-                quibusdam illo nihil rerum. Est officiis mollitia, deleniti
-                obcaecati nostrum ipsum eveniet corporis, eius iusto at incidunt
-                quo quos voluptates nam commodi dolorum tenetur quis omnis non
-                molestiae similique, dolor modi! Ratione fuga tenetur voluptates
-                facilis. Veniam eveniet sapiente quasi possimus assumenda, ab
-                non perferendis aut repudiandae fuga unde autem saepe doloribus
-                minus officia quae delectus porro! Voluptatum minima totam
-                doloribus? Provident aliquid molestias repellendus, dolorum
-                voluptas, incidunt sint, vitae inventore iusto atque eligendi
-                pariatur porro debitis? Possimus cumque, non excepturi cum,
-                fugit ut soluta tempore animi voluptatem totam nulla officia
-                quas! Ut aut sed facere saepe pariatur maxime quaerat sunt,
-                velit, dolores in explicabo fugit vero officia esse molestiae
-                voluptates! Fugiat, quaerat consequuntur?
+                delectus tenetur aliquid pariatur ipsam consequatur.
               </div>
             </div>
           </div>
@@ -598,36 +555,6 @@ useEffect(() => {
               ) : (
                 <p className="txtNoContent">Não há publicações no feed</p>
               )}
-          </div>
-          <div
-            className="tab-pane fade"
-            id="ex-with-icons-tabs-3"
-            role="tabpanel"
-            aria-labelledby="ex-with-icons-tab-3"
-          >
-            <div>
-              <div className="text-align-center head-xsmall mt-32 mmb-32">
-                <span>Mural de apoiadores do projeto, muito obrigado!</span>
-              </div>
-              <div className="d-flex jc-around">
-                <div className="d-flex ai-center">
-                  <div className="icone-perfil">
-                    <img src={urlImg} className="img-perfil" />
-                  </div>
-                  <div className="ml-16">
-                    <span>Nome apoiador</span>
-                  </div>
-                </div>
-                <div className="d-flex ai-center">
-                  <div className="icone-perfil">
-                    <img src={urlImg} className="img-perfil" />
-                  </div>
-                  <div className="ml-16">
-                    <span>Nome apoiador</span>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

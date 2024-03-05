@@ -15,7 +15,6 @@
     overflow: hidden;
     width: 700px;
     height: 470px;
-    background-color: rebeccapurple;
 }
 
 .container-imagem {
@@ -74,4 +73,11 @@
     width: 40px;
     height: 30px;
     cursor: pointer;
+}
+
+@media (max-width: 1400px){
+    .thumb-campanha-container{
+        width: 590px;
+    }
+   
 }

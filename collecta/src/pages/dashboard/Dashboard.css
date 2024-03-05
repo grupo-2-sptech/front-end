@@ -93,6 +93,11 @@
     font-size: 25px;
     margin-top: 5%;
 }
-.visibilityTest{
-    opacity: 0;
+@media (max-width:1500px){
+    .tituloResumo{
+        font-size: 20px;
+    }
+    .txtDash{
+        font-size: 16px;
+    }
 }
