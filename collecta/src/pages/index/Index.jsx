@@ -7,7 +7,7 @@ import Navbar from "../../components/navbar/Navbar";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 
-import "./Index.css";
+
 import "../../components/card/Card.css";
 import costura01 from "../../assets/background/costura01.svg";
 import iGrafico from "../../assets/icon/i-grafico.svg";
@@ -20,7 +20,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../../api/api";
-
+import "./Index.css";
 function Index() {
   const [isTipoConta, setIsTipoConta] = useState(0);
   

@@ -7,8 +7,11 @@ import "../../components/card/Card.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api";
 import { useNavigate } from "react-router";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function Campanha() {
+  const MySwal = withReactContent(Swal)
   var token = localStorage.getItem("token")
   const [genero, setGenero] = useState('')
 
@@ -40,6 +43,10 @@ function Campanha() {
       console.log(res.data)
     }).catch((erro) =>{
       console.log(erro)
+      MySwal.fire({
+        title: <p>Erro ao cadastrar financeiro da campanha</p>,
+        icon: 'error'
+      })
     })
   }
 
@@ -60,18 +67,31 @@ function Campanha() {
       dataInicio: dataAtualFormatada
     }
 
-  api.post("/campanhas", campanha, {
-    headers: {
-      Authorization: `Bearer ${token}`
+    if(campanha.nome == "" || campanha.descricao == "" || campanha.dataFim.length < 10 ||                 campanha.categoriaCampanha == "" || campanha.urlImagem == "" ){
+      MySwal.fire({
+        title: <p>Preencha todos os campos</p>,
+        icon: 'error'
+      })
+    }else{
+      api.post("/campanhas", campanha, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((res) => {
+
+        console.log(res.data)
+        console.log(res.data.id)
+         cadastrarFinanceiroCampanha(res.data.id, valorMeta)
+      }).catch((erro) => {
+        console.log(erro)
+        MySwal.fire({
+          title: <p>Erro ao cadastrar campanha</p>,
+          icon: 'error'
+        })
+      })
     }
-  }).then((res) => {
-    // alert("deu certo cadastrar a campanha")
-    console.log(res.data)
-    console.log(res.data.id)
-     cadastrarFinanceiroCampanha(res.data.id, valorMeta)
-  }).catch((erro) => {
-    console.log(erro)
-  })
+
+ 
     
 
   }
@@ -95,12 +115,14 @@ function Campanha() {
                 <input
                   type="text"
                   name="titulo"
+                  id="titulo"
                   className="w-100 br-10 h-65 border-outline p-16"
+                  required={true}
                 />
               </div>
               <div className="mmb-32">
                 <div className="head-xsmall mmb-8">Categoria</div>
-                  <select name="" id="" onChange={mudarGenero} className="w-100 br-10 h-65 p-8">
+                  <select required={true} name="" id="genero" onChange={mudarGenero} className="w-100 br-10 h-65 p-8">
                     <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
                     <option value="ALIMENTACAO">Alimentação</option>
                     <option value="ANIMAIS">Animais</option>
@@ -127,6 +149,7 @@ function Campanha() {
                 <input
                   type="text"
                   className="w-70 br-10 h-65 border-outline p-16"
+                  
                 />
                 <span className="hifen">-</span>
                 <input
@@ -138,10 +161,11 @@ function Campanha() {
                 <div className="head-xsmall mmb-8">Descrição do projeto</div>
                 <textarea
                   name="descricao"
-                  id=""
+                  id="descricao"
                   cols="30"
                   rows="10"
                   className="w-100 br-10 border-outline p-8"
+                  required={true}
                 ></textarea>
               </div>
 
@@ -153,7 +177,9 @@ function Campanha() {
                   <input
                     type="date"
                     name="dataFim"
+                    id="dataFim"
                     className="br-10 h-65 border-outline p-16 input-meta-dia"
+                    required={true}
                   />
                 </span>
                 <span>
@@ -161,7 +187,9 @@ function Campanha() {
                   <input
                     type="number"
                     name="valorMeta"
+                    id="valorMeta"
                     className=" br-10 h-65 border-outline p-16 input-meta-dia"
+                    required={true}
                   />
                 </span>
               </div>
@@ -172,7 +200,12 @@ function Campanha() {
               </div>
               {/* Responsável pela integração fazer essa div ser clicável para o uploud da foto */}
               <div className="input-box-upload">
-                <input className="input-box-upload " type="text" name="inputImg" id="inputImg" />
+                <input 
+                  required={true} 
+                  className="input-box-upload " 
+                  type="text" 
+                  name="inputImg" 
+                  id="inputImg" />
               </div>
 
               <div className="box-botao-criar">

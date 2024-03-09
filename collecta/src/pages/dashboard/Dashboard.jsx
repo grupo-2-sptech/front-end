@@ -17,6 +17,10 @@ function Dashboard() {
     const [visualizacao, setVisualizacao] = useState('')
     const [isTipoConta, setIsTipoConta] = useState(0);
     const { id } = useParams();
+    const navigate = useNavigate();
+    const navigateToPage = (path) =>{
+        navigate(path)
+    }
 
 
     function trazerInfo(){
@@ -39,7 +43,7 @@ function Dashboard() {
             })
     }
 
-    trazerInfo()
+
 
     const conta = localStorage.getItem('tipoConta'); 
     function buscarTipoConta() {
@@ -64,7 +68,7 @@ function Dashboard() {
                     <img className="cursor-button"
                          src={BtnVoltar}
                          alt="Circulo redondo e na cor azul com seta para esquerda ao centro"
-                        
+                        onClick={() => navigateToPage(`/info-campanha/${id}`)}
                     />
                 </div>
             </section>
@@ -72,7 +76,7 @@ function Dashboard() {
                 <div className='headerContainer'>
                     <div className='sepElem'>
                         <h2 className='nomeProjeto'>{nomeProjeto}</h2>
-                        <button className='btnGerarRelatorio'>Gerar relatório</button>
+                        
                     </div>
                 </div>
             </div>
@@ -81,71 +85,29 @@ function Dashboard() {
                     <section className='boxSup'>
                         <h2 className='tituloResumo'>Resumo Financeiro</h2>
                         <div className='divSpan'>
-                            <span>Meta:</span>
-                            <span>R${meta}</span>
+                            <span className='txtDash'>Meta:</span>
+                            <span className='txtDash'>R${meta}</span>
                         </div>
                         <div className='divSpan'>
-                            <span>Arrecadado:</span>
-                            <span>R${arrecadado}</span>
+                            <span className='txtDash'>Arrecadado:</span>
+                            <span className='txtDash'   >R${arrecadado}</span>
                         </div>
                         <div className='divSpan'>
-                            <span>Restante:</span>
-                            <span>R${restante}</span>
+                            <span className='txtDash'>Restante:</span>
+                            <span className='txtDash'>R${restante}</span>
                         </div>
                     </section>
                     <section className='boxSup'>
                         <h2 className='tituloResumo'>Métricas</h2>
                         <div className='divSpan'>
-                            <span>Doadores: 0</span>
+                            <span className='txtDash'>Doadores: 0</span>
                         </div>
                         <div className='divSpan'>
-                            <span>Visualizações: 1</span>
+                            <span className='txtDash'>Visualizações: 0</span>
                         </div>
                     </section>
                     <section className='boxInf'>
-                        <h2 className='tituloBoxInf'>Últimas ações da campanha</h2>
-                        <div className='divBtns'>
-                            <button type='file' className='btns' >BAIXAR MODELO</button>
-                            <button className='btns'>IMPORTAR .TXT</button>
-                        </div>
-                        <div className='tabela'>
-                            <table className="table">
-                            <thead>
-                                <tr>
-                                <th scope="col">Nome</th>
-                                <th scope="col">Descrição</th>
-                                <th scope="col">Data</th>
-                                <th scope="col">Valor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <th   id='rowPlanilha' scope="row">Alimentação</th>
-                                <td id='rowPlanilha'>Entrega de marmitas</td>
-                                <td id='rowPlanilha'>11/11/2023</td>
-                                <td id='rowPlanilha'>R$2.000,00</td>
-                                </tr>
-                                <tr>
-                                <th id='rowPlanilha' scope="row">Ajuda</th>
-                                <td id='rowPlanilha'>Ajuda humanitaria</td>
-                                <td id='rowPlanilha'>12/10/2023</td>
-                                <td id='rowPlanilha'>R$100,00</td>
-                                </tr>
-                                <tr>
-                                <th id='rowPlanilha' scope="row">Vestuario</th>
-                                <td id='rowPlanilha'>Roupas de frio para moradores de rua</td>
-                                <td id='rowPlanilha'>10/09/20203</td>
-                                <td id='rowPlanilha'>R$700,00</td>
-                                </tr>
-                                <tr>
-                                <th id='rowPlanilha' scope="row">Cesta básica</th>
-                                <td id='rowPlanilha'>Entregues na favela do jacarezinho</td>
-                                <td id='rowPlanilha'>26/11/2023</td>
-                                <td id='rowPlanilha'>R$500,00</td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </div>
+                 
                     </section>
                 </div>
             </main>

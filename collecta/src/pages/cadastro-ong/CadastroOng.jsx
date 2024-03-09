@@ -12,10 +12,13 @@ import "../../../styles/global.css"
 import { useNavigate } from "react-router"
 import api from "../../api/api.js"
 import React, { useState, useEffect } from "react"
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 
 function cadastroOng(){
     const [isTipoConta, setIsTipoConta] = useState(0);
+    const MySwal = withReactContent(Swal)
   
     const conta = localStorage.getItem('tipoConta'); 
     function buscarTipoConta() {
@@ -132,21 +135,46 @@ function cadastroOng(){
 
 
         if(nome.trim() == "" || email.trim() == "" || cnpj.trim() == "" || telefone.trim() == "" || senha.trim() == "" || dtFund.trim() == ""){
-            alert("preencha todos os campos")
+            MySwal.fire({
+                title: <p>Preencha todos os campos</p>,
+                icon: 'error'
+              })
         } else if(nome.length < 3){
-            alert("Digite o nome fantasia completo")
+            MySwal.fire({
+                title: <p>Digite o nome fantasia completo</p>,
+                icon: 'error'
+              })
         } else if(razao.length < 3){
-            alert("Digite a razão social completa")
+            MySwal.fire({
+                title: <p>Digite a razão social completa</p>,
+                icon: 'error'
+              })
         } else if(cnpj.length != 18){
-            alert("Digite um cnpj válido")
+            MySwal.fire({
+                title: <p>Digite um CNPJ válido e formatado</p>,
+                icon: 'error'
+              })
         } else if(email.length < 3){
-            alert("Email deve ter no minimo 3 caracteres")
+            MySwal.fire({
+                title: <p>Email deve ter no minimo 3 caracteres</p>,
+                icon: 'error'
+              })
         }else if(telefone.length != 11){
-            alert("Digite apenas o numero do seu telefone com DDD")
+            MySwal.fire({
+                title: <p>Digite apenas o numero do seu telefone com DDD</p>,
+                icon: 'error'
+              })
         }else if(!isDataNoPassado(dtFund)){
-            alert("A data de fundação deve estar no passado")
+            MySwal.fire({
+                title: <p>A data de fundação deve estar no passado</p>,
+                icon: 'error'
+              })
         }else if(!verificaSenha(senha)){
-            alert("A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um caractere especial, um número e ter no mínimo 8 caracteres")
+            MySwal.fire({
+                title: <p>Senha inválida</p>,
+                text: 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um caractere especial, um número e ter no mínimo 8 caracteres',
+                icon: 'error'
+              })
         }else{
             var novoUsuario = {
                 nomeSocial: razao,
@@ -161,8 +189,12 @@ function cadastroOng(){
             api.post("/login/cadastro/organizacao", novoUsuario).then((res) =>{
                 navigateToPage("/login")
             }).catch((erro) => {
-                alert("erro ao cadastrar")
                 console.log(erro)
+                MySwal.fire({
+                    title: <p>Erro ao cadastrar</p>,
+                    text: 'Bad request: verifique os dados novamente',
+                    icon: 'error'
+                  })
             });
 
         }

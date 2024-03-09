@@ -5,9 +5,11 @@ import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
 import api from "../../api/api.js"
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function Login() {
-
+  const MySwal = withReactContent(Swal)
   const navigate = useNavigate();
   const navigateToPage = (path) =>{
       navigate(path)
@@ -31,7 +33,7 @@ function Login() {
     }
 
     api.post("/login", usuario).then((res) => {
-      console.log('OIIIIIIIIIIIII' +res.data.token)
+      
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('tipoConta', res.data.tipoConta);
       localStorage.setItem('id', res.data.id);
@@ -39,6 +41,11 @@ function Login() {
       
     }).catch((erro) => {
       console.log(erro)
+      MySwal.fire({
+        title: <p>Usuário ou senha incorreto</p>,
+        icon: 'error'
+      })
+
     })
 
     
