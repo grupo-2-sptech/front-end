@@ -8,8 +8,11 @@ import "../../components/card/Card.css";
 import api from "../../api/api";
 import { useNavigate } from "react-router";
 import React, { useEffect, useState } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function CampanhaRecorrente() {
+  const MySwal = withReactContent(Swal)
   const [isTipoConta, setIsTipoConta] = useState(0);
   
   const conta = localStorage.getItem('tipoConta'); 
@@ -59,6 +62,10 @@ function CampanhaRecorrente() {
       console.log(res.data)
     }).catch((erro) =>{
       console.log(erro)
+      MySwal.fire({
+        title: <p>Erro ao cadastrar financeiro da campanha</p>,
+        icon: 'error'
+      })
     })
   }
 
@@ -90,6 +97,10 @@ function CampanhaRecorrente() {
      cadastrarFinanceiroCampanha(res.data.id, valorMeta)
   }).catch((erro) => {
     console.log(erro)
+    MySwal.fire({
+      title: <p>Erro ao cadastrar a campanha</p>,
+      icon: 'error'
+    })
   })
     
 
@@ -115,6 +126,7 @@ function CampanhaRecorrente() {
                 <input
                   type="text"
                   name="titulo"
+                  required={true}
                   className="w-100 br-10 h-65 border-outline p-16"
                 />
               </div>
@@ -123,7 +135,7 @@ function CampanhaRecorrente() {
                   Qual a categoria do seu projeto?
                 </div>
                 
-                <select name="" id="" onChange={mudarGenero} className="w-100 br-10 h-65 p-8">
+                <select required={true} name="" id="" onChange={mudarGenero} className="w-100 br-10 h-65 p-8">
                     <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
                     <option value="ALIMENTACAO">Alimentação</option>
                     <option value="ANIMAIS">Animais</option>
@@ -165,6 +177,7 @@ function CampanhaRecorrente() {
                   cols="30"
                   rows="7"
                   className="w-100 br-10 border-outline p-8"
+                  required={true}
                 ></textarea>
               </div>
 
@@ -176,6 +189,7 @@ function CampanhaRecorrente() {
                   type="number"
                   name="valorMeta"
                   className="w-100 br-10 h-65 border-outline p-16"
+                  required={true}
                 />
               </div>
 
@@ -185,7 +199,7 @@ function CampanhaRecorrente() {
               </div>
               {/* Responsável pela integração fazer essa div ser clicável para o uploud da foto */}
               <div className="input-box-upload">
-                <input className="input-box-upload " type="text" name="inputImg" id="inputImg" />
+                <input required={true} className="input-box-upload " type="text" name="inputImg" id="inputImg" />
               </div>
 
               <div className="box-botao-criar">

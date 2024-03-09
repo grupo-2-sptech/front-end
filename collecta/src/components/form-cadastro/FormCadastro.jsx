@@ -117,7 +117,7 @@ function FormCadastro(){
         } else if(nome.length < 10){
             alert("Digite seu nome completo")
         } else if(cpf.length != 11){
-            alert("Digite um cpf válido")
+            alert("Digite um cpf válido, somente numeros")
         } else if(email.length < 3){
             alert("Email deve ter no minimo 3 caracteres")
         }else if(telefone.length != 11){

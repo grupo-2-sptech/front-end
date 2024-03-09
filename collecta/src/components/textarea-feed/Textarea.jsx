@@ -3,8 +3,10 @@ import api from "../../api/api";
 import Anexo from "../../assets/icon/i-anexo.svg"
 import "./Textarea.css"
 import { useParams } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 function Textarea(){
-
+    const MySwal = withReactContent(Swal)
     var token  = localStorage.getItem("token")
 
     const [tituloTextarea, setTituloTextarea] = useState('');
@@ -46,6 +48,10 @@ function Textarea(){
             window.location.reload();
         }).catch((erro) => {
             console.log(erro)
+            MySwal.fire({
+                title: <p>Erro ao criar post</p>,
+                icon: 'error'
+              })
         })
     }
 

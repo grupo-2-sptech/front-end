@@ -8,9 +8,11 @@ import "../../components/card/card.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function CriarMissao() {
-
+  const MySwal = withReactContent(Swal)
   const [isTipoConta, setIsTipoConta] = useState(0);
   
   const conta = localStorage.getItem('tipoConta'); 
@@ -58,6 +60,10 @@ function CriarMissao() {
       navigate(-1)
     }).catch((erro) => {
       console.log(erro)
+      MySwal.fire({
+        title: <p>Erro ao cadastrar missão</p>,
+        icon: 'error'
+      })
     })
 
   }
@@ -81,6 +87,7 @@ function CriarMissao() {
                   type="text"
                   className="w-100 br-10 h-65 border-outline p-16"
                   name="titulo"
+                  required="true"
                 />
               </div>
               <div className="mmb-32">
@@ -89,6 +96,7 @@ function CriarMissao() {
                   type="number"
                   className="w-100 br-10 h-65 border-outline p-16"
                   name="qtdVaga"
+                  required="true"
                 />
               </div>
               <div className="mmb-32">
@@ -97,12 +105,14 @@ function CriarMissao() {
                   type="text"
                   className="w-70 br-10 h-65 border-outline p-16"
                   name="cidade"
+                  required="true"
                 />
                 <span className="hifen">-</span>
                 <input
                   type="text"
                   className="w-20 br-10 h-65 border-outline p-16"
                   name="estado"
+                  required="true"
                 />
               </div>
               <div className="mmb-32">
@@ -113,16 +123,17 @@ function CriarMissao() {
                   cols="30"
                   rows="10"
                   className="w-100 br-10 border-outline p-8"
+                  required="true"
                 ></textarea>
               </div>
               <div className="mmb-32 d-flex jc-between">
                 <div>
                   <div className="head-xsmall mmb-8">Data  <span className="body-medium">(dia/mes/ano)</span></div>
-                  <input type="date" name="data" className="input-data-campanha" />
+                  <input type="date" name="data" className="input-data-campanha" required="true"/>
                 </div>
                 <div>
                   <div className="head-xsmall mmb-8">Horário <span className="body-medium">(dia/mes/ano)</span></div>
-                  <input type="time" name="hora" className="input-data-campanha" />
+                  <input type="time" name="hora" className="input-data-campanha" required="true"/>
                 </div>
               </div>
 
@@ -132,7 +143,7 @@ function CriarMissao() {
               </div>
               {/* Responsável pela integração fazer essa div ser clicável para o uploud da foto */}
               <div className="input-box-upload">
-                <input className="input-box-upload input-url" type="text" name="urlImg" id="" />
+                <input className="input-box-upload input-url" type="text" name="urlImg" id="" required="true" />
 
               </div>
 
