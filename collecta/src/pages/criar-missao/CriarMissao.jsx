@@ -10,6 +10,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import CampoFiltrar from "../../components/barra-voltar-filtrar/CampoFiltrar";
 
 function CriarMissao() {
   const MySwal = withReactContent(Swal)
@@ -71,6 +72,7 @@ function CriarMissao() {
   return (
     <>
       {isTipoConta == 0 ? <NavbarLogout /> : <Navbar />}
+      <CampoFiltrar/>
       <div className="meu-container mmb-60">
         <div className="container-pai">
           <div className="container-campanha">
