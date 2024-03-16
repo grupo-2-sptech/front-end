@@ -158,11 +158,30 @@
     display: none;
 }
 
-@media (max-width:1500px){
+@media(max-width:1800px){
     .boxFormulario{
         margin-left: 35%;
         width: 500px;
         /* padding: 50px; */
+        height: 100%;
+        margin-top: 50px;
+    }
+}
+
+@media(max-width:1500px){
+    .boxFormulario{
+        margin-left: 35%;
+        width: 450px;
+        /* padding: 50px; */
+        height: 100%;
+        margin-top: 50px;
+    }
+}
+/* 
+@media (max-width:1500px){
+    .boxFormulario{
+        margin-left: 35%;
+        width: 500px;
         height: 100%;
         margin-top: 50px;
     }
@@ -197,4 +216,4 @@
     .txtSeparador{
         font-size: 14px;
     }
-}
+} */

@@ -12,11 +12,13 @@ import "./FormCadastro.css"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Navbar } from "react-bootstrap"
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 function FormCadastro(){
     const [isTipoConta, setIsTipoConta] = useState(0);
-  
+    const MySwal = withReactContent(Swal)
+
     const conta = localStorage.getItem('tipoConta'); 
     function buscarTipoConta() {
       if (conta == 'DOADOR') {
@@ -37,6 +39,7 @@ function FormCadastro(){
 
         function avancarCadastro(e){
         e.preventDefault();   
+
         var nome = document.getElementById("inputNome");
         var email = document.getElementById("inputEmail");
         var cpfCnpj = document.getElementById("inputCpfCnpj");
@@ -47,6 +50,9 @@ function FormCadastro(){
         var btnAnterior = document.getElementById("botaoAnterior");
         var btnCadastrar = document.getElementById("botaoCadastrar");
         var numeroEtapa = document.getElementById("etapa");
+
+
+
         nome.style.display = 'none';
         email.style.display = 'none';
         cpfCnpj.style.display = 'none';
@@ -105,27 +111,51 @@ function FormCadastro(){
     function cadastrar(e){
         e.preventDefault();
 
-        var nome = e.target.nome.value;
-        var email = e.target.email.value;
-        var cpf = e.target.cpf.value;
-        var telefone = e.target.telefone.value;
-        var senha = e.target.senha.value;
-        var dtNasc = e.target.dtNasc.value;
+
+            var nome = e.target.nome.value;
+            var email = e.target.email.value;
+            var cpf = e.target.cpf.value;
+            var telefone = e.target.telefone.value;
+            var senha = e.target.senha.value;
+            var dtNasc = e.target.dtNasc.value;
+
 
         if(nome.trim() == "" || email.trim() == "" || cpf.trim() == "" || telefone.trim() == "" || senha.trim() == "" || dtNasc.trim() == ""){
-            alert("preencha todos os campos")
+            MySwal.fire({
+                title: <p>Preencha todos os campos</p>,
+                icon: 'error'
+              })
         } else if(nome.length < 10){
-            alert("Digite seu nome completo")
+            MySwal.fire({
+                title: <p>Digite o nome completo</p>,
+                icon: 'error'
+              })
         } else if(cpf.length != 11){
-            alert("Digite um cpf válido, somente numeros")
+            MySwal.fire({
+                title: <p>Digite um CPF válido, somente numeros</p>,
+                icon: 'error'
+              })
         } else if(email.length < 3){
-            alert("Email deve ter no minimo 3 caracteres")
+            MySwal.fire({
+                title: <p>Email deve ter no minimo 3 caracteres</p>,
+                icon: 'error'
+              })
         }else if(telefone.length != 11){
-            alert("Digite apenas o numero do seu telefone com DDD")
+            MySwal.fire({
+                title: <p>Digite apenas o numero do seu telefone com DDD</p>,
+                icon: 'error'
+              })
         }else if(!isDataNoPassado(dtNasc)){
-            alert("A data de nascimento deve estar no passado")
+            MySwal.fire({
+                title: <p>A data de nascimento deve estar no passado</p>,
+                icon: 'error'
+              })
         }else if(!verificaSenha(senha)){
-            alert("A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um caractere especial, um número e ter no mínimo 8 caracteres")
+            MySwal.fire({
+                title: <p>Senha inválida</p>,
+                text: 'A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um caractere especial, um número e ter no mínimo 8 caracteres',
+                icon: 'error'
+              })
         }else{
             var novoUsuario = {
                 nome: nome,
@@ -140,8 +170,12 @@ function FormCadastro(){
             api.post("/login/cadastro/doador", novoUsuario).then((res) =>{
                 navigateToPage("/login")
             }).catch((erro) => {
-                alert("erro ao cadastrar")
                 console.log(erro)
+                MySwal.fire({
+                    title: <p>Erro ao cadastrar</p>,
+                    text: 'Bad request: verifique os dados novamente',
+                    icon: 'error'
+                  })
             });
 
         }

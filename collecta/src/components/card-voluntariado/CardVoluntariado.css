@@ -69,3 +69,8 @@
 .w-30px {
     width: 30px;
 }
+@media(max-width:1900px) {
+    .card-voluntariado{
+        height: 650px;
+    }
+}
