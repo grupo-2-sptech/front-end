@@ -108,9 +108,7 @@ function Navbar() {
                     size="sm"
                     style={{
                       display: "flex",
-                      alignItems: "center",
-                      marginLeft: "750px",
-                      marginTop: "-300px",
+                      alignItems: "center"
                     }}
                   >
                     <Modal.Header closeButton>

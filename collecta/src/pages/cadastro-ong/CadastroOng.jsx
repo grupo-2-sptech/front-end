@@ -16,7 +16,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
 
-function cadastroOng(){
+function CadastroOng(){
     const [isTipoConta, setIsTipoConta] = useState(0);
     const MySwal = withReactContent(Swal)
   
@@ -260,4 +260,4 @@ function cadastroOng(){
     )
 }
 
-export default cadastroOng
+export default CadastroOng

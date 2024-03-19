@@ -136,6 +136,7 @@ function CampanhaRecorrente() {
                 </div>
                 
                 <select required={true} name="" id="" onChange={mudarGenero} className="w-100 br-10 h-65 p-8">
+                    <option value="">Selecione a categoria</option>
                     <option value="AJUDA_HUMANITARIA">Ajuda Humanitária</option>
                     <option value="ALIMENTACAO">Alimentação</option>
                     <option value="ANIMAIS">Animais</option>

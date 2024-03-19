@@ -7,6 +7,7 @@ import Back from "../../assets/icon/btn-back.svg"
 import Seta from "../../assets/icon/i-setabottom.svg"
 import iDeletar from "../../assets/icon/i-deletar.svg"
 import iEditar from "../../assets/icon/i-editar.svg"
+import api from "../../api/api"
 
 function CardVoluntariado(props){
 
@@ -47,6 +48,8 @@ function CardVoluntariado(props){
 
     function direcionarWpp(telefone){
         
+        api.get()
+
         window.open(`https://wa.me/5511949605010`, '_blank')
     }
 

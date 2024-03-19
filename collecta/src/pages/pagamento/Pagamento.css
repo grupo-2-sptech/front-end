@@ -198,3 +198,9 @@
 .cursor-button {
     cursor: pointer;
 }
+
+@media (max-width:1600px){
+    .donation-primary-value-box{
+        height: 250px;
+    }
+}
