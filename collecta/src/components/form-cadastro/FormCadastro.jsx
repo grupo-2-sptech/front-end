@@ -3,7 +3,6 @@ import Personagem from "../../assets/cadastro/personagem.svg"
 import LinhaTracejada from "../../assets/cadastro/linha-tracejada.svg"
 import IconInfo from "../../assets/cadastro/info.svg"
 import InputCadastro from "../input-cadastro/InputCadastro"
-import IconGoogle from "../../assets/cadastro/iconGoogle.svg"
 import NavbarLogout from "../navbar/NavbarLogout"
 import "../../../styles/global.css"
 import api from "../../api/api"
@@ -223,16 +222,7 @@ function FormCadastro(){
                     <Link to={"/login"}>
                         Já tem uma conta? Faça login
                     </Link>
-                </span>
-                {/* <div className="separador">
-                    <hr className="meiaLinha" />
-                    <span className="txtSeparador">ou</span>
-                    <hr className="meiaLinha" />
-                </div>
-                <button className="btnGoogle">
-                  <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
-                </button> */}
-            
+                </span>            
             </form>
         </section>
         </>
