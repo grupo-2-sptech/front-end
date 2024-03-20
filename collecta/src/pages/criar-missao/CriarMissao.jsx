@@ -4,7 +4,7 @@ import Navbar from "../../components/navbar/Navbar";
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 
 import "./CriarMissao.css";
-import "../../components/card/card.css";
+import "../../components/card/Card.css";
 import api from "../../api/api";
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
