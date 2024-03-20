@@ -1,5 +1,5 @@
 import Index from "./pages/index/Index";
-import CriarCampanhaPontual from "./pages/campanha/Campanha.jsx";
+import CriarCampanhaPontual from "./pages/campanha/campanha.jsx";
 import CampanhaRecorrente from "./pages/campanha/campanha-recorrente.jsx";
 import Cadastro from "./components/form-cadastro/FormCadastro";
 import Login from "./pages/login/Login.jsx";
