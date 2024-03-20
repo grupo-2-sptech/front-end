@@ -1,7 +1,7 @@
 import NavbarLogout from "../../components/navbar/NavbarLogout";
 import "../../../styles/global.css";
 import InputCadastro from "../../components/input-cadastro/InputCadastro";
-import IconGoogle from "../../assets/cadastro/IconGoogle.svg";
+
 import api from "../../api/api.js"
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
@@ -93,19 +93,9 @@ function Login() {
           <button type="submit" className="bg-tufts br-5 w-100 border-none p-16-vertical color-white mb-32 ">
             ENTRAR
           </button>
-          {/* <Link to={"/cadastro-doador"}> */}
+          <Link to={"/cadastro-doador"}>
           <span className="link-underline text-align-center d-flex jc-center color-science mmb-32 mg-top-5" data-toggle="modal" data-target="#ExemploModalCentralizado">Não tem uma conta? Cadastre-se aqui!</span>
-          {/* </Link> */}
-          {/* <div className="ou-container d-flex jc-center ai-center color-haiti mmb-32">
-            <div className="hr-ou bg-haiti"></div>
-            <span className="m-0-8" >ou</span>
-            <div className="hr-ou bg-haiti"></div>
-          </div>
-
-          <button className="btnGoogle w-100">
-                  <img src={IconGoogle} className="logoGoogle" alt="Simbolo do Google, letra 'G' maiúscula" />  Entra com Google
-
-          </button> */}
+          </Link>
         </form>
       </div>
     </>

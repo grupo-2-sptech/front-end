@@ -6,7 +6,7 @@ import NavbarLogout from "../../components/navbar/NavbarLogout";
 import Card from "../../components/card/Card";
 import CardPontual from "../../components/card-pontual/CardPontual";
 import "../index/Index.css";
-import "../../components/card/card.css";
+import "../../components/card/Card.css";
 import { useEffect, useState } from "react";
 import api from "../../api/api.js"
 import { useNavigate } from "react-router";
