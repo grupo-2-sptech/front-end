@@ -217,7 +217,7 @@ useEffect(() => {
 
   
   function deletarCampanha(id){
-    api.delete(`/campanhas/${id}`, {
+    api.put(`/mudar-status/${id}`, {
         headers: {
             Authorization : `Bearer ${token}`,
         },
